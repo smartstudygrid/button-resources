@@ -17,13 +17,13 @@
       font-family: 'JetBrains Mono', monospace;
     }
 
-    /* Checkerboard patterns for verifying alpha transparency */
+    /* Checkerboard patterns for alpha verification */
     .bg-checker-dark {
-      background-color: #0b0f19;
-      background-image: linear-gradient(45deg, #172033 25%, transparent 25%),
-                        linear-gradient(-45deg, #172033 25%, transparent 25%),
-                        linear-gradient(45deg, transparent 75%, #172033 75%),
-                        linear-gradient(-45deg, transparent 75%, #172033 75%);
+      background-color: #090d16;
+      background-image: linear-gradient(45deg, #151d2f 25%, transparent 25%),
+                        linear-gradient(-45deg, #151d2f 25%, transparent 25%),
+                        linear-gradient(45deg, transparent 75%, #151d2f 75%),
+                        linear-gradient(-45deg, transparent 75%, #151d2f 75%);
       background-size: 20px 20px;
       background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
     }
@@ -48,10 +48,10 @@
       background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
     }
 
-    /* Custom smooth scrollbars */
+    /* Smooth customized scrollbars */
     ::-webkit-scrollbar {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
     }
     ::-webkit-scrollbar-track {
       background: #090d16;
@@ -67,7 +67,7 @@
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-indigo-500 selection:text-white pb-24">
 
-  <header class="sticky top-0 z-50 backdrop-blur-xl bg-slate-950/85 border-b border-slate-800/80">
+  <header class="sticky top-0 z-50 backdrop-blur-xl bg-slate-950/90 border-b border-slate-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
       <div class="flex items-center space-x-3 min-w-0">
         <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-500 via-rose-500 to-indigo-500 p-[1.5px] shadow-lg shadow-rose-500/20 shrink-0">
@@ -85,7 +85,7 @@
         </div>
       </div>
 
-      <!-- Quick Backdrop & Download Controls -->
+      <!-- Backdrop & Batch Download Controls -->
       <div class="flex items-center space-x-2 sm:space-x-3 shrink-0">
         <div class="flex items-center bg-slate-900 border border-slate-800 rounded-xl p-1 text-xs text-slate-400">
           <span class="px-2 py-1 hidden lg:inline font-medium text-slate-500">Backdrop:</span>
@@ -103,32 +103,31 @@
       </div>
     </div>
   </header>
+
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-    <!-- Hero Banner (Scrolls naturally) -->
     <div class="mb-5 p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-slate-900/90 via-slate-900/60 to-slate-950 border border-slate-800/80 shadow-lg relative overflow-hidden">
       <div class="absolute -right-16 -top-16 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
       <div class="absolute -left-16 -bottom-16 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
       <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-2">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-2">
             <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-            <span>3D Gold Bevel, Media Controls, Circles & Full Squares</span>
+            <span>Crisp White Architectural Icons & Alpha Transparent PNGs</span>
           </div>
           <h2 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
             Transparent PNG Studio
           </h2>
           <p class="text-xs sm:text-sm text-slate-400 mt-1 leading-relaxed max-w-2xl">
-            All buttons are rendered as true <strong class="text-slate-200">alpha-transparent PNGs</strong> at 2x Retina sharpness. Adjust the sticky controls below to modify text, icons, and sizing in real time as you browse.
+            Clean white vector silhouettes with distinct negative-space accents. Adjust the frozen dock below to change icons, text, and sizes in real time.
           </p>
         </div>
         <div class="text-xs text-slate-400 flex items-center gap-2 font-mono shrink-0 bg-slate-950/60 px-3 py-2 rounded-xl border border-slate-800">
           <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
-          <span>Pure Alpha 32-bit PNG</span>
+          <span>Pure Alpha 32-bit PNG (2x Retina)</span>
         </div>
       </div>
     </div>
 
-    <!-- FROZEN / STICKY CONTROLS DOCK (Sticks directly beneath header when scrolling) -->
     <div class="sticky top-20 z-40 mb-8 p-4 sm:p-5 rounded-2xl bg-slate-950/95 backdrop-blur-xl border border-slate-800/90 shadow-2xl shadow-black/60">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5 items-end">
         <!-- 1. Text Mode Toggle -->
@@ -169,7 +168,7 @@
               <select id="iconSelect" onchange="changeActiveIcon(this.value)" class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-2.5 py-1.5 text-xs font-medium focus:outline-none focus:border-indigo-500 cursor-pointer appearance-none h-[34px]">
                 <option value="none">🚫 Blank (No Icon)</option>
                 <optgroup label="Navigation & App">
-                  <option value="home">🏠 Home</option>
+                  <option value="home" selected>🏠 Home</option>
                   <option value="fullscreen">⛶ Full Screen</option>
                   <option value="book">📖 Book / Guide</option>
                   <option value="resources">📚 Resources / Layers</option>
@@ -177,12 +176,12 @@
                   <option value="pen">✏ Pen / Edit</option>
                   <option value="close">✕ Close / Dismiss</option>
                   <option value="settings">⚙ Settings</option>
-                  <option value="cursor">👆 Mouse Cursor (Pointer)</option>
+                  <option value="cursor">👆 Mouse Cursor</option>
                   <option value="back">⬅ Back Arrow</option>
                   <option value="next">➡ Forward Arrow</option>
                 </optgroup>
                 <optgroup label="Media Controls">
-                  <option value="play" selected>▶ Play</option>
+                  <option value="play">▶ Play</option>
                   <option value="pause">⏸ Pause</option>
                   <option value="stop">⏹ Stop</option>
                   <option value="forward">⏩ Fast Forward</option>
@@ -190,11 +189,11 @@
                   <option value="volume">🔊 Volume</option>
                 </optgroup>
                 <optgroup label="Actions & Utility">
+                  <option value="globe">🌐 Web / Globe</option>
                   <option value="download">📥 Download</option>
                   <option value="upload">📤 Upload</option>
                   <option value="search">🔍 Search</option>
                   <option value="email">✉ E-Mail (@)</option>
-                  <option value="globe">🌐 Globe</option>
                   <option value="cart">🛍 Buy Now (Cart)</option>
                   <option value="share">🔗 Share</option>
                   <option value="add">➕ Add / Plus</option>
@@ -246,7 +245,6 @@
         </div>
       </div>
 
-      <!-- Category Filter Tabs (Inside the frozen panel for easy filtering while scrolling) -->
       <div class="mt-3.5 pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2">
         <div class="flex flex-wrap gap-1.5" id="filterTabs">
           <button onclick="filterCategory('all', this)" class="category-filter active px-2.5 py-1 rounded-lg bg-slate-800 text-white font-medium text-xs transition-all border border-slate-700 shadow-sm">
@@ -274,12 +272,11 @@
       </div>
     </div>
 
-    <!-- Gallery Container -->
     <div id="buttonsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       <!-- Dynamically filled with high-dpi rendered buttons -->
     </div>
   </main>
-  <!-- Inspection Lightbox Modal -->
+
   <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex-col items-center justify-center p-4 transition-all">
     <div class="relative max-w-3xl w-full bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl flex flex-col items-center">
       <button onclick="closeLightbox()" class="absolute top-4 right-4 p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition">
@@ -308,7 +305,6 @@
     </div>
   </div>
 
-  <!-- Toast Alert -->
   <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 flex items-center space-x-3 px-4 py-3 bg-slate-900/95 border border-amber-500/40 rounded-2xl shadow-2xl backdrop-blur-lg">
     <div id="toastIcon" class="w-7 h-7 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center">
       <i data-lucide="check" class="w-4 h-4"></i>
@@ -318,13 +314,13 @@
       <p id="toastMessage" class="text-[11px] text-slate-400">Action completed successfully.</p>
     </div>
   </div>
+
   <script>
-    // State management
     let activeGridClass = 'bg-checker-dark';
     let currentCategory = 'all';
     let isBlankOnly = false;
     let customLabel = 'BUTTON';
-    let currentIcon = 'play';
+    let currentIcon = 'home';
     let iconsEnabled = true;
     let iconScale = 1.0;
     let textScale = 1.0;
@@ -335,1776 +331,1355 @@
       ctx.font = `${weight} ${scaled}px ${fontFam}`;
     }
 
-    // Vector icon renderer using direct canvas paths
-    function drawVectorIcon(ctx, iconType, cx, cy, size, color) {
-      if (!iconType || iconType === 'none') return;
+    // Helper: draw rounded rectangles
+    function roundRect(ctx, x, y, width, height, radius) {
+      if (typeof radius === 'number') {
+        radius = { tl: radius, tr: radius, br: radius, bl: radius };
+      }
+      ctx.beginPath();
+      ctx.moveTo(x + radius.tl, y);
+      ctx.lineTo(x + width - radius.tr, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius.tr);
+      ctx.lineTo(x + width, y + height - radius.br);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius.br, y + height);
+      ctx.lineTo(x + radius.bl, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius.bl);
+      ctx.lineTo(x, y + radius.tl);
+      ctx.quadraticCurveTo(x, y, x + radius.tl, y);
+      ctx.closePath();
+    }
 
-      const effectiveSize = size * (iconScale || 1.0);
+    // Master Vector Icon Renderer (Crisp White Architecture)
+    function drawAppVectorIcon(ctx, iconType, cx, cy, size, color = '#FFFFFF') {
+      if (!iconsEnabled || iconType === 'none') return;
+      const s = size * (iconScale || 1.0);
+      const half = s / 2;
+
       ctx.save();
       ctx.fillStyle = color;
       ctx.strokeStyle = color;
-      ctx.lineWidth = effectiveSize * 0.12;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
-
-      const s = effectiveSize / 24; // standard 24x24 viewBox scale
-      ctx.translate(cx - 12 * s, cy - 12 * s);
+      ctx.lineWidth = Math.max(2, s * 0.12);
 
       switch (iconType) {
-        case 'play':
+        case 'home': {
+          // Architectural crisp home matching user reference:
+          // 1. Overhanging gabled roof chevron with left chimney
+          // 2. Clear negative space slit
+          // 3. Lower solid body with centered door cutout
+          const roofH = s * 0.44;
+          const apexY = cy - half + s * 0.04;
+          const eaveY = apexY + roofH;
+          const eaveLeft = cx - half - s * 0.04;
+          const eaveRight = cx + half + s * 0.04;
+          const roofThick = s * 0.15;
+
+          // Chimney (left side)
+          const chimW = s * 0.14;
+          const chimH = s * 0.24;
+          const chimX = cx - half * 0.68;
+          ctx.fillRect(chimX, apexY + s * 0.08, chimW, chimH);
+
+          // Roof Chevron
           ctx.beginPath();
-          ctx.moveTo(8 * s, 4 * s);
-          ctx.lineTo(20 * s, 12 * s);
-          ctx.lineTo(8 * s, 20 * s);
+          ctx.moveTo(cx, apexY);
+          ctx.lineTo(eaveRight, eaveY);
+          ctx.lineTo(eaveRight - roofThick * 0.8, eaveY + roofThick * 0.5);
+          ctx.lineTo(cx, apexY + roofThick * 1.05);
+          ctx.lineTo(eaveLeft + roofThick * 0.8, eaveY + roofThick * 0.5);
+          ctx.lineTo(eaveLeft, eaveY);
+          ctx.closePath();
+          ctx.fill();
+
+          // Main House Body (with gap below roof & doorway cutout)
+          const bodyTopY = apexY + roofThick * 1.45;
+          const bodyBottomY = cy + half * 0.94;
+          const bodyLeft = cx - half * 0.72;
+          const bodyRight = cx + half * 0.72;
+          const doorW = s * 0.28;
+          const doorH = s * 0.36;
+
+          ctx.beginPath();
+          ctx.moveTo(cx, bodyTopY);
+          ctx.lineTo(bodyRight, bodyTopY + (bodyRight - cx) * 0.78);
+          ctx.lineTo(bodyRight, bodyBottomY);
+          ctx.lineTo(cx + doorW / 2, bodyBottomY);
+          ctx.lineTo(cx + doorW / 2, bodyBottomY - doorH);
+          ctx.arcTo(cx + doorW / 2, bodyBottomY - doorH - s * 0.04, cx, bodyBottomY - doorH - s * 0.04, s * 0.04);
+          ctx.arcTo(cx - doorW / 2, bodyBottomY - doorH - s * 0.04, cx - doorW / 2, bodyBottomY - doorH, s * 0.04);
+          ctx.lineTo(cx - doorW / 2, bodyBottomY);
+          ctx.lineTo(bodyLeft, bodyBottomY);
+          ctx.lineTo(bodyLeft, bodyTopY + (cx - bodyLeft) * 0.78);
           ctx.closePath();
           ctx.fill();
           break;
+        }
 
-        case 'pause':
-          ctx.beginPath();
-          ctx.roundRect(6 * s, 4 * s, 4 * s, 16 * s, 1.5 * s);
-          ctx.roundRect(14 * s, 4 * s, 4 * s, 16 * s, 1.5 * s);
-          ctx.fill();
-          break;
+        case 'fullscreen': {
+          // 4 radial corner expand arrows with center hub gap
+          const d = s * 0.44;
+          const aw = s * 0.26;
+          const th = s * 0.11;
+          const hub = s * 0.16;
 
-        case 'stop':
-          ctx.beginPath();
-          ctx.roundRect(5 * s, 5 * s, 14 * s, 14 * s, 2.5 * s);
-          ctx.fill();
-          break;
-        case 'forward':
-          ctx.beginPath();
-          ctx.moveTo(4 * s, 5 * s);
-          ctx.lineTo(13 * s, 12 * s);
-          ctx.lineTo(4 * s, 19 * s);
-          ctx.closePath();
-          ctx.fill();
-          ctx.beginPath();
-          ctx.moveTo(12 * s, 5 * s);
-          ctx.lineTo(21 * s, 12 * s);
-          ctx.lineTo(12 * s, 19 * s);
-          ctx.closePath();
-          ctx.fill();
-          break;
-
-        case 'backward':
-          ctx.beginPath();
-          ctx.moveTo(12 * s, 5 * s);
-          ctx.lineTo(3 * s, 12 * s);
-          ctx.lineTo(12 * s, 19 * s);
-          ctx.closePath();
-          ctx.fill();
-          ctx.beginPath();
-          ctx.moveTo(20 * s, 5 * s);
-          ctx.lineTo(11 * s, 12 * s);
-          ctx.lineTo(20 * s, 19 * s);
-          ctx.closePath();
-          ctx.fill();
-          break;
-
-        case 'volume':
-          ctx.beginPath();
-          ctx.moveTo(4 * s, 9 * s);
-          ctx.lineTo(9 * s, 9 * s);
-          ctx.lineTo(14 * s, 5 * s);
-          ctx.lineTo(14 * s, 19 * s);
-          ctx.lineTo(9 * s, 15 * s);
-          ctx.lineTo(4 * s, 15 * s);
-          ctx.closePath();
-          ctx.fill();
-          ctx.beginPath();
-          ctx.arc(14 * s, 12 * s, 5 * s, -Math.PI / 3, Math.PI / 3, false);
-          ctx.stroke();
-          break;
-
-        case 'home':
-          ctx.beginPath();
-          ctx.moveTo(3 * s, 10.5 * s);
-          ctx.lineTo(12 * s, 3.5 * s);
-          ctx.lineTo(21 * s, 10.5 * s);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.roundRect(6 * s, 10.5 * s, 12 * s, 10.5 * s, [0, 0, 2 * s, 2 * s]);
-          ctx.stroke();
-          break;
-        case 'fullscreen':
-          // 4-corner targeting brackets
-          ctx.beginPath();
-          // Top-left
-          ctx.moveTo(4 * s, 9 * s);
-          ctx.lineTo(4 * s, 4 * s);
-          ctx.lineTo(9 * s, 4 * s);
-          // Top-right
-          ctx.moveTo(15 * s, 4 * s);
-          ctx.lineTo(20 * s, 4 * s);
-          ctx.lineTo(20 * s, 9 * s);
-          // Bottom-left
-          ctx.moveTo(4 * s, 15 * s);
-          ctx.lineTo(4 * s, 20 * s);
-          ctx.lineTo(9 * s, 20 * s);
-          // Bottom-right
-          ctx.moveTo(15 * s, 20 * s);
-          ctx.lineTo(20 * s, 20 * s);
-          ctx.lineTo(20 * s, 15 * s);
-          ctx.stroke();
-          break;
-
-        case 'book':
-          ctx.beginPath();
-          ctx.moveTo(4 * s, 19.5 * s);
-          ctx.bezierCurveTo(7 * s, 18 * s, 10 * s, 18 * s, 12 * s, 20 * s);
-          ctx.bezierCurveTo(14 * s, 18 * s, 17 * s, 18 * s, 20 * s, 19.5 * s);
-          ctx.lineTo(20 * s, 6.5 * s);
-          ctx.bezierCurveTo(17 * s, 5 * s, 14 * s, 5 * s, 12 * s, 7 * s);
-          ctx.bezierCurveTo(10 * s, 5 * s, 7 * s, 5 * s, 4 * s, 6.5 * s);
-          ctx.closePath();
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.moveTo(12 * s, 7 * s);
-          ctx.lineTo(12 * s, 20 * s);
-          ctx.stroke();
-          break;
-
-        case 'resources':
-          // Stacked 3D layers
-          ctx.beginPath();
-          ctx.moveTo(12 * s, 3 * s);
-          ctx.lineTo(21 * s, 7.5 * s);
-          ctx.lineTo(12 * s, 12 * s);
-          ctx.lineTo(3 * s, 7.5 * s);
-          ctx.closePath();
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.moveTo(3 * s, 12 * s);
-          ctx.lineTo(12 * s, 16.5 * s);
-          ctx.lineTo(21 * s, 12 * s);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.moveTo(3 * s, 16.5 * s);
-          ctx.lineTo(12 * s, 21 * s);
-          ctx.lineTo(21 * s, 16.5 * s);
-          ctx.stroke();
-          break;
-
-        case 'lock':
-          ctx.beginPath();
-          ctx.roundRect(5 * s, 10 * s, 14 * s, 11 * s, 2.5 * s);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.arc(12 * s, 10 * s, 4.5 * s, Math.PI, 0, false);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.arc(12 * s, 15 * s, 1.8 * s, 0, Math.PI * 2);
-          ctx.fill();
-          break;
-
-        case 'pen':
-          ctx.beginPath();
-          ctx.moveTo(18 * s, 3.5 * s);
-          ctx.lineTo(20.5 * s, 6 * s);
-          ctx.lineTo(8 * s, 18.5 * s);
-          ctx.lineTo(4 * s, 20 * s);
-          ctx.lineTo(5.5 * s, 16 * s);
-          ctx.closePath();
-          ctx.stroke();
-          break;
-        case 'close':
-          ctx.beginPath();
-          ctx.moveTo(6 * s, 6 * s);
-          ctx.lineTo(18 * s, 18 * s);
-          ctx.moveTo(18 * s, 6 * s);
-          ctx.lineTo(6 * s, 18 * s);
-          ctx.stroke();
-          break;
-
-        case 'settings':
-          ctx.beginPath();
-          ctx.arc(12 * s, 12 * s, 4 * s, 0, Math.PI * 2);
-          ctx.stroke();
-          for (let i = 0; i < 8; i++) {
-            const a = (i * Math.PI) / 4;
-            const x1 = 12 * s + Math.cos(a) * 6 * s;
-            const y1 = 12 * s + Math.sin(a) * 6 * s;
-            const x2 = 12 * s + Math.cos(a) * 9 * s;
-            const y2 = 12 * s + Math.sin(a) * 9 * s;
+          const dirs = [
+            [-1, -1], [1, -1], [1, 1], [-1, 1]
+          ];
+          dirs.forEach(([dx, dy]) => {
+            ctx.save();
+            ctx.translate(cx, cy);
             ctx.beginPath();
-            ctx.moveTo(x1, y1);
-            ctx.lineTo(x2, y2);
-            ctx.stroke();
+            // Arrowhead at corner
+            const tipX = dx * d;
+            const tipY = dy * d;
+            ctx.moveTo(tipX, tipY);
+            ctx.lineTo(tipX - dx * aw, tipY);
+            ctx.lineTo(tipX - dx * (aw * 0.55), tipY - dy * (th * 0.7));
+            ctx.lineTo(dx * hub, dy * hub);
+            ctx.lineTo(dx * (hub - th * 0.5), dy * (hub + th * 0.5));
+            ctx.lineTo(tipX - dx * (th * 0.7), tipY - dy * (aw * 0.55));
+            ctx.lineTo(tipX, tipY - dy * aw);
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+          });
+          break;
+        }
+
+        case 'globe': {
+          // Spherical globe with crisp equator & meridian arcs
+          ctx.beginPath();
+          ctx.arc(cx, cy, half * 0.9, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Equator
+          ctx.beginPath();
+          ctx.moveTo(cx - half * 0.9, cy);
+          ctx.lineTo(cx + half * 0.9, cy);
+          ctx.stroke();
+
+          // Prime meridian ellipse
+          ctx.beginPath();
+          ctx.ellipse(cx, cy, half * 0.45, half * 0.9, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Horizontal latitude arcs
+          ctx.beginPath();
+          ctx.ellipse(cx, cy - half * 0.4, half * 0.76, half * 0.22, 0, 0, Math.PI * 2);
+          ctx.ellipse(cx, cy + half * 0.4, half * 0.76, half * 0.22, 0, 0, Math.PI * 2);
+          ctx.stroke();
+          break;
+        }
+
+        case 'book': {
+          // Open two-page book silhouette with center spine
+          const bw = half * 0.95;
+          const bh = half * 0.85;
+          ctx.beginPath();
+          ctx.moveTo(cx, cy + bh * 0.5);
+          ctx.quadraticCurveTo(cx - bw * 0.5, cy + bh * 0.7, cx - bw, cy + bh * 0.4);
+          ctx.lineTo(cx - bw, cy - bh * 0.5);
+          ctx.quadraticCurveTo(cx - bw * 0.5, cy - bh * 0.2, cx, cy - bh * 0.4);
+          ctx.quadraticCurveTo(cx + bw * 0.5, cy - bh * 0.2, cx + bw, cy - bh * 0.5);
+          ctx.lineTo(cx + bw, cy + bh * 0.4);
+          ctx.quadraticCurveTo(cx + bw * 0.5, cy + bh * 0.7, cx, cy + bh * 0.5);
+          ctx.closePath();
+          ctx.fill();
+
+          // Center Spine slit
+          ctx.save();
+          ctx.strokeStyle = '#000000';
+          ctx.lineWidth = Math.max(2, s * 0.08);
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - bh * 0.38);
+          ctx.lineTo(cx, cy + bh * 0.52);
+          ctx.stroke();
+          ctx.restore();
+          break;
+        }
+
+        case 'resources': {
+          // 3-tiered isometric resource slabs with negative-space gaps
+          const sw = half * 0.95;
+          const sh = half * 0.32;
+          const offsets = [-half * 0.55, 0, half * 0.55];
+          offsets.forEach(oy => {
+            ctx.beginPath();
+            ctx.moveTo(cx, cy + oy - sh * 0.7);
+            ctx.lineTo(cx + sw, cy + oy);
+            ctx.lineTo(cx, cy + oy + sh * 0.7);
+            ctx.lineTo(cx - sw, cy + oy);
+            ctx.closePath();
+            ctx.fill();
+          });
+          break;
+        }
+
+        case 'lock': {
+          // Padlock with curved metallic shackle and keyhole cutout
+          const pw = half * 0.95;
+          const ph = half * 0.8;
+          const bodyY = cy - half * 0.05;
+
+          // Shackle
+          ctx.beginPath();
+          ctx.arc(cx, cy - half * 0.3, half * 0.48, Math.PI, 0, false);
+          ctx.stroke();
+
+          // Solid Body
+          roundRect(ctx, cx - pw * 0.75, bodyY, pw * 1.5, ph, s * 0.12);
+          ctx.fill();
+
+          // Keyhole
+          ctx.save();
+          ctx.fillStyle = '#000000';
+          ctx.beginPath();
+          ctx.arc(cx, bodyY + ph * 0.4, s * 0.1, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.moveTo(cx - s * 0.06, bodyY + ph * 0.4);
+          ctx.lineTo(cx + s * 0.06, bodyY + ph * 0.4);
+          ctx.lineTo(cx + s * 0.08, bodyY + ph * 0.75);
+          ctx.lineTo(cx - s * 0.08, bodyY + ph * 0.75);
+          ctx.closePath();
+          ctx.fill();
+          ctx.restore();
+          break;
+        }
+
+        case 'pen': {
+          // Angled stylus pencil with nib
+          ctx.save();
+          ctx.translate(cx, cy);
+          ctx.rotate(-Math.PI / 4);
+          const pw = s * 0.16;
+          const ph = s * 0.8;
+          roundRect(ctx, -pw / 2, -ph / 2, pw, ph * 0.7, s * 0.04);
+          ctx.fill();
+          // Nib
+          ctx.beginPath();
+          ctx.moveTo(-pw / 2, ph * 0.2);
+          ctx.lineTo(pw / 2, ph * 0.2);
+          ctx.lineTo(0, ph * 0.48);
+          ctx.closePath();
+          ctx.fill();
+          ctx.restore();
+          break;
+        }
+
+        case 'close': {
+          // Crisp rounded X
+          const arm = half * 0.75;
+          ctx.beginPath();
+          ctx.moveTo(cx - arm, cy - arm);
+          ctx.lineTo(cx + arm, cy + arm);
+          ctx.moveTo(cx + arm, cy - arm);
+          ctx.lineTo(cx - arm, cy + arm);
+          ctx.stroke();
+          break;
+        }
+
+        case 'settings': {
+          // Precision 8-tooth gear wheel with center hole
+          const rOut = half * 0.95;
+          const rIn = half * 0.68;
+          const teeth = 8;
+          ctx.beginPath();
+          for (let i = 0; i < teeth; i++) {
+            const a1 = (i * 2 * Math.PI) / teeth;
+            const a2 = a1 + Math.PI / teeth;
+            const aMid1 = a1 + (Math.PI / teeth) * 0.3;
+            const aMid2 = a1 + (Math.PI / teeth) * 0.7;
+
+            ctx.lineTo(cx + Math.cos(a1) * rIn, cy + Math.sin(a1) * rIn);
+            ctx.lineTo(cx + Math.cos(aMid1) * rOut, cy + Math.sin(aMid1) * rOut);
+            ctx.lineTo(cx + Math.cos(aMid2) * rOut, cy + Math.sin(aMid2) * rOut);
+            ctx.lineTo(cx + Math.cos(a2) * rIn, cy + Math.sin(a2) * rIn);
           }
-          break;
+          ctx.closePath();
+          ctx.fill();
 
-        case 'cursor':
+          // Center negative circle
+          ctx.save();
+          ctx.globalCompositeOperation = 'destination-out';
           ctx.beginPath();
-          ctx.moveTo(6 * s, 4 * s);
-          ctx.lineTo(18 * s, 12 * s);
-          ctx.lineTo(12 * s, 13 * s);
-          ctx.lineTo(15 * s, 19 * s);
-          ctx.lineTo(12 * s, 20 * s);
-          ctx.lineTo(9 * s, 14 * s);
-          ctx.lineTo(6 * s, 17 * s);
+          ctx.arc(cx, cy, half * 0.35, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+          break;
+        }
+
+        case 'play': {
+          // Play arrowhead triangle
+          const tri = half * 0.85;
+          ctx.beginPath();
+          ctx.moveTo(cx - tri * 0.6, cy - tri);
+          ctx.lineTo(cx + tri * 0.8, cy);
+          ctx.lineTo(cx - tri * 0.6, cy + tri);
           ctx.closePath();
           ctx.fill();
           break;
+        }
 
-        case 'back':
-          ctx.beginPath();
-          ctx.moveTo(19 * s, 12 * s);
-          ctx.lineTo(5 * s, 12 * s);
-          ctx.lineTo(11 * s, 6 * s);
-          ctx.moveTo(5 * s, 12 * s);
-          ctx.lineTo(11 * s, 18 * s);
-          ctx.stroke();
-          break;
-
-        case 'next':
-          ctx.beginPath();
-          ctx.moveTo(5 * s, 12 * s);
-          ctx.lineTo(19 * s, 12 * s);
-          ctx.lineTo(13 * s, 6 * s);
-          ctx.moveTo(19 * s, 12 * s);
-          ctx.lineTo(13 * s, 18 * s);
-          ctx.stroke();
-          break;
-
-        case 'download':
-          ctx.beginPath();
-          ctx.moveTo(12 * s, 4 * s);
-          ctx.lineTo(12 * s, 15 * s);
-          ctx.lineTo(8 * s, 11 * s);
-          ctx.moveTo(12 * s, 15 * s);
-          ctx.lineTo(16 * s, 11 * s);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.moveTo(5 * s, 19 * s);
-          ctx.lineTo(19 * s, 19 * s);
-          ctx.stroke();
-          break;
-
-        case 'upload':
-          ctx.beginPath();
-          ctx.moveTo(12 * s, 16 * s);
-          ctx.lineTo(12 * s, 5 * s);
-          ctx.lineTo(8 * s, 9 * s);
-          ctx.moveTo(12 * s, 5 * s);
-          ctx.lineTo(16 * s, 9 * s);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.moveTo(5 * s, 19 * s);
-          ctx.lineTo(19 * s, 19 * s);
-          ctx.stroke();
-          break;
-
-        case 'search':
-          ctx.beginPath();
-          ctx.arc(10 * s, 10 * s, 5.5 * s, 0, Math.PI * 2);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.moveTo(14.5 * s, 14.5 * s);
-          ctx.lineTo(19.5 * s, 19.5 * s);
-          ctx.stroke();
-          break;
-
-        case 'email':
-          ctx.beginPath();
-          ctx.roundRect(4 * s, 6 * s, 16 * s, 12 * s, 2 * s);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.moveTo(4 * s, 7 * s);
-          ctx.lineTo(12 * s, 13 * s);
-          ctx.lineTo(20 * s, 7 * s);
-          ctx.stroke();
-          break;
-
-        case 'globe':
-          ctx.beginPath();
-          ctx.arc(12 * s, 12 * s, 8 * s, 0, Math.PI * 2);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.ellipse(12 * s, 12 * s, 4 * s, 8 * s, 0, 0, Math.PI * 2);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.moveTo(4 * s, 12 * s);
-          ctx.lineTo(20 * s, 12 * s);
-          ctx.stroke();
-          break;
-
-        case 'cart':
-          ctx.beginPath();
-          ctx.roundRect(5 * s, 9 * s, 14 * s, 12 * s, 2 * s);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.arc(12 * s, 9 * s, 4 * s, Math.PI, 0, false);
-          ctx.stroke();
-          break;
-
-        case 'share':
-          ctx.beginPath();
-          ctx.arc(18 * s, 6 * s, 2.5 * s, 0, Math.PI * 2);
-          ctx.arc(6 * s, 12 * s, 2.5 * s, 0, Math.PI * 2);
-          ctx.arc(18 * s, 18 * s, 2.5 * s, 0, Math.PI * 2);
+        case 'pause': {
+          // Dual pill bars
+          const bw = s * 0.22;
+          const bh = s * 0.82;
+          const gap = s * 0.16;
+          roundRect(ctx, cx - gap / 2 - bw, cy - bh / 2, bw, bh, s * 0.08);
+          roundRect(ctx, cx + gap / 2, cy - bh / 2, bw, bh, s * 0.08);
           ctx.fill();
+          break;
+        }
+
+        case 'stop': {
+          // Solid rounded square
+          const sq = half * 0.8;
+          roundRect(ctx, cx - sq, cy - sq, sq * 2, sq * 2, s * 0.1);
+          ctx.fill();
+          break;
+        }
+
+        case 'forward': {
+          // Fast forward dual chevrons
+          const sz = half * 0.75;
+          const off = sz * 0.45;
+          [ -off, off ].forEach(dx => {
+            ctx.beginPath();
+            ctx.moveTo(cx + dx - sz * 0.6, cy - sz * 0.8);
+            ctx.lineTo(cx + dx + sz * 0.5, cy);
+            ctx.lineTo(cx + dx - sz * 0.6, cy + sz * 0.8);
+            ctx.closePath();
+            ctx.fill();
+          });
+          break;
+        }
+
+        case 'backward': {
+          // Rewind dual chevrons
+          const sz = half * 0.75;
+          const off = sz * 0.45;
+          [ -off, off ].forEach(dx => {
+            ctx.beginPath();
+            ctx.moveTo(cx + dx + sz * 0.6, cy - sz * 0.8);
+            ctx.lineTo(cx + dx - sz * 0.5, cy);
+            ctx.lineTo(cx + dx + sz * 0.6, cy + sz * 0.8);
+            ctx.closePath();
+            ctx.fill();
+          });
+          break;
+        }
+
+        case 'volume': {
+          // Speaker cone + audio waves
           ctx.beginPath();
-          ctx.moveTo(8 * s, 11 * s);
-          ctx.lineTo(16 * s, 7 * s);
-          ctx.moveTo(8 * s, 13 * s);
-          ctx.lineTo(16 * s, 17 * s);
+          ctx.moveTo(cx - half * 0.8, cy - half * 0.35);
+          ctx.lineTo(cx - half * 0.35, cy - half * 0.35);
+          ctx.lineTo(cx + half * 0.1, cy - half * 0.75);
+          ctx.lineTo(cx + half * 0.1, cy + half * 0.75);
+          ctx.lineTo(cx - half * 0.35, cy + half * 0.35);
+          ctx.lineTo(cx - half * 0.8, cy + half * 0.35);
+          ctx.closePath();
+          ctx.fill();
+
+          // Waves
+          ctx.beginPath();
+          ctx.arc(cx + half * 0.15, cy, half * 0.4, -Math.PI / 3, Math.PI / 3);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(cx + half * 0.15, cy, half * 0.75, -Math.PI / 3, Math.PI / 3);
           ctx.stroke();
           break;
+        }
 
-        case 'add':
+        case 'cursor': {
+          // Mouse pointer arrow
           ctx.beginPath();
-          ctx.moveTo(12 * s, 6 * s);
-          ctx.lineTo(12 * s, 18 * s);
-          ctx.moveTo(6 * s, 12 * s);
-          ctx.lineTo(18 * s, 12 * s);
-          ctx.stroke();
-          break;
-
-        case 'delete':
-          ctx.beginPath();
-          ctx.moveTo(6 * s, 12 * s);
-          ctx.lineTo(18 * s, 12 * s);
-          ctx.stroke();
-          break;
-
-        case 'heart':
-          ctx.beginPath();
-          ctx.moveTo(12 * s, 19 * s);
-          ctx.bezierCurveTo(4 * s, 13 * s, 3 * s, 7 * s, 7.5 * s, 5.5 * s);
-          ctx.bezierCurveTo(10 * s, 5 * s, 11.5 * s, 7 * s, 12 * s, 8 * s);
-          ctx.bezierCurveTo(12.5 * s, 7 * s, 14 * s, 5 * s, 16.5 * s, 5.5 * s);
-          ctx.bezierCurveTo(21 * s, 7 * s, 20 * s, 13 * s, 12 * s, 19 * s);
+          ctx.moveTo(cx - half * 0.7, cy - half * 0.8);
+          ctx.lineTo(cx - half * 0.7, cy + half * 0.7);
+          ctx.lineTo(cx - half * 0.2, cy + half * 0.2);
+          ctx.lineTo(cx + half * 0.35, cy + half * 0.75);
+          ctx.lineTo(cx + half * 0.65, cy + half * 0.55);
+          ctx.lineTo(cx + half * 0.05, cy + half * 0.05);
+          ctx.lineTo(cx + half * 0.65, cy + half * 0.05);
           ctx.closePath();
           ctx.fill();
           break;
+        }
 
-        case 'star':
+        case 'download': {
+          // Inward arrow with tray
           ctx.beginPath();
+          ctx.moveTo(cx, cy - half * 0.8);
+          ctx.lineTo(cx, cy + half * 0.3);
+          ctx.moveTo(cx - half * 0.45, cy - half * 0.1);
+          ctx.lineTo(cx, cy + half * 0.35);
+          ctx.lineTo(cx + half * 0.45, cy - half * 0.1);
+          ctx.stroke();
+          // Base tray
+          ctx.beginPath();
+          ctx.moveTo(cx - half * 0.75, cy + half * 0.5);
+          ctx.lineTo(cx - half * 0.75, cy + half * 0.75);
+          ctx.lineTo(cx + half * 0.75, cy + half * 0.75);
+          ctx.lineTo(cx + half * 0.75, cy + half * 0.5);
+          ctx.stroke();
+          break;
+        }
+
+        case 'upload': {
+          // Outward arrow with tray
+          ctx.beginPath();
+          ctx.moveTo(cx, cy + half * 0.3);
+          ctx.lineTo(cx, cy - half * 0.8);
+          ctx.moveTo(cx - half * 0.45, cy - half * 0.35);
+          ctx.lineTo(cx, cy - half * 0.8);
+          ctx.lineTo(cx + half * 0.45, cy - half * 0.35);
+          ctx.stroke();
+          // Base tray
+          ctx.beginPath();
+          ctx.moveTo(cx - half * 0.75, cy + half * 0.5);
+          ctx.lineTo(cx - half * 0.75, cy + half * 0.75);
+          ctx.lineTo(cx + half * 0.75, cy + half * 0.75);
+          ctx.lineTo(cx + half * 0.75, cy + half * 0.5);
+          ctx.stroke();
+          break;
+        }
+
+        case 'search': {
+          // Magnifying glass
+          const lr = half * 0.5;
+          ctx.beginPath();
+          ctx.arc(cx - half * 0.2, cy - half * 0.2, lr, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx + lr * 0.5, cy + lr * 0.5);
+          ctx.lineTo(cx + half * 0.8, cy + half * 0.8);
+          ctx.stroke();
+          break;
+        }
+
+        case 'email': {
+          // Envelope silhouette with flap V
+          const ew = half * 0.9;
+          const eh = half * 0.65;
+          roundRect(ctx, cx - ew, cy - eh, ew * 2, eh * 2, s * 0.08);
+          ctx.fill();
+
+          ctx.save();
+          ctx.strokeStyle = '#000000';
+          ctx.beginPath();
+          ctx.moveTo(cx - ew * 0.9, cy - eh * 0.8);
+          ctx.lineTo(cx, cy + eh * 0.2);
+          ctx.lineTo(cx + ew * 0.9, cy - eh * 0.8);
+          ctx.stroke();
+          ctx.restore();
+          break;
+        }
+
+        case 'cart': {
+          // Shopping bag with curved handle
+          const cw = half * 0.8;
+          const ch = half * 0.75;
+          const bagTop = cy - half * 0.2;
+          roundRect(ctx, cx - cw, bagTop, cw * 2, ch * 1.3, s * 0.1);
+          ctx.fill();
+          // Handle loop
+          ctx.beginPath();
+          ctx.arc(cx, bagTop, half * 0.45, Math.PI, 0, false);
+          ctx.stroke();
+          break;
+        }
+
+        case 'share': {
+          // 3 linked node circles
+          const nr = s * 0.12;
+          const n1 = [cx + half * 0.6, cy - half * 0.5];
+          const n2 = [cx - half * 0.5, cy];
+          const n3 = [cx + half * 0.6, cy + half * 0.5];
+
+          ctx.beginPath();
+          ctx.moveTo(n1[0], n1[1]);
+          ctx.lineTo(n2[0], n2[1]);
+          ctx.lineTo(n3[0], n3[1]);
+          ctx.stroke();
+
+          [n1, n2, n3].forEach(([nx, ny]) => {
+            ctx.beginPath();
+            ctx.arc(nx, ny, nr, 0, Math.PI * 2);
+            ctx.fill();
+          });
+          break;
+        }
+
+        case 'add': {
+          // Bold plus (+)
+          const arm = half * 0.75;
+          ctx.beginPath();
+          ctx.moveTo(cx - arm, cy);
+          ctx.lineTo(cx + arm, cy);
+          ctx.moveTo(cx, cy - arm);
+          ctx.lineTo(cx, cy + arm);
+          ctx.stroke();
+          break;
+        }
+
+        case 'delete': {
+          // Bold minus (-)
+          const arm = half * 0.75;
+          ctx.beginPath();
+          ctx.moveTo(cx - arm, cy);
+          ctx.lineTo(cx + arm, cy);
+          ctx.stroke();
+          break;
+        }
+
+        case 'heart': {
+          // Filled heart silhouette
+          const hr = half * 0.8;
+          ctx.beginPath();
+          ctx.moveTo(cx, cy + hr * 0.7);
+          ctx.bezierCurveTo(cx - hr * 1.1, cy - hr * 0.1, cx - hr * 0.9, cy - hr * 0.9, cx, cy - hr * 0.4);
+          ctx.bezierCurveTo(cx + hr * 0.9, cy - hr * 0.9, cx + hr * 1.1, cy - hr * 0.1, cx, cy + hr * 0.7);
+          ctx.fill();
+          break;
+        }
+
+        case 'star': {
+          // 5-point star
+          const rot = (Math.PI / 2) * 3;
+          let x = cx;
+          let y = cy;
+          const step = Math.PI / 5;
+          const rO = half * 0.85;
+          const rI = half * 0.38;
+
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - rO);
           for (let i = 0; i < 5; i++) {
-            const a = (i * 4 * Math.PI) / 5 - Math.PI / 2;
-            const r = 8 * s;
-            const px = 12 * s + Math.cos(a) * r;
-            const py = 12 * s + Math.sin(a) * r;
-            if (i === 0) ctx.moveTo(px, py);
-            else ctx.lineTo(px, py);
+            x = cx + Math.cos(rot + i * step * 2) * rO;
+            y = cy + Math.sin(rot + i * step * 2) * rO;
+            ctx.lineTo(x, y);
+            x = cx + Math.cos(rot + (i * 2 + 1) * step) * rI;
+            y = cy + Math.sin(rot + (i * 2 + 1) * step) * rI;
+            ctx.lineTo(x, y);
           }
           ctx.closePath();
           ctx.fill();
           break;
+        }
+
+        case 'back': {
+          // Left directional arrow
+          ctx.beginPath();
+          ctx.moveTo(cx + half * 0.6, cy);
+          ctx.lineTo(cx - half * 0.5, cy);
+          ctx.lineTo(cx - half * 0.05, cy - half * 0.5);
+          ctx.moveTo(cx - half * 0.5, cy);
+          ctx.lineTo(cx - half * 0.05, cy + half * 0.5);
+          ctx.stroke();
+          break;
+        }
+
+        case 'next': {
+          // Right directional arrow
+          ctx.beginPath();
+          ctx.moveTo(cx - half * 0.6, cy);
+          ctx.lineTo(cx + half * 0.5, cy);
+          ctx.lineTo(cx + half * 0.05, cy - half * 0.5);
+          ctx.moveTo(cx + half * 0.5, cy);
+          ctx.lineTo(cx + half * 0.05, cy + half * 0.5);
+          ctx.stroke();
+          break;
+        }
 
         default:
-          ctx.beginPath();
-          ctx.arc(12 * s, 12 * s, 6 * s, 0, Math.PI * 2);
-          ctx.fill();
+          break;
       }
       ctx.restore();
     }
-    function drawGameGoldPill(ctx, w, h, blank, text, icon, colors) {
-      const pad = 12;
-      const x = pad;
-      const y = pad;
-      const bw = w - pad * 2;
-      const bh = h - pad * 2;
-      const radius = bh / 2;
 
+
+    // 1. 3D Game Gold-Rimmed Glossy Pill (User Reference 1)
+    function render3DGamePill(canvas, spec) {
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const padX = 28;
+      const padY = 24;
+      const btnW = w - padX * 2;
+      const btnH = h - padY * 2;
+      const r = btnH / 2;
+
+      // Soft ambient drop shadow
       ctx.save();
       ctx.shadowColor = 'rgba(0, 0, 0, 0.45)';
-      ctx.shadowBlur = 14;
-      ctx.shadowOffsetY = 6;
-
-      ctx.beginPath();
-      ctx.roundRect(x, y, bw, bh, radius);
-      ctx.fillStyle = '#684511';
+      ctx.shadowBlur = 18;
+      ctx.shadowOffsetY = 12;
+      roundRect(ctx, padX, padY, btnW, btnH, r);
+      ctx.fillStyle = '#000';
       ctx.fill();
       ctx.restore();
 
-      // Gold metallic gradient rim
-      ctx.save();
-      const goldGrad = ctx.createLinearGradient(x, y, x, y + bh);
-      goldGrad.addColorStop(0, '#fff4b8');
-      goldGrad.addColorStop(0.15, '#eec550');
-      goldGrad.addColorStop(0.5, '#c88f1d');
-      goldGrad.addColorStop(0.85, '#eec550');
-      goldGrad.addColorStop(1, '#814c0a');
-
-      ctx.beginPath();
-      ctx.roundRect(x + 1.5, y + 1.5, bw - 3, bh - 3, radius - 1.5);
+      // Outer Gold Rim
+      const goldGrad = ctx.createLinearGradient(padX, padY, padX, padY + btnH);
+      goldGrad.addColorStop(0.0, '#ffe894');
+      goldGrad.addColorStop(0.2, '#d4a02c');
+      goldGrad.addColorStop(0.5, '#8c6010');
+      goldGrad.addColorStop(0.85, '#eec559');
+      goldGrad.addColorStop(1.0, '#5a3d08');
+      roundRect(ctx, padX, padY, btnW, btnH, r);
       ctx.fillStyle = goldGrad;
       ctx.fill();
 
-      // Inner bevel dark groove
-      ctx.beginPath();
-      ctx.roundRect(x + 6, y + 6, bw - 12, bh - 12, radius - 6);
-      ctx.fillStyle = '#523405';
+      // Inner Bevel Gold Ring
+      const rimThick = 9;
+      const innerW = btnW - rimThick * 2;
+      const innerH = btnH - rimThick * 2;
+      const innerR = innerH / 2;
+      roundRect(ctx, padX + rimThick, padY + rimThick, innerW, innerH, innerR);
+      ctx.fillStyle = '#221605';
       ctx.fill();
 
-      // Colorful pill cushion
-      const innerX = x + 7.5;
-      const innerY = y + 7.5;
-      const innerW = bw - 15;
-      const innerH = bh - 15;
-      const innerR = innerH / 2;
+      // Colored Core Gradient
+      const coreX = padX + rimThick + 2;
+      const coreY = padY + rimThick + 2;
+      const coreW = innerW - 4;
+      const coreH = innerH - 4;
+      const coreR = coreH / 2;
 
-      const bodyGrad = ctx.createLinearGradient(innerX, innerY, innerX, innerY + innerH);
-      bodyGrad.addColorStop(0, colors.top);
-      bodyGrad.addColorStop(0.5, colors.mid);
-      bodyGrad.addColorStop(1, colors.bot);
-
-      ctx.beginPath();
-      ctx.roundRect(innerX, innerY, innerW, innerH, innerR);
+      const bodyGrad = ctx.createLinearGradient(coreX, coreY, coreX, coreY + coreH);
+      bodyGrad.addColorStop(0.0, spec.topColor);
+      bodyGrad.addColorStop(0.45, spec.midColor);
+      bodyGrad.addColorStop(0.85, spec.bottomColor);
+      bodyGrad.addColorStop(1.0, spec.darkRimColor);
+      roundRect(ctx, coreX, coreY, coreW, coreH, coreR);
       ctx.fillStyle = bodyGrad;
       ctx.fill();
 
-      // Specular gloss top bubble
+      // Glossy Top Specular Dome
+      ctx.save();
       ctx.beginPath();
-      const glossH = innerH * 0.48;
-      ctx.roundRect(innerX + 4, innerY + 2, innerW - 8, glossH, [innerR, innerR, 8, 8]);
-      const glossGrad = ctx.createLinearGradient(innerX, innerY + 2, innerX, innerY + glossH);
-      glossGrad.addColorStop(0, 'rgba(255, 255, 255, 0.75)');
-      glossGrad.addColorStop(0.65, 'rgba(255, 255, 255, 0.25)');
-      glossGrad.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
+      roundRect(ctx, coreX + 6, coreY + 3, coreW - 12, coreH * 0.44, (coreH * 0.44) / 2);
+      const glossGrad = ctx.createLinearGradient(coreX, coreY + 3, coreX, coreY + coreH * 0.44);
+      glossGrad.addColorStop(0.0, 'rgba(255, 255, 255, 0.85)');
+      glossGrad.addColorStop(0.4, 'rgba(255, 255, 255, 0.35)');
+      glossGrad.addColorStop(1.0, 'rgba(255, 255, 255, 0.0)');
       ctx.fillStyle = glossGrad;
       ctx.fill();
+      ctx.restore();
 
-      // Typography & icon
-      const shouldDrawIcon = iconsEnabled && icon && icon !== 'none';
-      if (!blank) {
+      // Typography & Vector Icon
+      if (!isBlankOnly) {
+        const text = customLabel || spec.defaultLabel;
+        const cy = h / 2;
+        const iconType = currentIcon || spec.icon;
+        const showIcon = iconsEnabled && iconType !== 'none';
+        
+        ctx.save();
+        setCanvasFont(ctx, '900', 36);
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        setCanvasFont(ctx, '900', 22);
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.75)';
-        ctx.shadowBlur = 4;
-        ctx.shadowOffsetY = 2;
 
-        if (shouldDrawIcon) {
-          const textW = ctx.measureText(text).width;
-          const iconSize = 22 * (iconScale || 1.0);
-          const gap = 10;
-          const totalW = textW + iconSize + gap;
+        // Deep drop-shadow on text
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
+        ctx.shadowBlur = 4;
+        ctx.shadowOffsetY = 3;
+
+        if (showIcon) {
+          const textMetrics = ctx.measureText(text);
+          const iconSize = 34;
+          const spacing = 18;
+          const totalW = textMetrics.width + iconSize + spacing;
           const startX = w / 2 - totalW / 2;
+          const iconCX = startX + iconSize / 2;
+          const textCX = startX + iconSize + spacing + textMetrics.width / 2;
 
-          drawVectorIcon(ctx, icon, startX + iconSize / 2, h / 2 + 1, 22, '#ffffff');
-          ctx.fillStyle = '#ffffff';
-          ctx.fillText(text, startX + iconSize + gap + textW / 2, h / 2 + 1);
+          drawAppVectorIcon(ctx, iconType, iconCX, cy, iconSize, '#FFFFFF');
+
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillText(text, textCX, cy + 1);
         } else {
-          ctx.fillStyle = '#ffffff';
-          ctx.fillText(text, w / 2, h / 2 + 1);
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillText(text, w / 2, cy + 1);
         }
-      } else if (shouldDrawIcon) {
-        drawVectorIcon(ctx, icon, w / 2, h / 2, 28, '#ffffff');
+        ctx.restore();
       }
-
-      ctx.restore();
     }
-    function drawGameGoldCircle(ctx, w, h, blank, text, icon, colors) {
-      const cx = w / 2;
-      const cy = h / 2;
-      const radius = (Math.min(w, h) - 24) / 2;
 
+    // 2. Modern Badge Click Pill (User Reference 2)
+    function renderClickBadgePill(canvas, spec) {
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const padX = 26;
+      const padY = 22;
+      const btnW = w - padX * 2;
+      const btnH = h - padY * 2;
+      const r = btnH / 2;
+
+      // Soft ambient drop-shadow
       ctx.save();
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.45)';
-      ctx.shadowBlur = 14;
-      ctx.shadowOffsetY = 6;
-
-      ctx.beginPath();
-      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
-      ctx.fillStyle = '#684511';
-      ctx.fill();
-      ctx.restore();
-
-      // Outer metallic gold rim
-      ctx.save();
-      const goldGrad = ctx.createLinearGradient(cx - radius, cy - radius, cx + radius, cy + radius);
-      goldGrad.addColorStop(0, '#fff4b8');
-      goldGrad.addColorStop(0.2, '#eec550');
-      goldGrad.addColorStop(0.5, '#c88f1d');
-      goldGrad.addColorStop(0.8, '#eec550');
-      goldGrad.addColorStop(1, '#814c0a');
-
-      ctx.beginPath();
-      ctx.arc(cx, cy, radius - 1.5, 0, Math.PI * 2);
-      ctx.fillStyle = goldGrad;
-      ctx.fill();
-
-      // Inner groove
-      ctx.beginPath();
-      ctx.arc(cx, cy, radius - 6, 0, Math.PI * 2);
-      ctx.fillStyle = '#523405';
-      ctx.fill();
-
-      // Colorful inner orb
-      const innerR = radius - 8;
-      const bodyGrad = ctx.createRadialGradient(cx - innerR * 0.3, cy - innerR * 0.3, innerR * 0.1, cx, cy, innerR);
-      bodyGrad.addColorStop(0, colors.top);
-      bodyGrad.addColorStop(0.6, colors.mid);
-      bodyGrad.addColorStop(1, colors.bot);
-
-      ctx.beginPath();
-      ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
-      ctx.fillStyle = bodyGrad;
-      ctx.fill();
-
-      // Dome highlight
-      ctx.beginPath();
-      ctx.ellipse(cx, cy - innerR * 0.45, innerR * 0.65, innerR * 0.32, 0, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
-      ctx.fill();
-
-      const shouldDrawIcon = iconsEnabled && icon && icon !== 'none';
-      if (shouldDrawIcon) {
-        drawVectorIcon(ctx, icon, cx, cy - (blank ? 0 : 8), radius * 0.75, '#ffffff');
-      }
-
-      if (!blank && text && text.length <= 8) {
-        setCanvasFont(ctx, '900', 13);
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillStyle = '#ffffff';
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
-        ctx.shadowBlur = 4;
-        ctx.shadowOffsetY = 1;
-        ctx.fillText(text, cx, cy + innerR * 0.55);
-      }
-      ctx.restore();
-    }
-    function drawGameGoldSquare(ctx, w, h, blank, text, icon, colors) {
-      const pad = 14;
-      const x = pad;
-      const y = pad;
-      const bw = w - pad * 2;
-      const bh = h - pad * 2;
-      const radius = 24;
-
-      ctx.save();
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.45)';
-      ctx.shadowBlur = 14;
-      ctx.shadowOffsetY = 6;
-
-      ctx.beginPath();
-      ctx.roundRect(x, y, bw, bh, radius);
-      ctx.fillStyle = '#684511';
-      ctx.fill();
-      ctx.restore();
-
-      // Gold rim
-      ctx.save();
-      const goldGrad = ctx.createLinearGradient(x, y, x + bw, y + bh);
-      goldGrad.addColorStop(0, '#fff4b8');
-      goldGrad.addColorStop(0.2, '#eec550');
-      goldGrad.addColorStop(0.5, '#c88f1d');
-      goldGrad.addColorStop(0.8, '#eec550');
-      goldGrad.addColorStop(1, '#814c0a');
-
-      ctx.beginPath();
-      ctx.roundRect(x + 2, y + 2, bw - 4, bh - 4, radius - 2);
-      ctx.fillStyle = goldGrad;
-      ctx.fill();
-
-      // Inner groove
-      ctx.beginPath();
-      ctx.roundRect(x + 7, y + 7, bw - 14, bh - 14, radius - 7);
-      ctx.fillStyle = '#523405';
-      ctx.fill();
-
-      // Center tile cushion
-      const inX = x + 9;
-      const inY = y + 9;
-      const inW = bw - 18;
-      const inH = bh - 18;
-      const inR = radius - 9;
-
-      const bodyGrad = ctx.createLinearGradient(inX, inY, inX, inY + inH);
-      bodyGrad.addColorStop(0, colors.top);
-      bodyGrad.addColorStop(0.5, colors.mid);
-      bodyGrad.addColorStop(1, colors.bot);
-
-      ctx.beginPath();
-      ctx.roundRect(inX, inY, inW, inH, inR);
-      ctx.fillStyle = bodyGrad;
-      ctx.fill();
-
-      // Specular sheen
-      ctx.beginPath();
-      ctx.roundRect(inX + 3, inY + 3, inW - 6, inH * 0.42, [inR, inR, 6, 6]);
-      const gloss = ctx.createLinearGradient(inX, inY + 3, inX, inY + inH * 0.42);
-      gloss.addColorStop(0, 'rgba(255, 255, 255, 0.65)');
-      gloss.addColorStop(1, 'rgba(255, 255, 255, 0.05)');
-      ctx.fillStyle = gloss;
-      ctx.fill();
-
-      const shouldDrawIcon = iconsEnabled && icon && icon !== 'none';
-      if (shouldDrawIcon) {
-        drawVectorIcon(ctx, icon, w / 2, h / 2 - (blank ? 0 : 20), 44, '#ffffff');
-      }
-
-      if (!blank) {
-        setCanvasFont(ctx, '900', 18);
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillStyle = '#ffffff';
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
-        ctx.shadowBlur = 4;
-        ctx.shadowOffsetY = 1;
-        ctx.fillText(text, w / 2, h / 2 + 40);
-      }
-      ctx.restore();
-    }
-    function drawModernBadgePill(ctx, w, h, blank, text, icon, colors) {
-      const pad = 12;
-      const x = pad;
-      const y = pad;
-      const bw = w - pad * 2;
-      const bh = h - pad * 2;
-      const radius = bh / 2;
-
-      ctx.save();
-      ctx.shadowColor = colors.shadow;
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.35)';
       ctx.shadowBlur = 18;
-      ctx.shadowOffsetY = 7;
-
-      ctx.beginPath();
-      ctx.roundRect(x, y, bw, bh, radius);
-      const bgGrad = ctx.createLinearGradient(x, y, x, y + bh);
-      bgGrad.addColorStop(0, colors.top);
-      bgGrad.addColorStop(1, colors.bot);
-      ctx.fillStyle = bgGrad;
+      ctx.shadowOffsetY = 10;
+      roundRect(ctx, padX, padY, btnW, btnH, r);
+      ctx.fillStyle = spec.mainColor;
       ctx.fill();
       ctx.restore();
 
-      // Top sheen
+      // Top soft highlight sheen
       ctx.save();
-      ctx.beginPath();
-      ctx.roundRect(x + 2, y + 2, bw - 4, bh / 2, [radius, radius, 4, 4]);
-      const sheen = ctx.createLinearGradient(x, y, x, y + bh / 2);
-      sheen.addColorStop(0, 'rgba(255, 255, 255, 0.35)');
-      sheen.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
-      ctx.fillStyle = sheen;
-      ctx.fill();
-
-      // Circular badge on right side
-      const badgeR = (bh - 14) / 2;
-      const badgeX = x + bw - badgeR - 10;
-      const badgeY = y + bh / 2;
-
-      ctx.save();
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.2)';
-      ctx.shadowBlur = 8;
-      ctx.shadowOffsetY = 2;
-      ctx.beginPath();
-      ctx.arc(badgeX, badgeY, badgeR, 0, Math.PI * 2);
-      ctx.fillStyle = '#ffffff';
+      const topGrad = ctx.createLinearGradient(padX, padY, padX, padY + btnH);
+      topGrad.addColorStop(0, 'rgba(255, 255, 255, 0.35)');
+      topGrad.addColorStop(0.4, 'rgba(255, 255, 255, 0.05)');
+      topGrad.addColorStop(1, 'rgba(0, 0, 0, 0.12)');
+      roundRect(ctx, padX, padY, btnW, btnH, r);
+      ctx.fillStyle = topGrad;
       ctx.fill();
       ctx.restore();
 
-      const iconToDraw = (iconsEnabled && icon && icon !== 'none') ? icon : 'cursor';
-      if (iconToDraw && iconToDraw !== 'none') {
-        drawVectorIcon(ctx, iconToDraw, badgeX, badgeY, badgeR * 1.05, colors.iconColor || colors.top);
-      }
+      // Inset Circular Target Badge on Right
+      const badgeR = (btnH - 18) / 2;
+      const badgeCX = padX + btnW - badgeR - 12;
+      const badgeCY = h / 2;
 
-      if (!blank) {
-        setCanvasFont(ctx, '800', 21);
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillStyle = '#ffffff';
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.25)';
-        ctx.shadowBlur = 4;
-        ctx.shadowOffsetY = 1;
-        const textCenter = (x + (badgeX - badgeR)) / 2 + 5;
-        ctx.fillText(text || 'CLICK HERE', textCenter, y + bh / 2 + 1);
-      }
-      ctx.restore();
-    }
-
-    function drawActionChevronPill(ctx, w, h, blank, text, icon, colors) {
-      const pad = 12;
-      const x = pad;
-      const y = pad;
-      const bw = w - pad * 2;
-      const bh = h - pad * 2;
-      const radius = bh / 2;
-
+      // Badge drop-shadow
       ctx.save();
       ctx.shadowColor = 'rgba(0, 0, 0, 0.25)';
-      ctx.shadowBlur = 14;
-      ctx.shadowOffsetY = 6;
-
+      ctx.shadowBlur = 6;
+      ctx.shadowOffsetY = 2;
       ctx.beginPath();
-      ctx.roundRect(x, y, bw, bh, radius);
-      ctx.fillStyle = '#ffffff';
+      ctx.arc(badgeCX, badgeCY, badgeR, 0, Math.PI * 2);
+      ctx.fillStyle = '#FFFFFF';
       ctx.fill();
       ctx.restore();
 
-      const inX = x + 3.5;
-      const inY = y + 3.5;
-      const inW = bw - 7;
-      const inH = bh - 7;
-      const inR = inH / 2;
-
-      ctx.save();
+      // Badge inner gradient
       ctx.beginPath();
-      ctx.roundRect(inX, inY, inW, inH, inR);
-      const bgGrad = ctx.createLinearGradient(inX, inY, inX, inY + inH);
-      bgGrad.addColorStop(0, colors.top);
-      bgGrad.addColorStop(1, colors.bot);
-      ctx.fillStyle = bgGrad;
+      ctx.arc(badgeCX, badgeCY, badgeR, 0, Math.PI * 2);
+      const bGrad = ctx.createLinearGradient(badgeCX, badgeCY - badgeR, badgeCX, badgeCY + badgeR);
+      bGrad.addColorStop(0, '#ffffff');
+      bGrad.addColorStop(1, '#f1f5f9');
+      ctx.fillStyle = bGrad;
       ctx.fill();
 
-      // Top sheen
+      // Draw active icon inside the circular badge
+      const iconToDraw = (iconsEnabled && currentIcon !== 'none') ? currentIcon : 'cursor';
+      drawAppVectorIcon(ctx, iconToDraw, badgeCX, badgeCY, badgeR * 0.95, spec.mainColor);
+
+      // Typography
+      if (!isBlankOnly) {
+        const text = customLabel || spec.defaultLabel;
+        ctx.save();
+        setCanvasFont(ctx, '800', 36);
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.25)';
+        ctx.shadowBlur = 4;
+        ctx.shadowOffsetY = 2;
+        ctx.fillStyle = '#FFFFFF';
+        // Center text in available left space
+        const leftAreaCenter = (padX + (badgeCX - badgeR)) / 2;
+        ctx.fillText(text, leftAreaCenter, h / 2 + 1);
+        ctx.restore();
+      }
+    }
+
+    // 3. Web Action Pill with White Border & Chevron (User Reference 3)
+    function renderWebActionPill(canvas, spec) {
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const padX = 26;
+      const padY = 22;
+      const btnW = w - padX * 2;
+      const btnH = h - padY * 2;
+      const r = btnH / 2;
+
+      // White Border Outermost Ring with Drop-shadow
+      ctx.save();
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.35)';
+      ctx.shadowBlur = 16;
+      ctx.shadowOffsetY = 10;
+      roundRect(ctx, padX, padY, btnW, btnH, r);
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fill();
+      ctx.restore();
+
+      // Inner Colored Gradient
+      const borderW = 6;
+      const innerX = padX + borderW;
+      const innerY = padY + borderW;
+      const innerWidth = btnW - borderW * 2;
+      const innerHeight = btnH - borderW * 2;
+      const innerR = innerHeight / 2;
+
+      const grad = ctx.createLinearGradient(innerX, innerY, innerX, innerY + innerHeight);
+      grad.addColorStop(0, spec.topColor);
+      grad.addColorStop(1, spec.bottomColor);
+      roundRect(ctx, innerX, innerY, innerWidth, innerHeight, innerR);
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      // Top Glass Specular Arc
+      ctx.save();
       ctx.beginPath();
-      ctx.roundRect(inX + 3, inY + 2, inW - 6, inH * 0.45, [inR, inR, 4, 4]);
-      const gloss = ctx.createLinearGradient(inX, inY, inX, inY + inH * 0.45);
-      gloss.addColorStop(0, 'rgba(255, 255, 255, 0.45)');
+      roundRect(ctx, innerX + 4, innerY + 2, innerWidth - 8, innerHeight * 0.45, (innerHeight * 0.45) / 2);
+      const gloss = ctx.createLinearGradient(innerX, innerY + 2, innerX, innerY + innerHeight * 0.45);
+      gloss.addColorStop(0, 'rgba(255, 255, 255, 0.75)');
       gloss.addColorStop(1, 'rgba(255, 255, 255, 0.05)');
       ctx.fillStyle = gloss;
       ctx.fill();
+      ctx.restore();
 
-      // Left icon if enabled
-      const iconToDraw = (iconsEnabled && icon && icon !== 'none') ? icon : (colors.defaultIcon || 'globe');
-      const iconCenterX = inX + inR + 8;
-      const iconCenterY = inY + inH / 2;
-      if (iconToDraw && iconToDraw !== 'none') {
-        drawVectorIcon(ctx, iconToDraw, iconCenterX, iconCenterY, 22, '#ffffff');
+      const cy = h / 2;
+
+      // Left Vector Icon
+      const leftIconCX = innerX + innerR * 0.9;
+      const activeIconType = currentIcon || spec.icon;
+      if (iconsEnabled && activeIconType !== 'none') {
+        drawAppVectorIcon(ctx, activeIconType, leftIconCX, cy, 32, '#FFFFFF');
       }
 
-      // Right Chevron >
-      const chevX = inX + inW - inR - 6;
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
-      ctx.lineWidth = 3;
+      // Right Chevron (>)
+      const chevronX = innerX + innerWidth - innerR * 0.85;
+      ctx.save();
+      ctx.strokeStyle = '#FFFFFF';
+      ctx.lineWidth = 5;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
       ctx.beginPath();
-      ctx.moveTo(chevX - 4, iconCenterY - 7);
-      ctx.lineTo(chevX + 3, iconCenterY);
-      ctx.lineTo(chevX - 4, iconCenterY + 7);
+      ctx.moveTo(chevronX - 6, cy - 11);
+      ctx.lineTo(chevronX + 5, cy);
+      ctx.lineTo(chevronX - 6, cy + 11);
       ctx.stroke();
+      ctx.restore();
 
-      if (!blank) {
-        setCanvasFont(ctx, '800', 18);
+      // Typography
+      if (!isBlankOnly) {
+        const text = customLabel || spec.defaultLabel;
+        ctx.save();
+        setCanvasFont(ctx, '800', 32);
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillStyle = '#ffffff';
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.2)';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
         ctx.shadowBlur = 3;
-        ctx.shadowOffsetY = 1;
-        ctx.fillText(text, w / 2, inY + inH / 2 + 1);
+        ctx.shadowOffsetY = 2;
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillText(text, w / 2, cy + 1);
+        ctx.restore();
       }
-      ctx.restore();
     }
-    function drawModernCircleButton(ctx, w, h, blank, text, icon, colors) {
+
+    // 4. Square Button / App Tile
+    function renderSquareButton(canvas, spec) {
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const size = Math.min(w, h) - 40;
+      const padX = (w - size) / 2;
+      const padY = (h - size) / 2;
+      const r = size * 0.24;
+
+      // Drop shadow
+      ctx.save();
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+      ctx.shadowBlur = 20;
+      ctx.shadowOffsetY = 12;
+      roundRect(ctx, padX, padY, size, size, r);
+      ctx.fillStyle = spec.bottomColor || '#1e293b';
+      ctx.fill();
+      ctx.restore();
+
+      // If 3D Gold style tile
+      if (spec.style === 'game-gold') {
+        const goldGrad = ctx.createLinearGradient(padX, padY, padX, padY + size);
+        goldGrad.addColorStop(0, '#ffe894');
+        goldGrad.addColorStop(0.3, '#d4a02c');
+        goldGrad.addColorStop(0.7, '#8c6010');
+        goldGrad.addColorStop(1, '#5a3d08');
+        roundRect(ctx, padX, padY, size, size, r);
+        ctx.fillStyle = goldGrad;
+        ctx.fill();
+
+        const rim = 10;
+        roundRect(ctx, padX + rim, padY + rim, size - rim * 2, size - rim * 2, r - 6);
+        ctx.fillStyle = '#221605';
+        ctx.fill();
+
+        const core = rim + 3;
+        const cGrad = ctx.createLinearGradient(padX, padY, padX, padY + size);
+        cGrad.addColorStop(0, spec.topColor);
+        cGrad.addColorStop(1, spec.bottomColor);
+        roundRect(ctx, padX + core, padY + core, size - core * 2, size - core * 2, r - 8);
+        ctx.fillStyle = cGrad;
+        ctx.fill();
+      } else {
+        // Modern Pill / Square Card
+        const grad = ctx.createLinearGradient(padX, padY, padX, padY + size);
+        grad.addColorStop(0, spec.topColor);
+        grad.addColorStop(1, spec.bottomColor);
+        roundRect(ctx, padX, padY, size, size, r);
+        ctx.fillStyle = grad;
+        ctx.fill();
+
+        // White/Glow Border Stroke
+        ctx.strokeStyle = spec.borderColor || 'rgba(255, 255, 255, 0.35)';
+        ctx.lineWidth = 4;
+        roundRect(ctx, padX, padY, size, size, r);
+        ctx.stroke();
+      }
+
+      // Specular Top Sheen
+      ctx.save();
+      roundRect(ctx, padX + 6, padY + 6, size - 12, size * 0.45, r - 4);
+      const gloss = ctx.createLinearGradient(padX, padY, padX, padY + size * 0.45);
+      gloss.addColorStop(0, 'rgba(255, 255, 255, 0.45)');
+      gloss.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
+      ctx.fillStyle = gloss;
+      ctx.fill();
+      ctx.restore();
+
       const cx = w / 2;
       const cy = h / 2;
-      const radius = (Math.min(w, h) - 24) / 2;
+      const iconType = currentIcon || spec.icon;
 
-      ctx.save();
-      ctx.shadowColor = colors.glow || 'rgba(59, 130, 246, 0.45)';
-      ctx.shadowBlur = 20;
-      ctx.shadowOffsetY = 6;
-
-      ctx.beginPath();
-      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
-      const bgGrad = ctx.createRadialGradient(cx - radius * 0.3, cy - radius * 0.3, radius * 0.1, cx, cy, radius);
-      bgGrad.addColorStop(0, colors.top);
-      bgGrad.addColorStop(1, colors.bot);
-      ctx.fillStyle = bgGrad;
-      ctx.fill();
-      ctx.restore();
-
-      // Metallic or glass border
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
-      ctx.lineWidth = 3;
-      const rim = ctx.createLinearGradient(cx - radius, cy - radius, cx + radius, cy + radius);
-      rim.addColorStop(0, 'rgba(255, 255, 255, 0.85)');
-      rim.addColorStop(0.5, 'rgba(255, 255, 255, 0.15)');
-      rim.addColorStop(1, 'rgba(255, 255, 255, 0.6)');
-      ctx.strokeStyle = rim;
-      ctx.stroke();
-
-      // Specular highlight crescent
-      ctx.beginPath();
-      ctx.ellipse(cx, cy - radius * 0.45, radius * 0.65, radius * 0.3, 0, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
-      ctx.fill();
-
-      const shouldDrawIcon = iconsEnabled && icon && icon !== 'none';
-      if (shouldDrawIcon) {
-        drawVectorIcon(ctx, icon, cx, cy - (blank ? 0 : 8), radius * 0.8, '#ffffff');
+      if (!isBlankOnly) {
+        const text = customLabel || spec.defaultLabel;
+        if (iconsEnabled && iconType !== 'none') {
+          drawAppVectorIcon(ctx, iconType, cx, cy - 24, size * 0.38, '#FFFFFF');
+          ctx.save();
+          setCanvasFont(ctx, '800', 22);
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+          ctx.shadowBlur = 4;
+          ctx.shadowOffsetY = 2;
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillText(text, cx, cy + size * 0.32);
+          ctx.restore();
+        } else {
+          ctx.save();
+          setCanvasFont(ctx, '900', 28);
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillText(text, cx, cy);
+          ctx.restore();
+        }
+      } else {
+        if (iconsEnabled && iconType !== 'none') {
+          drawAppVectorIcon(ctx, iconType, cx, cy, size * 0.52, '#FFFFFF');
+        }
       }
-
-      if (!blank && text && text.length <= 8) {
-        setCanvasFont(ctx, '800', 13);
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillStyle = '#ffffff';
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
-        ctx.shadowBlur = 4;
-        ctx.shadowOffsetY = 1;
-        ctx.fillText(text, cx, cy + radius * 0.55);
-      }
-      ctx.restore();
     }
 
-    function drawModernSquareButton(ctx, w, h, blank, text, icon, colors) {
-      const pad = 14;
-      const x = pad;
-      const y = pad;
-      const bw = w - pad * 2;
-      const bh = h - pad * 2;
-      const radius = 28;
+    // 5. Circular Button / Medallion Orb
+    function renderCircleButton(canvas, spec) {
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
 
+      const radius = (Math.min(w, h) - 44) / 2;
+      const cx = w / 2;
+      const cy = h / 2;
+
+      // Drop shadow
       ctx.save();
-      ctx.shadowColor = colors.glow || 'rgba(99, 102, 241, 0.4)';
-      ctx.shadowBlur = 20;
-      ctx.shadowOffsetY = 6;
-
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+      ctx.shadowBlur = 22;
+      ctx.shadowOffsetY = 12;
       ctx.beginPath();
-      ctx.roundRect(x, y, bw, bh, radius);
-      const bgGrad = ctx.createLinearGradient(x, y, x + bw, y + bh);
-      bgGrad.addColorStop(0, colors.top);
-      bgGrad.addColorStop(1, colors.bot);
-      ctx.fillStyle = bgGrad;
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.fillStyle = spec.bottomColor || '#1e293b';
       ctx.fill();
       ctx.restore();
 
-      // Border bevel
+      if (spec.style === 'game-gold') {
+        // Gold Outer Ring
+        const goldGrad = ctx.createLinearGradient(cx - radius, cy - radius, cx + radius, cy + radius);
+        goldGrad.addColorStop(0, '#ffe894');
+        goldGrad.addColorStop(0.3, '#d4a02c');
+        goldGrad.addColorStop(0.7, '#8c6010');
+        goldGrad.addColorStop(1, '#5a3d08');
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+        ctx.fillStyle = goldGrad;
+        ctx.fill();
+
+        // Dark bevel groove
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius - 9, 0, Math.PI * 2);
+        ctx.fillStyle = '#221605';
+        ctx.fill();
+
+        // Core Medallion
+        const coreR = radius - 12;
+        const cGrad = ctx.createLinearGradient(cx, cy - coreR, cx, cy + coreR);
+        cGrad.addColorStop(0, spec.topColor);
+        cGrad.addColorStop(1, spec.bottomColor);
+        ctx.beginPath();
+        ctx.arc(cx, cy, coreR, 0, Math.PI * 2);
+        ctx.fillStyle = cGrad;
+        ctx.fill();
+      } else {
+        // Modern Floating Orb
+        const grad = ctx.createLinearGradient(cx, cy - radius, cx, cy + radius);
+        grad.addColorStop(0, spec.topColor);
+        grad.addColorStop(1, spec.bottomColor);
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+
+        ctx.strokeStyle = spec.borderColor || 'rgba(255, 255, 255, 0.4)';
+        ctx.lineWidth = 5;
+        ctx.stroke();
+      }
+
+      // Dome Gloss Highlight
       ctx.save();
       ctx.beginPath();
-      ctx.roundRect(x, y, bw, bh, radius);
-      ctx.lineWidth = 2.5;
-      const rim = ctx.createLinearGradient(x, y, x + bw, y + bh);
-      rim.addColorStop(0, 'rgba(255, 255, 255, 0.8)');
-      rim.addColorStop(0.5, 'rgba(255, 255, 255, 0.1)');
-      rim.addColorStop(1, 'rgba(255, 255, 255, 0.5)');
-      ctx.strokeStyle = rim;
+      ctx.ellipse(cx, cy - radius * 0.45, radius * 0.72, radius * 0.38, 0, 0, Math.PI * 2);
+      const gloss = ctx.createLinearGradient(cx, cy - radius * 0.8, cx, cy);
+      gloss.addColorStop(0, 'rgba(255, 255, 255, 0.65)');
+      gloss.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
+      ctx.fillStyle = gloss;
+      ctx.fill();
+      ctx.restore();
+
+      const iconType = currentIcon || spec.icon;
+      if (iconsEnabled && iconType !== 'none') {
+        drawAppVectorIcon(ctx, iconType, cx, cy, radius * 1.05, '#FFFFFF');
+      }
+    }
+
+    // 6. Frosted Glass / Blank Capsule
+    function renderFrostedPill(canvas, spec) {
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const padX = 26;
+      const padY = 22;
+      const btnW = w - padX * 2;
+      const btnH = h - padY * 2;
+      const r = btnH / 2;
+
+      ctx.save();
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+      ctx.shadowBlur = 18;
+      ctx.shadowOffsetY = 8;
+      roundRect(ctx, padX, padY, btnW, btnH, r);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.fill();
+      ctx.restore();
+
+      // Border gradient
+      roundRect(ctx, padX, padY, btnW, btnH, r);
+      const borderGrad = ctx.createLinearGradient(padX, padY, padX + btnW, padY + btnH);
+      borderGrad.addColorStop(0, 'rgba(255, 255, 255, 0.8)');
+      borderGrad.addColorStop(0.5, 'rgba(255, 255, 255, 0.2)');
+      borderGrad.addColorStop(1, 'rgba(255, 255, 255, 0.6)');
+      ctx.strokeStyle = borderGrad;
+      ctx.lineWidth = 3;
       ctx.stroke();
 
-      // Upper soft bevel
-      ctx.beginPath();
-      ctx.roundRect(x + 3, y + 3, bw - 6, bh * 0.42, [radius - 3, radius - 3, 6, 6]);
-      const gloss = ctx.createLinearGradient(x, y, x, y + bh * 0.42);
-      gloss.addColorStop(0, 'rgba(255, 255, 255, 0.45)');
-      gloss.addColorStop(1, 'rgba(255, 255, 255, 0.05)');
+      // Specular highlight
+      roundRect(ctx, padX + 4, padY + 2, btnW - 8, btnH * 0.44, (btnH * 0.44) / 2);
+      const gloss = ctx.createLinearGradient(padX, padY, padX, padY + btnH * 0.44);
+      gloss.addColorStop(0, 'rgba(255, 255, 255, 0.4)');
+      gloss.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
       ctx.fillStyle = gloss;
       ctx.fill();
 
-      const shouldDrawIcon = iconsEnabled && icon && icon !== 'none';
-      if (shouldDrawIcon) {
-        drawVectorIcon(ctx, icon, w / 2, h / 2 - (blank ? 0 : 20), 48, '#ffffff');
-      }
-
-      if (!blank) {
-        setCanvasFont(ctx, '800', 18);
+      const cy = h / 2;
+      const iconType = currentIcon || spec.icon;
+      if (!isBlankOnly) {
+        const text = customLabel || spec.defaultLabel;
+        ctx.save();
+        setCanvasFont(ctx, '800', 32);
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillStyle = '#ffffff';
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
-        ctx.shadowBlur = 4;
-        ctx.shadowOffsetY = 1;
-        ctx.fillText(text, w / 2, h / 2 + 42);
-      }
-      ctx.restore();
-    }
-    function drawGlassCapsule(ctx, w, h, blank, text, icon) {
-      const pad = 12;
-      const x = pad;
-      const y = pad;
-      const bw = w - pad * 2;
-      const bh = h - pad * 2;
-      const radius = bh / 2;
-
-      ctx.save();
-      ctx.shadowColor = 'rgba(99, 102, 241, 0.4)';
-      ctx.shadowBlur = 18;
-      ctx.beginPath();
-      ctx.roundRect(x, y, bw, bh, radius);
-      ctx.fillStyle = 'rgba(30, 27, 75, 0.45)';
-      ctx.fill();
-      ctx.restore();
-
-      const bodyGrad = ctx.createLinearGradient(x, y, x, y + bh);
-      bodyGrad.addColorStop(0, 'rgba(255, 255, 255, 0.22)');
-      bodyGrad.addColorStop(0.3, 'rgba(99, 102, 241, 0.15)');
-      bodyGrad.addColorStop(1, 'rgba(15, 23, 42, 0.65)');
-
-      ctx.save();
-      ctx.beginPath();
-      ctx.roundRect(x, y, bw, bh, radius);
-      ctx.fillStyle = bodyGrad;
-      ctx.fill();
-
-      // Border
-      const strokeGrad = ctx.createLinearGradient(x, y, x + bw, y + bh);
-      strokeGrad.addColorStop(0, 'rgba(255, 255, 255, 0.9)');
-      strokeGrad.addColorStop(0.4, 'rgba(165, 180, 252, 0.6)');
-      strokeGrad.addColorStop(1, 'rgba(255, 255, 255, 0.6)');
-      ctx.lineWidth = 2.5;
-      ctx.strokeStyle = strokeGrad;
-      ctx.stroke();
-
-      // Specular sheen
-      ctx.beginPath();
-      ctx.roundRect(x + 12, y + 4, bw - 24, bh * 0.42, [radius - 4, radius - 4, 10, 10]);
-      const sheenGrad = ctx.createLinearGradient(x, y + 4, x, y + bh * 0.42);
-      sheenGrad.addColorStop(0, 'rgba(255, 255, 255, 0.5)');
-      sheenGrad.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
-      ctx.fillStyle = sheenGrad;
-      ctx.fill();
-
-      const shouldDrawIcon = iconsEnabled && icon && icon !== 'none';
-      if (!blank) {
-        setCanvasFont(ctx, 'bold', 21);
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        if (shouldDrawIcon) {
-          const textW = ctx.measureText(text).width;
-          const iconSize = 22 * (iconScale || 1.0);
-          const gap = 10;
-          const totalW = textW + iconSize + gap;
-          const startX = w / 2 - totalW / 2;
-          drawVectorIcon(ctx, icon, startX + iconSize / 2, h / 2 + 1, 22, '#ffffff');
-          ctx.fillStyle = '#ffffff';
-          ctx.shadowColor = 'rgba(99, 102, 241, 0.8)';
-          ctx.shadowBlur = 10;
-          ctx.fillText(text, startX + iconSize + gap + textW / 2, h / 2 + 1);
+        ctx.fillStyle = '#FFFFFF';
+        if (iconsEnabled && iconType !== 'none') {
+          const tm = ctx.measureText(text);
+          const iconSize = 30;
+          const sp = 16;
+          const total = tm.width + iconSize + sp;
+          const startX = w / 2 - total / 2;
+          drawAppVectorIcon(ctx, iconType, startX + iconSize / 2, cy, iconSize, '#FFFFFF');
+          ctx.fillText(text, startX + iconSize + sp + tm.width / 2, cy);
         } else {
-          ctx.fillStyle = '#ffffff';
-          ctx.shadowColor = 'rgba(99, 102, 241, 0.8)';
-          ctx.shadowBlur = 10;
-          ctx.fillText(text, w / 2, h / 2 + 1);
+          ctx.fillText(text, w / 2, cy);
         }
-      } else if (shouldDrawIcon) {
-        drawVectorIcon(ctx, icon, w / 2, h / 2, 26, '#ffffff');
+        ctx.restore();
+      } else {
+        if (iconsEnabled && iconType !== 'none') {
+          drawAppVectorIcon(ctx, iconType, w / 2, cy, 38, '#FFFFFF');
+        }
       }
-      ctx.restore();
     }
 
-    function drawCyberHudSquare(ctx, w, h, blank, text, icon) {
-      const pad = 16;
-      const x = pad;
-      const y = pad;
-      const bw = w - pad * 2;
-      const bh = h - pad * 2;
-      const cut = 32;
-
-      ctx.save();
-      ctx.shadowColor = 'rgba(6, 182, 212, 0.35)';
-      ctx.shadowBlur = 24;
-
-      function makeTechPath(bx, by, width, height, c) {
-        ctx.beginPath();
-        ctx.moveTo(bx + c, by);
-        ctx.lineTo(bx + width - c, by);
-        ctx.lineTo(bx + width, by + c);
-        ctx.lineTo(bx + width, by + height - c);
-        ctx.lineTo(bx + width - c, by + height);
-        ctx.lineTo(bx + c, by + height);
-        ctx.lineTo(bx, by + height - c);
-        ctx.lineTo(bx, by + c);
-        ctx.closePath();
-      }
-
-      makeTechPath(x, y, bw, bh, cut);
-      const fillGrad = ctx.createLinearGradient(x, y, x + bw, y + bh);
-      fillGrad.addColorStop(0, 'rgba(8, 20, 35, 0.9)');
-      fillGrad.addColorStop(0.5, 'rgba(15, 23, 42, 0.75)');
-      fillGrad.addColorStop(1, 'rgba(5, 30, 48, 0.94)');
-      ctx.fillStyle = fillGrad;
-      ctx.fill();
-
-      ctx.strokeStyle = 'rgba(6, 182, 212, 0.8)';
-      ctx.lineWidth = 2.5;
-      ctx.stroke();
-      ctx.restore();
-
-      ctx.save();
-      ctx.strokeStyle = 'rgba(56, 189, 248, 0.2)';
-      ctx.lineWidth = 1;
-      ctx.setLineDash([4, 6]);
-      ctx.beginPath();
-      ctx.moveTo(x + 40, y + bh / 2);
-      ctx.lineTo(x + bw - 40, y + bh / 2);
-      ctx.moveTo(x + bw / 2, y + 40);
-      ctx.lineTo(x + bw / 2, y + bh - 40);
-      ctx.stroke();
-      ctx.setLineDash([]);
-
-      const shouldDrawIcon = iconsEnabled && icon && icon !== 'none';
-      if (shouldDrawIcon) {
-        drawVectorIcon(ctx, icon, w / 2, h / 2 - (blank ? 0 : 25), 44, '#38bdf8');
-      }
-
-      if (!blank) {
-        setCanvasFont(ctx, 'bold', 19, '"JetBrains Mono", monospace');
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillStyle = '#38bdf8';
-        ctx.shadowColor = 'rgba(56, 189, 248, 0.9)';
-        ctx.shadowBlur = 12;
-        ctx.fillText(text || 'TARGET', w / 2, h / 2 + 55);
-      }
-      ctx.restore();
-    }
-
-    function drawAuroraSquare(ctx, w, h, blank, text, icon) {
-      const pad = 14;
-      const x = pad;
-      const y = pad;
-      const bw = w - pad * 2;
-      const bh = h - pad * 2;
-      const radius = 38;
-
-      ctx.save();
-      ctx.shadowColor = 'rgba(168, 85, 247, 0.4)';
-      ctx.shadowBlur = 24;
-
-      ctx.beginPath();
-      ctx.roundRect(x, y, bw, bh, radius);
-      ctx.fillStyle = 'rgba(15, 10, 30, 0.8)';
-      ctx.fill();
-      ctx.restore();
-
-      ctx.save();
-      ctx.beginPath();
-      ctx.roundRect(x, y, bw, bh, radius);
-      ctx.clip();
-
-      const rad1 = ctx.createRadialGradient(x + bw * 0.2, y + bh * 0.2, 10, x + bw * 0.2, y + bh * 0.2, bw * 0.75);
-      rad1.addColorStop(0, 'rgba(168, 85, 247, 0.6)');
-      rad1.addColorStop(0.5, 'rgba(236, 72, 153, 0.25)');
-      rad1.addColorStop(1, 'rgba(0, 0, 0, 0)');
-      ctx.fillStyle = rad1;
-      ctx.fillRect(x, y, bw, bh);
-
-      const rad2 = ctx.createRadialGradient(x + bw * 0.8, y + bh * 0.8, 10, x + bw * 0.8, y + bh * 0.8, bw * 0.7);
-      rad2.addColorStop(0, 'rgba(56, 189, 248, 0.5)');
-      rad2.addColorStop(1, 'rgba(0, 0, 0, 0)');
-      ctx.fillStyle = rad2;
-      ctx.fillRect(x, y, bw, bh);
-
-      const strokeGrad = ctx.createLinearGradient(x, y, x + bw, y + bh);
-      strokeGrad.addColorStop(0, 'rgba(255, 255, 255, 0.85)');
-      strokeGrad.addColorStop(0.5, 'rgba(216, 180, 254, 0.6)');
-      strokeGrad.addColorStop(1, 'rgba(255, 255, 255, 0.3)');
-      ctx.lineWidth = 2.5;
-      ctx.strokeStyle = strokeGrad;
-      ctx.stroke();
-
-      const shouldDrawIcon = iconsEnabled && icon && icon !== 'none';
-      if (shouldDrawIcon) {
-        drawVectorIcon(ctx, icon, w / 2, h / 2 - (blank ? 0 : 25), 44, '#ffffff');
-      }
-
-      if (!blank) {
-        setCanvasFont(ctx, 'bold', 22);
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillStyle = '#ffffff';
-        ctx.shadowColor = 'rgba(216, 180, 254, 0.8)';
-        ctx.shadowBlur = 12;
-        ctx.fillText(text || 'EXPLORE', w / 2, h / 2 + 45);
-      }
-      ctx.restore();
-    }
-
-    function drawObsidianGoldSquare(ctx, w, h, blank, text, icon) {
-      const pad = 16;
-      const x = pad;
-      const y = pad;
-      const bw = w - pad * 2;
-      const bh = h - pad * 2;
-      const radius = 28;
-
-      ctx.save();
-      ctx.shadowColor = 'rgba(245, 158, 11, 0.3)';
-      ctx.shadowBlur = 20;
-
-      ctx.beginPath();
-      ctx.roundRect(x, y, bw, bh, radius);
-      const darkGrad = ctx.createLinearGradient(x, y, x + bw, y + bh);
-      darkGrad.addColorStop(0, 'rgba(28, 25, 23, 0.94)');
-      darkGrad.addColorStop(1, 'rgba(12, 10, 9, 0.98)');
-      ctx.fillStyle = darkGrad;
-      ctx.fill();
-      ctx.restore();
-
-      ctx.save();
-      const goldGrad = ctx.createLinearGradient(x, y, x + bw, y + bh);
-      goldGrad.addColorStop(0, '#fef08a');
-      goldGrad.addColorStop(0.25, '#d97706');
-      goldGrad.addColorStop(0.5, '#fef9c3');
-      goldGrad.addColorStop(0.75, '#b45309');
-      goldGrad.addColorStop(1, '#fbbf24');
-
-      ctx.beginPath();
-      ctx.roundRect(x, y, bw, bh, radius);
-      ctx.lineWidth = 2.5;
-      ctx.strokeStyle = goldGrad;
-      ctx.stroke();
-
-      const inset = 14;
-      ctx.beginPath();
-      ctx.roundRect(x + inset, y + inset, bw - inset * 2, bh - inset * 2, radius - 10);
-      ctx.lineWidth = 1;
-      ctx.strokeStyle = 'rgba(245, 158, 11, 0.4)';
-      ctx.stroke();
-
-      const rOffset = 24;
-      const rivets = [
-        [x + rOffset, y + rOffset],
-        [x + bw - rOffset, y + rOffset],
-        [x + rOffset, y + bh - rOffset],
-        [x + bw - rOffset, y + bh - rOffset]
-      ];
-      rivets.forEach(([rx, ry]) => {
-        ctx.beginPath();
-        ctx.arc(rx, ry, 3.5, 0, Math.PI * 2);
-        ctx.fillStyle = '#fde68a';
-        ctx.shadowColor = '#d97706';
-        ctx.shadowBlur = 6;
-        ctx.fill();
-      });
-
-      const shouldDrawIcon = iconsEnabled && icon && icon !== 'none';
-      if (shouldDrawIcon) {
-        drawVectorIcon(ctx, icon, w / 2, h / 2 - (blank ? 0 : 25), 40, '#fde68a');
-      }
-
-      if (!blank) {
-        setCanvasFont(ctx, '700', 20);
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillStyle = '#fef08a';
-        ctx.shadowColor = 'rgba(217, 119, 6, 0.8)';
-        ctx.shadowBlur = 10;
-        ctx.fillText(text || 'PREMIUM', w / 2, h / 2 + 45);
-      }
-      ctx.restore();
-    }
     const BUTTON_SPECS = [
-      // 1. 3D Game Gold-Rim (Screenshot 1 & Expanded)
-      {
-        id: 'game-ruby-gold',
-        name: 'Game Ruby Gold-Rim Pill',
-        category: 'game-gold',
-        type: 'pill',
-        nativeWidth: 420,
-        nativeHeight: 110,
-        defaultIcon: 'play',
-        description: 'Vibrant ruby red arcade capsule with beveled 3D gold rim and gloss dome.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawGameGoldPill(ctx, w, h, blank, text || 'BUTTON', icon, { top: '#ff3333', mid: '#dd0000', bot: '#880000' });
-        }
-      },
-      {
-        id: 'game-sapphire-gold',
-        name: 'Game Sapphire Gold-Rim Pill',
-        category: 'game-gold',
-        type: 'pill',
-        nativeWidth: 420,
-        nativeHeight: 110,
-        defaultIcon: 'download',
-        description: 'Electric blue sapphire mobile RPG button framed with polished gold.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawGameGoldPill(ctx, w, h, blank, text || 'BUTTON', icon, { top: '#00aaff', mid: '#0077ee', bot: '#0033aa' });
-        }
-      },
-      {
-        id: 'game-emerald-gold',
-        name: 'Game Emerald Gold-Rim Pill',
-        category: 'game-gold',
-        type: 'pill',
-        nativeWidth: 420,
-        nativeHeight: 110,
-        defaultIcon: 'star',
-        description: 'Lush emerald green button with dual-bevel gilded border & mirror sheen.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawGameGoldPill(ctx, w, h, blank, text || 'BUTTON', icon, { top: '#10e74e', mid: '#02aa30', bot: '#015f1b' });
-        }
-      },
-      {
-        id: 'game-purple-gold',
-        name: 'Game Amethyst Gold-Rim Pill',
-        category: 'game-gold',
-        type: 'pill',
-        nativeWidth: 420,
-        nativeHeight: 110,
-        defaultIcon: 'lock',
-        description: 'Royal amethyst purple casual game button with metallic luster.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawGameGoldPill(ctx, w, h, blank, text || 'BUTTON', icon, { top: '#a855f7', mid: '#7e22ce', bot: '#4c1d95' });
-        }
-      },
-      {
-        id: 'game-amber-gold',
-        name: 'Game Amber Sunset Gold Pill',
-        category: 'game-gold',
-        type: 'pill',
-        nativeWidth: 420,
-        nativeHeight: 110,
-        defaultIcon: 'cart',
-        description: 'Sunset warm orange-amber capsule with gleaming brass and gold edge.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawGameGoldPill(ctx, w, h, blank, text || 'BUTTON', icon, { top: '#f97316', mid: '#ea580c', bot: '#9a3412' });
-        }
-      },
+      // 3D Game Gold Pills (Image 1)
+      { id: 'game-ruby', title: 'Ruby Gold Bevel', category: 'game-gold', shape: 'pill', width: 800, height: 240, topColor: '#ff4d4d', midColor: '#e60000', bottomColor: '#990000', darkRimColor: '#4d0000', defaultLabel: 'BUTTON', icon: 'home', renderer: render3DGamePill },
+      { id: 'game-sapphire', title: 'Sapphire Gold Bevel', category: 'game-gold', shape: 'pill', width: 800, height: 240, topColor: '#38bdf8', midColor: '#0284c7', bottomColor: '#0369a1', darkRimColor: '#082f49', defaultLabel: 'BUTTON', icon: 'fullscreen', renderer: render3DGamePill },
+      { id: 'game-emerald', title: 'Emerald Gold Bevel', category: 'game-gold', shape: 'pill', width: 800, height: 240, topColor: '#4ade80', midColor: '#16a34a', bottomColor: '#15803d', darkRimColor: '#052e16', defaultLabel: 'BUTTON', icon: 'book', renderer: render3DGamePill },
+      { id: 'game-amethyst', title: 'Amethyst Gold Bevel', category: 'game-gold', shape: 'pill', width: 800, height: 240, topColor: '#c084fc', midColor: '#9333ea', bottomColor: '#7e22ce', darkRimColor: '#3b0764', defaultLabel: 'BUTTON', icon: 'lock', renderer: render3DGamePill },
+      { id: 'game-amber', title: 'Amber Sunset Bevel', category: 'game-gold', shape: 'pill', width: 800, height: 240, topColor: '#fbbf24', midColor: '#f59e0b', bottomColor: '#d97706', darkRimColor: '#78350f', defaultLabel: 'BUTTON', icon: 'star', renderer: render3DGamePill },
+      { id: 'game-magenta', title: 'Magenta Gold Bevel', category: 'game-gold', shape: 'pill', width: 800, height: 240, topColor: '#f472b6', midColor: '#db2777', bottomColor: '#be185d', darkRimColor: '#500724', defaultLabel: 'BUTTON', icon: 'heart', renderer: render3DGamePill },
 
-      // 2. Circle Buttons (Media, Home, Fullscreen, Gold Medallions)
-      {
-        id: 'circle-home-indigo',
-        name: 'Indigo Home Circle Button',
-        category: 'circle-btn',
-        type: 'circle',
-        nativeWidth: 260,
-        nativeHeight: 260,
-        defaultIcon: 'home',
-        description: 'High-contrast floating circular home button with glossy perimeter rim.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawModernCircleButton(ctx, w, h, blank, text || 'HOME', icon, { top: '#6366f1', bot: '#4338ca', glow: 'rgba(99, 102, 241, 0.45)' });
-        }
-      },
-      {
-        id: 'circle-fullscreen-cyan',
-        name: 'Cyan Full Screen Circle Orb',
-        category: 'circle-btn',
-        type: 'circle',
-        nativeWidth: 260,
-        nativeHeight: 260,
-        defaultIcon: 'fullscreen',
-        description: 'Neon cyan circular button with corner targeting glyph for immersive display toggling.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawModernCircleButton(ctx, w, h, blank, text || 'EXPAND', icon, { top: '#06b6d4', bot: '#0e7490', glow: 'rgba(6, 182, 212, 0.5)' });
-        }
-      },
-      {
-        id: 'circle-media-play',
-        name: 'Electric Media Play Circle',
-        category: 'circle-btn',
-        type: 'circle',
-        nativeWidth: 260,
-        nativeHeight: 260,
-        defaultIcon: 'play',
-        description: 'Spherical glass play button with outer specular highlight and neon aura.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawModernCircleButton(ctx, w, h, blank, text || 'PLAY', icon, { top: '#38bdf8', bot: '#0284c7', glow: 'rgba(56, 189, 248, 0.5)' });
-        }
-      },
-      {
-        id: 'circle-media-pause',
-        name: 'Amber Media Pause Circle',
-        category: 'circle-btn',
-        type: 'circle',
-        nativeWidth: 260,
-        nativeHeight: 260,
-        defaultIcon: 'pause',
-        description: 'Glowing golden pause circle orb with dual vertical bars.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawModernCircleButton(ctx, w, h, blank, text || 'PAUSE', icon, { top: '#fbbf24', bot: '#d97706', glow: 'rgba(251, 191, 36, 0.45)' });
-        }
-      },
-      {
-        id: 'circle-media-stop',
-        name: 'Crimson Media Stop Circle',
-        category: 'circle-btn',
-        type: 'circle',
-        nativeWidth: 260,
-        nativeHeight: 260,
-        defaultIcon: 'stop',
-        description: 'Bold red media stop circle with beveled boundary and rounded stop block.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawModernCircleButton(ctx, w, h, blank, text || 'STOP', icon, { top: '#f43f5e', bot: '#be123c', glow: 'rgba(244, 63, 94, 0.45)' });
-        }
-      },
-      {
-        id: 'circle-gold-home',
-        name: 'Game 3D Gold-Rim Home Medallion',
-        category: 'circle-btn',
-        type: 'circle',
-        nativeWidth: 260,
-        nativeHeight: 260,
-        defaultIcon: 'home',
-        description: 'Precious metallic coin medallion with 3D carved gold edge and home glyph.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawGameGoldCircle(ctx, w, h, blank, text || 'HOME', icon, { top: '#f59e0b', mid: '#b45309', bot: '#78350f' });
-        }
-      },
-      {
-        id: 'circle-gold-fullscreen',
-        name: 'Game 3D Gold Fullscreen Orb',
-        category: 'circle-btn',
-        type: 'circle',
-        nativeWidth: 260,
-        nativeHeight: 260,
-        defaultIcon: 'fullscreen',
-        description: 'Game UI gold-rimmed circular button with full screen reticle.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawGameGoldCircle(ctx, w, h, blank, text || 'MAX', icon, { top: '#06b6d4', mid: '#0284c7', bot: '#0369a1' });
-        }
-      },
-      // 3. Square Buttons & Tiles (Screenshot style, Media, HUD)
-      {
-        id: 'square-home-violet',
-        name: 'Modern Home Square App Tile',
-        category: 'square-tile',
-        type: 'square',
-        nativeWidth: 360,
-        nativeHeight: 360,
-        defaultIcon: 'home',
-        description: 'Sleek rounded square app icon tile with beveled specular gloss.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawModernSquareButton(ctx, w, h, blank, text || 'HOME', icon, { top: '#8b5cf6', bot: '#5b21b6', glow: 'rgba(139, 92, 246, 0.45)' });
-        }
-      },
-      {
-        id: 'square-fullscreen-cyan',
-        name: 'Cyan Full Screen Square Tile',
-        category: 'square-tile',
-        type: 'square',
-        nativeWidth: 360,
-        nativeHeight: 360,
-        defaultIcon: 'fullscreen',
-        description: 'High-visibility square full-screen button with deep neon cyan aura.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawModernSquareButton(ctx, w, h, blank, text || 'FULLSCREEN', icon, { top: '#06b6d4', bot: '#0891b2', glow: 'rgba(6, 182, 212, 0.45)' });
-        }
-      },
-      {
-        id: 'square-play-emerald',
-        name: 'Emerald Media Play Square',
-        category: 'square-tile',
-        type: 'square',
-        nativeWidth: 360,
-        nativeHeight: 360,
-        defaultIcon: 'play',
-        description: 'Punchy green tactile square button for media playback and action triggers.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawModernSquareButton(ctx, w, h, blank, text || 'PLAY', icon, { top: '#10b981', bot: '#047857', glow: 'rgba(16, 185, 129, 0.45)' });
-        }
-      },
-      {
-        id: 'square-gold-inventory',
-        name: 'Game 3D Gold Inventory Square',
-        category: 'square-tile',
-        type: 'square',
-        nativeWidth: 360,
-        nativeHeight: 360,
-        defaultIcon: 'resources',
-        description: 'Isometric RPG square inventory slot tile with rich gold beveled filigree.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawGameGoldSquare(ctx, w, h, blank, text || 'ITEMS', icon, { top: '#f43f5e', mid: '#be123c', bot: '#881337' });
-        }
-      },
-      {
-        id: 'square-gold-books',
-        name: 'Game 3D Gold Spells Book Tile',
-        category: 'square-tile',
-        type: 'square',
-        nativeWidth: 360,
-        nativeHeight: 360,
-        defaultIcon: 'book',
-        description: 'Sapphire spellbook and resource square tile framed with gleaming brass.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawGameGoldSquare(ctx, w, h, blank, text || 'SPELLS', icon, { top: '#3b82f6', mid: '#1d4ed8', bot: '#1e3a8a' });
-        }
-      },
-      {
-        id: 'cyber-hud-square',
-        name: 'Cyberpunk HUD Square Card',
-        category: 'square-tile',
-        type: 'square',
-        nativeWidth: 400,
-        nativeHeight: 400,
-        defaultIcon: 'fullscreen',
-        description: 'Tactical chamfered cyber tile with targeting reticles, micro-grid and neon rim.',
-        render: drawCyberHudSquare
-      },
-      {
-        id: 'aurora-glass-square',
-        name: 'Aurora Nebula Square Card',
-        category: 'square-tile',
-        type: 'square',
-        nativeWidth: 400,
-        nativeHeight: 400,
-        defaultIcon: 'star',
-        description: 'Deep cosmic radial gradient with glossy border and ambient neon corners.',
-        render: drawAuroraSquare
-      },
-      {
-        id: 'obsidian-gold-square',
-        name: 'Obsidian & Gold Luxury Tile',
-        category: 'square-tile',
-        type: 'square',
-        nativeWidth: 400,
-        nativeHeight: 400,
-        defaultIcon: 'cart',
-        description: 'Matte dark obsidian square with dual gold filigree lines and corner rivets.',
-        render: drawObsidianGoldSquare
-      },
+      // Modern Badge Click Buttons (Image 2)
+      { id: 'click-amber', title: 'Amber Click Badge', category: 'click-badge', shape: 'pill', width: 800, height: 240, mainColor: '#f59e0b', defaultLabel: 'CLICK HERE', icon: 'cursor', renderer: renderClickBadgePill },
+      { id: 'click-crimson', title: 'Crimson Click Badge', category: 'click-badge', shape: 'pill', width: 800, height: 240, mainColor: '#dc2626', defaultLabel: 'CLICK HERE', icon: 'cursor', renderer: renderClickBadgePill },
+      { id: 'click-indigo', title: 'Indigo Click Badge', category: 'click-badge', shape: 'pill', width: 800, height: 240, mainColor: '#4f46e5', defaultLabel: 'CLICK HERE', icon: 'cursor', renderer: renderClickBadgePill },
+      { id: 'click-emerald', title: 'Emerald Click Badge', category: 'click-badge', shape: 'pill', width: 800, height: 240, mainColor: '#059669', defaultLabel: 'CLICK HERE', icon: 'cursor', renderer: renderClickBadgePill },
 
-      // 4. Click Badge Pills (Screenshot 2)
-      {
-        id: 'badge-amber-click',
-        name: 'Amber Sun Badge Clicker',
-        category: 'click-badge',
-        type: 'pill',
-        nativeWidth: 420,
-        nativeHeight: 110,
-        defaultIcon: 'cursor',
-        description: 'Vibrant golden amber pill with inset circular white badge and action pointer.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawModernBadgePill(ctx, w, h, blank, text || 'CLICK HERE', icon, { top: '#fbbf24', bot: '#f59e0b', shadow: 'rgba(245, 158, 11, 0.4)', iconColor: '#f59e0b' });
-        }
-      },
-      {
-        id: 'badge-crimson-click',
-        name: 'Crimson Pulse Badge Clicker',
-        category: 'click-badge',
-        type: 'pill',
-        nativeWidth: 420,
-        nativeHeight: 110,
-        defaultIcon: 'cursor',
-        description: 'Bold red pill with bright circular target badge and deep drop shadow.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawModernBadgePill(ctx, w, h, blank, text || 'CLICK HERE', icon, { top: '#ef4444', bot: '#b91c1c', shadow: 'rgba(239, 68, 68, 0.45)', iconColor: '#b91c1c' });
-        }
-      },
+      // Web Action Pills with White Border & Chevron (Image 3)
+      { id: 'action-read', title: 'Rose Read More', category: 'action-pill', shape: 'pill', width: 800, height: 240, topColor: '#f43f5e', bottomColor: '#be123c', defaultLabel: 'READ MORE', icon: 'globe', renderer: renderWebActionPill },
+      { id: 'action-email', title: 'Coral E-Mail Pill', category: 'action-pill', shape: 'pill', width: 800, height: 240, topColor: '#ef4444', bottomColor: '#b91c1c', defaultLabel: 'E-MAIL', icon: 'email', renderer: renderWebActionPill },
+      { id: 'action-search', title: 'Lime Search Pill', category: 'action-pill', shape: 'pill', width: 800, height: 240, topColor: '#22c55e', bottomColor: '#15803d', defaultLabel: 'SEARCH', icon: 'search', renderer: renderWebActionPill },
+      { id: 'action-download', title: 'Cyan Download Pill', category: 'action-pill', shape: 'pill', width: 800, height: 240, topColor: '#06b6d4', bottomColor: '#0e7490', defaultLabel: 'DOWNLOAD', icon: 'download', renderer: renderWebActionPill },
+      { id: 'action-share', title: 'Mint Share Pill', category: 'action-pill', shape: 'pill', width: 800, height: 240, topColor: '#10b981', bottomColor: '#047857', defaultLabel: 'SHARE', icon: 'share', renderer: renderWebActionPill },
+      { id: 'action-add', title: 'Orange Add Pill', category: 'action-pill', shape: 'pill', width: 800, height: 240, topColor: '#f97316', bottomColor: '#c2410c', defaultLabel: 'ADD', icon: 'add', renderer: renderWebActionPill },
+      { id: 'action-buy', title: 'Scarlet Buy Now', category: 'action-pill', shape: 'pill', width: 800, height: 240, topColor: '#dc2626', bottomColor: '#991b1b', defaultLabel: 'BUY NOW', icon: 'cart', renderer: renderWebActionPill },
+      { id: 'action-upload', title: 'Sun Upload Pill', category: 'action-pill', shape: 'pill', width: 800, height: 240, topColor: '#eab308', bottomColor: '#a16207', defaultLabel: 'UPLOAD', icon: 'upload', renderer: renderWebActionPill },
+      { id: 'action-delete', title: 'Maroon Delete Pill', category: 'action-pill', shape: 'pill', width: 800, height: 240, topColor: '#881337', bottomColor: '#4c0519', defaultLabel: 'DELETE', icon: 'delete', renderer: renderWebActionPill },
 
-      // 5. Web Action Pills with White Border & Chevron (Screenshot 3)
-      {
-        id: 'action-pink-read',
-        name: 'Pink Read More Action Pill',
-        category: 'action-pill',
-        type: 'pill',
-        nativeWidth: 430,
-        nativeHeight: 100,
-        defaultIcon: 'globe',
-        description: 'Magenta capsule with white contour border, web icon and right chevron.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawActionChevronPill(ctx, w, h, blank, text || 'READ MORE', icon, { top: '#ec4899', bot: '#be185d', defaultIcon: 'globe' });
-        }
-      },
-      {
-        id: 'action-teal-download',
-        name: 'Cyan Teal Download Pill',
-        category: 'action-pill',
-        type: 'pill',
-        nativeWidth: 430,
-        nativeHeight: 100,
-        defaultIcon: 'download',
-        description: 'Crisp aquatic gradient button with download arrow and navigation arrow.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawActionChevronPill(ctx, w, h, blank, text || 'DOWNLOAD', icon, { top: '#38bdf8', bot: '#0284c7', defaultIcon: 'download' });
-        }
-      },
-      {
-        id: 'action-green-share',
-        name: 'Emerald Green Share Pill',
-        category: 'action-pill',
-        type: 'pill',
-        nativeWidth: 430,
-        nativeHeight: 100,
-        defaultIcon: 'share',
-        description: 'Vibrant clean green button with white frame, share node and chevron.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawActionChevronPill(ctx, w, h, blank, text || 'SHARE', icon, { top: '#22c55e', bot: '#15803d', defaultIcon: 'share' });
-        }
-      },
-      {
-        id: 'action-orange-upload',
-        name: 'Sunset Orange Upload Pill',
-        category: 'action-pill',
-        type: 'pill',
-        nativeWidth: 430,
-        nativeHeight: 100,
-        defaultIcon: 'upload',
-        description: 'Warm citrus yellow-orange action bar with upload glyph and white border.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawActionChevronPill(ctx, w, h, blank, text || 'UPLOAD', icon, { top: '#f59e0b', bot: '#d97706', defaultIcon: 'upload' });
-        }
-      },
-      {
-        id: 'action-crimson-buy',
-        name: 'Crimson Shopping Bag Pill',
-        category: 'action-pill',
-        type: 'pill',
-        nativeWidth: 430,
-        nativeHeight: 100,
-        defaultIcon: 'cart',
-        description: 'E-commerce conversion button with shopping bag vector and clean chevron.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawActionChevronPill(ctx, w, h, blank, text || 'BUY NOW', icon, { top: '#f43f5e', bot: '#be123c', defaultIcon: 'cart' });
-        }
-      },
+      // Circle Buttons & Media Orbs
+      { id: 'circle-cyan-home', title: 'Cyan Home Circle Orb', category: 'circle-btn', shape: 'circle', width: 440, height: 440, topColor: '#00d2ff', bottomColor: '#0088ff', borderColor: '#e0f2fe', icon: 'home', renderer: renderCircleButton },
+      { id: 'circle-fullscreen', title: 'Cyan Fullscreen Orb', category: 'circle-btn', shape: 'circle', width: 440, height: 440, topColor: '#06b6d4', bottomColor: '#0891b2', borderColor: '#cffafe', icon: 'fullscreen', renderer: renderCircleButton },
+      { id: 'circle-media-play', title: 'Electric Play Circle', category: 'circle-btn', shape: 'circle', width: 440, height: 440, topColor: '#3b82f6', bottomColor: '#1d4ed8', borderColor: '#dbeafe', icon: 'play', renderer: renderCircleButton },
+      { id: 'circle-media-pause', title: 'Amber Pause Circle', category: 'circle-btn', shape: 'circle', width: 440, height: 440, topColor: '#f59e0b', bottomColor: '#d97706', borderColor: '#fef3c7', icon: 'pause', renderer: renderCircleButton },
+      { id: 'circle-media-stop', title: 'Crimson Stop Circle', category: 'circle-btn', shape: 'circle', width: 440, height: 440, topColor: '#ef4444', bottomColor: '#b91c1c', borderColor: '#fee2e2', icon: 'stop', renderer: renderCircleButton },
+      { id: 'circle-game-gold', title: 'Game 3D Gold Coin', category: 'circle-btn', shape: 'circle', width: 440, height: 440, style: 'game-gold', topColor: '#ef4444', bottomColor: '#991b1b', icon: 'home', renderer: renderCircleButton },
 
-      // 6. Frosted Glass Capsule
-      {
-        id: 'frosted-glass-capsule',
-        name: 'Frosted Glass Minimal Capsule',
-        category: 'blank-pill',
-        type: 'pill',
-        nativeWidth: 420,
-        nativeHeight: 110,
-        defaultIcon: 'search',
-        description: 'Ultra-clean translucent frosted glass with specular reflection and neon glow.',
-        render: drawGlassCapsule
-      }
+      // Square Buttons & Tiles
+      { id: 'square-cobalt-home', title: 'Cobalt Home Tile', category: 'square-tile', shape: 'square', width: 440, height: 440, topColor: '#2563eb', bottomColor: '#1d4ed8', borderColor: '#bfdbfe', icon: 'home', defaultLabel: 'HOME', renderer: renderSquareButton },
+      { id: 'square-fullscreen-tile', title: 'Fullscreen Square Tile', category: 'square-tile', shape: 'square', width: 440, height: 440, topColor: '#0284c7', bottomColor: '#0369a1', borderColor: '#bae6fd', icon: 'fullscreen', defaultLabel: 'FULLSCREEN', renderer: renderSquareButton },
+      { id: 'square-media-play', title: 'Emerald Play Tile', category: 'square-tile', shape: 'square', width: 440, height: 440, topColor: '#10b981', bottomColor: '#047857', borderColor: '#d1fae5', icon: 'play', defaultLabel: 'PLAY', renderer: renderSquareButton },
+      { id: 'square-media-pause', title: 'Sunset Pause Tile', category: 'square-tile', shape: 'square', width: 440, height: 440, topColor: '#f97316', bottomColor: '#c2410c', borderColor: '#ffedd5', icon: 'pause', defaultLabel: 'PAUSE', renderer: renderSquareButton },
+      { id: 'square-game-tile', title: 'Game 3D Gold Inventory', category: 'square-tile', shape: 'square', width: 440, height: 440, style: 'game-gold', topColor: '#dc2626', bottomColor: '#7f1d1d', icon: 'resources', defaultLabel: 'ITEMS', renderer: renderSquareButton },
+      { id: 'square-book-tile', title: 'Sapphire Guidebook Tile', category: 'square-tile', shape: 'square', width: 440, height: 440, style: 'game-gold', topColor: '#0284c7', bottomColor: '#082f49', icon: 'book', defaultLabel: 'GUIDE', renderer: renderSquareButton },
+
+      // Frosted Glass Pills
+      { id: 'frosted-glass', title: 'Minimalist Frosted Glass', category: 'blank-pill', shape: 'pill', width: 800, height: 240, defaultLabel: 'EXPLORE', icon: 'globe', renderer: renderFrostedPill }
     ];
-    function generateSingleButtonPng(spec) {
-      const scale = 2; // 2x High-DPI Retina resolution
-      const canvas = document.createElement('canvas');
-      canvas.width = spec.nativeWidth * scale;
-      canvas.height = spec.nativeHeight * scale;
-      const ctx = canvas.getContext('2d');
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.scale(scale, scale);
-
-      // Icon priority: global selector unless it's default, or spec default
-      const iconToUse = (currentIcon !== undefined && currentIcon !== null) ? currentIcon : spec.defaultIcon;
-      const textToUse = isBlankOnly ? '' : (customLabel || 'BUTTON');
-
-      spec.render(ctx, spec.nativeWidth, spec.nativeHeight, isBlankOnly, textToUse, iconToUse);
-
-      const dataUrl = canvas.toDataURL('image/png');
-      return {
-        ...spec,
-        dataUrl,
-        scaleWidth: canvas.width,
-        scaleHeight: canvas.height,
-        fileName: `${spec.id}-${isBlankOnly ? 'blank' : 'labeled'}-${iconToUse || 'no-icon'}.png`
-      };
-    }
-
-    function updateCategoryCounts() {
-      const counts = {
-        all: BUTTON_SPECS.length,
-        'game-gold': 0,
-        'circle-btn': 0,
-        'square-tile': 0,
-        'media-nav': 0,
-        'click-badge': 0,
-        'action-pill': 0,
-        'blank-pill': 0
-      };
-
-      BUTTON_SPECS.forEach(b => {
-        if (counts[b.category] !== undefined) {
-          counts[b.category]++;
-        }
-      });
-
-      const setEl = (id, val) => {
-        const el = document.getElementById(id);
-        if (el) el.textContent = val;
-      };
-
-      setEl('countAll', counts.all);
-      setEl('countGame', counts['game-gold']);
-      setEl('countCircle', counts['circle-btn']);
-      setEl('countSquare', counts['square-tile']);
-      setEl('countMedia', counts['media-nav']);
-      setEl('countBadge', counts['click-badge']);
-      setEl('countAction', counts['action-pill']);
-      setEl('countBlank', counts['blank-pill']);
-    }
-
-    function renderButtonCards() {
+    function generateAllButtons() {
       const grid = document.getElementById('buttonsGrid');
       grid.innerHTML = '';
+      generatedButtons = [];
 
-      generatedButtons = BUTTON_SPECS.map(spec => generateSingleButtonPng(spec));
+      BUTTON_SPECS.forEach(spec => {
+        // Offscreen canvas for rendering
+        const canvas = document.createElement('canvas');
+        canvas.width = spec.width;
+        canvas.height = spec.height;
 
-      const filtered = generatedButtons.filter(btn => {
-        if (currentCategory === 'all') return true;
-        return btn.category === currentCategory;
-      });
+        // Render graphics
+        spec.renderer(canvas, spec);
 
-      filtered.forEach(btn => {
+        // Convert to 32-bit alpha transparent PNG Data URL
+        const dataUrl = canvas.toDataURL('image/png');
+        generatedButtons.push({
+          id: spec.id,
+          title: spec.title,
+          category: spec.category,
+          dataUrl: dataUrl,
+          width: spec.width,
+          height: spec.height
+        });
+
+        // DOM Card Construction
         const card = document.createElement('div');
-        card.className = 'group flex flex-col bg-slate-900/70 border border-slate-800 rounded-3xl p-5 hover:border-amber-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/5';
+        card.className = `button-card group bg-slate-900/90 border border-slate-800/90 rounded-3xl p-5 hover:border-slate-700 transition-all shadow-xl flex flex-col justify-between ${currentCategory !== 'all' && spec.category !== currentCategory ? 'hidden' : ''}`;
+        card.setAttribute('data-category', spec.category);
 
-        const isSquare = btn.type === 'square';
-        const isCircle = btn.type === 'circle';
-        const stageHeight = isSquare ? 'h-64' : (isCircle ? 'h-52' : 'h-40');
+        const isSquareOrCircle = spec.shape === 'circle' || spec.shape === 'square';
 
         card.innerHTML = `
-          <div class="flex items-center justify-between mb-3">
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wide uppercase bg-slate-800 text-amber-400 border border-slate-700/60 font-mono">
-              ${btn.category.replace('-', ' ')}
-            </span>
-            <span class="text-[11px] font-mono text-slate-500">
-              ${btn.scaleWidth}×${btn.scaleHeight}px
-            </span>
-          </div>
+          <div>
+            <div class="flex items-center justify-between mb-3 text-xs">
+              <span class="font-bold text-slate-300 group-hover:text-amber-400 transition-colors">${spec.title}</span>
+              <span class="font-mono text-[10px] text-slate-500 bg-slate-800/80 px-2 py-0.5 rounded-md border border-slate-700/50">${spec.width}×${spec.height}</span>
+            </div>
 
-          <div class="preview-stage w-full ${stageHeight} rounded-2xl ${activeGridClass} border border-slate-800/80 flex items-center justify-center p-4 cursor-pointer relative overflow-hidden group/stage" onclick="openLightbox('${btn.id}')">
-            <img src="${btn.dataUrl}" alt="${btn.name}" class="max-w-full max-h-full object-contain filter drop-shadow-md group-hover/stage:scale-105 transition-transform duration-200 select-none" />
-            <div class="absolute inset-0 bg-amber-900/10 opacity-0 group-hover/stage:opacity-100 transition-opacity flex items-center justify-center">
-              <span class="px-3 py-1.5 rounded-xl bg-slate-950/85 backdrop-blur text-white text-xs font-semibold flex items-center gap-1.5 shadow-xl border border-slate-700">
-                <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-amber-400"></i> Zoom Preview
-              </span>
+            <!-- Transparent Canvas Preview Stage -->
+            <div class="relative w-full ${isSquareOrCircle ? 'h-52' : 'h-36'} rounded-2xl ${activeGridClass} border border-slate-800/80 flex items-center justify-center p-4 overflow-hidden cursor-pointer group-hover:border-slate-700 transition-all"
+                 onclick="openLightbox('${spec.id}')">
+              <img src="${dataUrl}" alt="${spec.title}" class="max-w-full max-h-full object-contain filter drop-shadow-lg transform group-hover:scale-105 transition-transform duration-200" />
+              <div class="absolute inset-0 bg-indigo-500/0 group-hover:bg-indigo-500/5 transition-colors pointer-events-none rounded-2xl flex items-center justify-center">
+                <span class="opacity-0 group-hover:opacity-100 bg-slate-950/80 text-slate-200 text-[10px] font-semibold px-2.5 py-1 rounded-lg backdrop-blur border border-slate-700 transition-opacity flex items-center gap-1 shadow-lg">
+                  <i data-lucide="maximize-2" class="w-3 h-3"></i> Inspect
+                </span>
+              </div>
             </div>
           </div>
 
-          <div class="mt-4 flex flex-col flex-grow justify-between">
-            <div>
-              <h3 class="text-sm font-bold text-white group-hover:text-amber-300 transition-colors">
-                ${btn.name}
-              </h3>
-              <p class="text-xs text-slate-400 mt-1 leading-relaxed line-clamp-2">
-                ${btn.description}
-              </p>
-            </div>
-
-            <div class="mt-4 pt-3 border-t border-slate-800/80">
-              <a href="${btn.dataUrl}" download="${btn.fileName}" class="w-full flex items-center justify-center space-x-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 via-rose-600 to-indigo-600 hover:from-amber-400 hover:to-indigo-500 active:scale-98 text-white text-xs font-bold shadow-md shadow-rose-600/20 transition-all">
-                <i data-lucide="download" class="w-4 h-4"></i>
-                <span>Download PNG</span>
-              </a>
-            </div>
+          <!-- Direct Download Action Button -->
+          <div class="mt-4 pt-3 border-t border-slate-800/80">
+            <a href="${dataUrl}" download="${spec.id}-transparent.png"
+               class="w-full py-2.5 px-3 rounded-xl bg-slate-800/90 hover:bg-gradient-to-r hover:from-amber-500 hover:to-rose-600 text-slate-200 hover:text-white text-xs font-bold transition-all flex items-center justify-center gap-2 border border-slate-700/80 shadow-md active:scale-95">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i>
+              <span>Download PNG</span>
+            </a>
           </div>
         `;
+
         grid.appendChild(card);
       });
 
+      updateCategoryCounters();
       lucide.createIcons();
-    }
-    function setGridMode(gridClass, buttonEl) {
-      activeGridClass = gridClass;
-      document.querySelectorAll('.preview-stage').forEach(el => {
-        el.className = el.className.replace(/bg-checker-dark|bg-checker-light|bg-checker-amber|bg-slate-950/g, '');
-        el.classList.add(gridClass);
-      });
-
-      ['bgDarkBtn', 'bgLightBtn', 'bgAmberBtn', 'bgSolidBtn'].forEach(id => {
-        const btn = document.getElementById(id);
-        if (btn) {
-          btn.classList.remove('bg-indigo-600', 'text-white');
-          btn.classList.add('text-slate-400');
-        }
-      });
-      if (buttonEl) {
-        buttonEl.classList.add('bg-indigo-600', 'text-white');
-        buttonEl.classList.remove('text-slate-400');
-      }
-
-      const modalStage = document.getElementById('modalStage');
-      if (modalStage) {
-        modalStage.className = modalStage.className.replace(/bg-checker-dark|bg-checker-light|bg-checker-amber|bg-slate-950/g, '');
-        modalStage.classList.add(gridClass);
-      }
-    }
-
-    function setLabelMode(showText) {
-      isBlankOnly = !showText;
-      const btnText = document.getElementById('btnModeText');
-      const btnBlank = document.getElementById('btnModeBlank');
-      const label = document.getElementById('modeStatusLabel');
-      const textWrapper = document.getElementById('textInputWrapper');
-      const textScaleWrapper = document.getElementById('textScaleWrapper');
-
-      if (showText) {
-        btnText.className = 'flex-1 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white transition-all flex items-center justify-center gap-1';
-        btnBlank.className = 'flex-1 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all flex items-center justify-center gap-1';
-        label.textContent = 'with text';
-        label.className = 'text-amber-400 font-bold lowercase text-[10px] bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20';
-        textWrapper.style.opacity = '1';
-        textWrapper.style.pointerEvents = 'auto';
-        if (textScaleWrapper) {
-          textScaleWrapper.style.opacity = '1';
-          textScaleWrapper.style.pointerEvents = 'auto';
-        }
-      } else {
-        btnBlank.className = 'flex-1 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white transition-all flex items-center justify-center gap-1';
-        btnText.className = 'flex-1 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all flex items-center justify-center gap-1';
-        label.textContent = 'pure blank';
-        label.className = 'text-indigo-400 font-bold lowercase text-[10px] bg-indigo-500/10 px-2 py-0.5 rounded-full border border-indigo-500/20';
-        textWrapper.style.opacity = '0.4';
-        textWrapper.style.pointerEvents = 'none';
-        if (textScaleWrapper) {
-          textScaleWrapper.style.opacity = '0.4';
-          textScaleWrapper.style.pointerEvents = 'none';
-        }
-      }
-
-      renderButtonCards();
-      showToast('Mode Updated', isBlankOnly ? 'Now generating clean blank buttons.' : 'Showing text labels.');
-    }
-
-    function updateIconScale(val) {
-      iconScale = parseFloat(val);
-      const badge = document.getElementById('iconScaleBadge');
-      if (badge) badge.textContent = `${Math.round(iconScale * 100)}%`;
-      debouncedRegenerate();
-    }
-
-    function updateTextScale(val) {
-      textScale = parseFloat(val);
-      const badge = document.getElementById('textScaleBadge');
-      if (badge) badge.textContent = `${Math.round(textScale * 100)}%`;
-      debouncedRegenerate();
-    }
-
-    function changeActiveIcon(newIcon) {
-      currentIcon = newIcon;
-      renderButtonCards();
-      const label = newIcon === 'none' ? 'BLANK (NO ICON)' : newIcon.toUpperCase();
-      showToast('Icon Updated', `Active icon set to: ${label}`);
-    }
-
-    function toggleIconsEnabled() {
-      iconsEnabled = !iconsEnabled;
-      const btn = document.getElementById('toggleIconsBtn');
-      const text = document.getElementById('iconsEnabledText');
-
-      if (iconsEnabled) {
-        btn.className = 'w-full py-2 rounded-xl text-xs font-semibold bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/30 transition flex items-center justify-center gap-1.5';
-        text.textContent = 'Enabled';
-        showToast('Icons Enabled', 'Icons will be rendered on buttons.');
-      } else {
-        btn.className = 'w-full py-2 rounded-xl text-xs font-semibold bg-slate-800 border border-slate-700 text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1.5';
-        text.textContent = 'Disabled';
-        showToast('Icons Disabled', 'All button icons hidden.');
-      }
-      renderButtonCards();
     }
 
     let debounceTimer;
     function debouncedRegenerate() {
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(() => {
-        const input = document.getElementById('customLabelInput');
-        customLabel = (input.value || 'BUTTON').toUpperCase();
-        renderButtonCards();
-      }, 200);
+        customLabel = document.getElementById('customLabelInput').value.trim() || 'BUTTON';
+        generateAllButtons();
+      }, 150);
     }
 
-    function filterCategory(cat, btnElement) {
-      currentCategory = cat;
-      document.querySelectorAll('.category-filter').forEach(btn => {
-        btn.classList.remove('bg-slate-800', 'text-white');
-        btn.classList.add('bg-slate-900/80', 'text-slate-400');
+    function setLabelMode(withText) {
+      isBlankOnly = !withText;
+      const btnText = document.getElementById('btnModeText');
+      const btnBlank = document.getElementById('btnModeBlank');
+      const textWrap = document.getElementById('textInputWrapper');
+      const textScaleWrap = document.getElementById('textScaleWrapper');
+      const statusLabel = document.getElementById('modeStatusLabel');
+
+      if (withText) {
+        btnText.className = 'flex-1 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white transition-all flex items-center justify-center gap-1';
+        btnBlank.className = 'flex-1 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all flex items-center justify-center gap-1';
+        textWrap.style.opacity = '1';
+        textWrap.style.pointerEvents = 'auto';
+        if (textScaleWrap) {
+          textScaleWrap.style.opacity = '1';
+          textScaleWrap.style.pointerEvents = 'auto';
+        }
+        statusLabel.textContent = 'with text';
+        statusLabel.className = 'text-amber-400 font-bold lowercase text-[10px] bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20';
+      } else {
+        btnBlank.className = 'flex-1 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white transition-all flex items-center justify-center gap-1';
+        btnText.className = 'flex-1 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all flex items-center justify-center gap-1';
+        textWrap.style.opacity = '0.4';
+        textWrap.style.pointerEvents = 'none';
+        if (textScaleWrap) {
+          textScaleWrap.style.opacity = '0.4';
+          textScaleWrap.style.pointerEvents = 'none';
+        }
+        statusLabel.textContent = 'pure blank';
+        statusLabel.className = 'text-slate-400 font-bold lowercase text-[10px] bg-slate-800 px-2 py-0.5 rounded-full border border-slate-700';
+      }
+      generateAllButtons();
+    }
+
+    function changeActiveIcon(val) {
+      currentIcon = val;
+      generateAllButtons();
+    }
+
+    function toggleIconsEnabled() {
+      iconsEnabled = !iconsEnabled;
+      const btn = document.getElementById('toggleIconsBtn');
+      const txt = document.getElementById('iconsEnabledText');
+
+      if (iconsEnabled) {
+        btn.className = 'w-full py-1.5 rounded-xl text-xs font-semibold bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/30 transition flex items-center justify-center gap-1 h-[34px]';
+        txt.textContent = 'On';
+      } else {
+        btn.className = 'w-full py-1.5 rounded-xl text-xs font-semibold bg-slate-800 border border-slate-700 text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1 h-[34px]';
+        txt.textContent = 'Off';
+      }
+      generateAllButtons();
+    }
+
+    function updateIconScale(val) {
+      iconScale = parseFloat(val);
+      document.getElementById('iconScaleBadge').textContent = `${Math.round(iconScale * 100)}%`;
+      generateAllButtons();
+    }
+
+    function updateTextScale(val) {
+      textScale = parseFloat(val);
+      document.getElementById('textScaleBadge').textContent = `${Math.round(textScale * 100)}%`;
+      generateAllButtons();
+    }
+
+    function setGridMode(bgClass, btnElement) {
+      activeGridClass = bgClass;
+      ['bgDarkBtn', 'bgLightBtn', 'bgAmberBtn', 'bgSolidBtn'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.className = 'px-2.5 py-1 rounded-lg hover:text-white font-medium transition-all text-slate-400';
+        }
       });
-      btnElement.classList.add('bg-slate-800', 'text-white');
-      btnElement.classList.remove('bg-slate-900/80', 'text-slate-400');
-      renderButtonCards();
+      btnElement.className = 'px-2.5 py-1 rounded-lg bg-indigo-600 text-white font-medium transition-all';
+
+      // Update all stage backgrounds
+      document.querySelectorAll('.button-card .relative').forEach(stage => {
+        stage.className = stage.className.replace(/bg-checker-dark|bg-checker-light|bg-checker-amber|bg-slate-950/g, bgClass);
+      });
+
+      const modalStage = document.getElementById('modalStage');
+      if (modalStage) {
+        modalStage.className = modalStage.className.replace(/bg-checker-dark|bg-checker-light|bg-checker-amber|bg-slate-950/g, bgClass);
+      }
     }
 
-    let activeLightboxButton = null;
+    function filterCategory(cat, tabElement) {
+      currentCategory = cat;
+      document.querySelectorAll('.category-filter').forEach(t => {
+        t.className = 'category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800';
+      });
+      tabElement.className = 'category-filter active px-2.5 py-1 rounded-lg bg-slate-800 text-white font-medium text-xs transition-all border border-slate-700 shadow-sm';
 
-    function openLightbox(btnId) {
-      const btn = generatedButtons.find(b => b.id === btnId);
-      if (!btn) return;
-      activeLightboxButton = btn;
+      document.querySelectorAll('.button-card').forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (cat === 'all' || cardCat === cat) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
 
-      document.getElementById('modalTitle').textContent = btn.name;
-      document.getElementById('modalDims').textContent = `${btn.scaleWidth} × ${btn.scaleHeight} px (High-DPI 2x Retina PNG)`;
-      document.getElementById('modalImg').src = btn.dataUrl;
+    function updateCategoryCounters() {
+      document.getElementById('countAll').textContent = BUTTON_SPECS.length;
+      document.getElementById('countGame').textContent = BUTTON_SPECS.filter(s => s.category === 'game-gold').length;
+      document.getElementById('countCircle').textContent = BUTTON_SPECS.filter(s => s.category === 'circle-btn').length;
+      document.getElementById('countSquare').textContent = BUTTON_SPECS.filter(s => s.category === 'square-tile').length;
+      document.getElementById('countBadge').textContent = BUTTON_SPECS.filter(s => s.category === 'click-badge').length;
+      document.getElementById('countAction').textContent = BUTTON_SPECS.filter(s => s.category === 'action-pill').length;
+      document.getElementById('countBlank').textContent = BUTTON_SPECS.filter(s => s.category === 'blank-pill').length;
+    }
 
-      const downloadBtn = document.getElementById('modalDownloadBtn');
-      downloadBtn.href = btn.dataUrl;
-      downloadBtn.download = btn.fileName;
+    function openLightbox(buttonId) {
+      const item = generatedButtons.find(b => b.id === buttonId);
+      if (!item) return;
+
+      document.getElementById('modalTitle').textContent = item.title;
+      document.getElementById('modalDims').textContent = `${item.width} × ${item.height} px (32-bit Transparent PNG)`;
+      document.getElementById('modalImg').src = item.dataUrl;
+
+      const dlBtn = document.getElementById('modalDownloadBtn');
+      dlBtn.href = item.dataUrl;
+      dlBtn.download = `${item.id}-transparent.png`;
 
       const modal = document.getElementById('lightboxModal');
       modal.classList.remove('hidden');
@@ -2117,28 +1692,6 @@
       modal.classList.remove('flex');
     }
 
-    document.getElementById('lightboxModal').addEventListener('click', function(e) {
-      if (e.target === this) {
-        closeLightbox();
-      }
-    });
-
-    function downloadAllButtons() {
-      if (!generatedButtons || generatedButtons.length === 0) return;
-      showToast('Batch Download Started', `Exporting ${generatedButtons.length} transparent PNG files...`);
-
-      generatedButtons.forEach((btn, index) => {
-        setTimeout(() => {
-          const a = document.createElement('a');
-          a.href = btn.dataUrl;
-          a.download = btn.fileName;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-        }, index * 180);
-      });
-    }
-
     function showToast(title, message) {
       const toast = document.getElementById('toast');
       document.getElementById('toastTitle').textContent = title;
@@ -2147,16 +1700,32 @@
       toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
       toast.classList.add('translate-y-0', 'opacity-100');
 
-      clearTimeout(window.toastTimer);
-      window.toastTimer = setTimeout(() => {
-        toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+      setTimeout(() => {
         toast.classList.remove('translate-y-0', 'opacity-100');
-      }, 3000);
+        toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+      }, 2500);
     }
 
+    function downloadAllButtons() {
+      let delay = 0;
+      generatedButtons.forEach((btn, index) => {
+        setTimeout(() => {
+          const a = document.createElement('a');
+          a.href = btn.dataUrl;
+          a.download = `${btn.id}-transparent.png`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }, delay);
+        delay += 200;
+      });
+      showToast('Batch Export Started', `Downloading all ${generatedButtons.length} buttons as PNGs`);
+    }
+
+    // Initialize application on load
     window.onload = function() {
-      updateCategoryCounts();
-      renderButtonCards();
+      lucide.createIcons();
+      generateAllButtons();
     };
   </script>
 </body>
