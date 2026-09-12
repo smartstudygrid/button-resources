@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Transparent PNG Button Studio</title>
+  <title>Transparent PNG Button Studio Pro</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
@@ -17,7 +17,7 @@
       font-family: 'JetBrains Mono', monospace;
     }
 
-    /* Checkerboard patterns for transparent PNG visualization */
+    /* Checkerboard patterns for verifying alpha transparency */
     .bg-checker-dark {
       background-color: #0b0f19;
       background-image: linear-gradient(45deg, #172033 25%, transparent 25%),
@@ -48,7 +48,7 @@
       background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
     }
 
-    /* Custom smooth scrollbar */
+    /* Custom smooth scrollbars */
     ::-webkit-scrollbar {
       width: 7px;
       height: 7px;
@@ -79,13 +79,14 @@
           <h1 class="text-lg sm:text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent truncate">
             PNG Button Studio Pro
           </h1>
-          <p class="text-xs text-slate-400 hidden sm:block">Game Gold-Rim, Action Badges, Media Icons & High-DPI Alpha PNGs</p>
+          <p class="text-xs font-semibold text-amber-400 flex items-center gap-1.5 mt-0.5">
+            <span class="text-slate-400 font-normal">Created by</span> Amanullah Khan
+          </p>
         </div>
       </div>
 
-      <!-- Quick Toolbar Controls -->
+      <!-- Quick Backdrop & Download Controls -->
       <div class="flex items-center space-x-2 sm:space-x-3 shrink-0">
-        <!-- Checkerboard mode switch -->
         <div class="flex items-center bg-slate-900 border border-slate-800 rounded-xl p-1 text-xs text-slate-400">
           <span class="px-2 py-1 hidden lg:inline font-medium text-slate-500">Backdrop:</span>
           <button id="bgDarkBtn" class="px-2.5 py-1 rounded-lg bg-indigo-600 text-white font-medium transition-all" onclick="setGridMode('bg-checker-dark', this)">Dark</button>
@@ -94,7 +95,6 @@
           <button id="bgSolidBtn" class="px-2.5 py-1 rounded-lg hover:text-white font-medium transition-all" onclick="setGridMode('bg-slate-950', this)">Solid</button>
         </div>
 
-        <!-- Download all -->
         <button onclick="downloadAllButtons()" class="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-amber-500 via-rose-600 to-indigo-600 hover:from-amber-400 hover:to-indigo-500 text-white rounded-xl text-xs sm:text-sm font-bold shadow-lg shadow-rose-600/25 active:scale-95 transition-all">
           <i data-lucide="archive" class="w-4 h-4"></i>
           <span class="hidden sm:inline">Download All PNGs</span>
@@ -103,146 +103,183 @@
       </div>
     </div>
   </header>
-
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-    <div class="mb-8 p-6 sm:p-7 rounded-3xl bg-gradient-to-b from-slate-900/90 via-slate-900/60 to-slate-950 border border-slate-800/80 shadow-2xl relative overflow-hidden">
-      <div class="absolute -right-16 -top-16 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute -left-16 -bottom-16 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-      <div class="relative z-10 flex flex-col xl:flex-row xl:items-center justify-between gap-6">
-        <div class="max-w-xl">
-          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-3">
+    <!-- Hero Banner (Scrolls naturally) -->
+    <div class="mb-5 p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-slate-900/90 via-slate-900/60 to-slate-950 border border-slate-800/80 shadow-lg relative overflow-hidden">
+      <div class="absolute -right-16 -top-16 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-16 -bottom-16 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-2">
             <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-            <span>3D Game Gloss, Inset Badges, Icons & Media Controls</span>
+            <span>3D Gold Bevel, Media Controls, Circles & Full Squares</span>
           </div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
             Transparent PNG Studio
           </h2>
-          <p class="text-sm text-slate-400 mt-2 leading-relaxed">
-            All buttons are generated dynamically as real <strong class="text-slate-200">alpha-transparent PNG images</strong> with 2x High-DPI retina sharpness. Customize labels, swap icons, or switch to pure blank mode to overlay your own designs in Figma or Unity.
+          <p class="text-xs sm:text-sm text-slate-400 mt-1 leading-relaxed max-w-2xl">
+            All buttons are rendered as true <strong class="text-slate-200">alpha-transparent PNGs</strong> at 2x Retina sharpness. Adjust the sticky controls below to modify text, icons, and sizing in real time as you browse.
           </p>
         </div>
-
-        <!-- Live Customization Dock -->
-        <div class="bg-slate-950/80 p-4 sm:p-5 rounded-2xl border border-slate-800 shadow-xl flex flex-col space-y-4 w-full xl:w-[480px]">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <!-- Mode switch: Labeled vs Blank -->
-            <div>
-              <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5 flex items-center justify-between">
-                <span>Text Mode</span>
-                <span id="modeStatusLabel" class="text-amber-400 font-bold lowercase text-[10px] bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">with text</span>
-              </label>
-              <div class="flex items-center bg-slate-900 border border-slate-800 rounded-xl p-1">
-                <button id="btnModeText" onclick="setLabelMode(true)" class="flex-1 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white transition-all flex items-center justify-center gap-1">
-                  <i data-lucide="type" class="w-3.5 h-3.5"></i> With Text
-                </button>
-                <button id="btnModeBlank" onclick="setLabelMode(false)" class="flex-1 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all flex items-center justify-center gap-1">
-                  <i data-lucide="ban" class="w-3.5 h-3.5"></i> Pure Blank
-                </button>
-              </div>
-            </div>
-
-            <!-- Custom Label Input -->
-            <div id="textInputWrapper">
-              <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">
-                Custom Label:
-              </label>
-              <input type="text" id="customLabelInput" value="BUTTON" maxlength="16" placeholder="Custom text..."
-                class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono font-bold text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 uppercase tracking-wider transition-all"
-                oninput="debouncedRegenerate()" />
-            </div>
-          </div>
-
-          <!-- Icon Selector & Icon Toggle -->
-          <div class="pt-3 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div class="sm:col-span-2">
-              <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5 flex items-center justify-between">
-                <span class="flex items-center gap-1">
-                  <i data-lucide="icons" class="w-3 h-3 text-amber-400"></i> Active Icon
-                </span>
-                <span class="text-[10px] text-slate-500">applies to icon buttons</span>
-              </label>
-              <div class="relative">
-                <select id="iconSelect" onchange="changeActiveIcon(this.value)" class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-3 py-2 text-xs font-medium focus:outline-none focus:border-indigo-500 cursor-pointer appearance-none">
-                  <optgroup label="Media Controls">
-                    <option value="play" selected>▶ Play</option>
-                    <option value="pause">⏸ Pause</option>
-                    <option value="forward">⏩ Fast Forward</option>
-                    <option value="backward">⏪ Rewind</option>
-                    <option value="stop">⏹ Stop</option>
-                    <option value="volume">🔊 Volume</option>
-                  </optgroup>
-                  <optgroup label="Navigation & Actions">
-                    <option value="cursor">👆 Mouse Cursor (Badge)</option>
-                    <option value="home">🏠 Home</option>
-                    <option value="back">⬅ Back Arrow</option>
-                    <option value="next">➡ Forward Arrow</option>
-                    <option value="download">📥 Download</option>
-                    <option value="upload">📤 Upload</option>
-                    <option value="search">🔍 Search</option>
-                    <option value="email">✉ E-Mail (@)</option>
-                    <option value="globe">🌐 Globe</option>
-                    <option value="cart">🛍 Buy Now (Shopping Bag)</option>
-                    <option value="share">🔗 Share</option>
-                    <option value="add">➕ Add / Plus</option>
-                    <option value="delete">➖ Delete / Minus</option>
-                    <option value="heart">❤ Heart / Like</option>
-                    <option value="star">⭐ Star / Favorite</option>
-                  </optgroup>
-                </select>
-                <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 absolute right-3 top-2.5 pointer-events-none"></i>
-              </div>
-            </div>
-
-            <div>
-              <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">
-                Icons On/Off
-              </label>
-              <button id="toggleIconsBtn" onclick="toggleIconsEnabled()" class="w-full py-2 rounded-xl text-xs font-semibold bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/30 transition flex items-center justify-center gap-1.5">
-                <i data-lucide="check" class="w-3.5 h-3.5"></i>
-                <span id="iconsEnabledText">Enabled</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-6 pt-5 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-4">
-        <div class="flex flex-wrap gap-2" id="filterTabs">
-          <button onclick="filterCategory('all', this)" class="category-filter active px-3.5 py-1.5 rounded-xl bg-slate-800 text-white font-medium text-xs transition-all border border-slate-700 shadow-sm">
-            All Buttons (<span id="countAll">0</span>)
-          </button>
-          <button onclick="filterCategory('game-gold', this)" class="category-filter px-3.5 py-1.5 rounded-xl bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
-            3D Game Gold-Rim (<span id="countGame">0</span>)
-          </button>
-          <button onclick="filterCategory('click-badge', this)" class="category-filter px-3.5 py-1.5 rounded-xl bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
-            Click Badges (<span id="countBadge">0</span>)
-          </button>
-          <button onclick="filterCategory('action-pill', this)" class="category-filter px-3.5 py-1.5 rounded-xl bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
-            Web Action Pills (<span id="countAction">0</span>)
-          </button>
-          <button onclick="filterCategory('media-nav', this)" class="category-filter px-3.5 py-1.5 rounded-xl bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
-            Media & Navigation (<span id="countMedia">0</span>)
-          </button>
-          <button onclick="filterCategory('square-tile', this)" class="category-filter px-3.5 py-1.5 rounded-xl bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
-            Full Squares & Cards (<span id="countSquare">0</span>)
-          </button>
-          <button onclick="filterCategory('blank-pill', this)" class="category-filter px-3.5 py-1.5 rounded-xl bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
-            Frosted Glass & Pills (<span id="countBlank">0</span>)
-          </button>
-        </div>
-        <div class="text-xs text-slate-400 flex items-center gap-1.5 font-mono">
-          <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+        <div class="text-xs text-slate-400 flex items-center gap-2 font-mono shrink-0 bg-slate-950/60 px-3 py-2 rounded-xl border border-slate-800">
+          <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
           <span>Pure Alpha 32-bit PNG</span>
         </div>
       </div>
     </div>
 
+    <!-- FROZEN / STICKY CONTROLS DOCK (Sticks directly beneath header when scrolling) -->
+    <div class="sticky top-20 z-40 mb-8 p-4 sm:p-5 rounded-2xl bg-slate-950/95 backdrop-blur-xl border border-slate-800/90 shadow-2xl shadow-black/60">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5 items-end">
+        <!-- 1. Text Mode Toggle -->
+        <div>
+          <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+            <span>Text Mode</span>
+            <span id="modeStatusLabel" class="text-amber-400 font-bold lowercase text-[10px] bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">with text</span>
+          </label>
+          <div class="flex items-center bg-slate-900 border border-slate-800 rounded-xl p-1">
+            <button id="btnModeText" onclick="setLabelMode(true)" class="flex-1 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white transition-all flex items-center justify-center gap-1">
+              <i data-lucide="type" class="w-3.5 h-3.5"></i> Text
+            </button>
+            <button id="btnModeBlank" onclick="setLabelMode(false)" class="flex-1 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all flex items-center justify-center gap-1">
+              <i data-lucide="ban" class="w-3.5 h-3.5"></i> Blank
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. Custom Label Input -->
+        <div id="textInputWrapper">
+          <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">
+            Custom Label:
+          </label>
+          <input type="text" id="customLabelInput" value="BUTTON" maxlength="16" placeholder="Custom text..."
+            class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono font-bold text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 uppercase tracking-wider transition-all h-[34px]"
+            oninput="debouncedRegenerate()" />
+        </div>
+
+        <!-- 3. Active Icon Selector & Master Toggle -->
+        <div class="grid grid-cols-3 gap-2">
+          <div class="col-span-2">
+            <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+              <span class="flex items-center gap-1">
+                <i data-lucide="icons" class="w-3 h-3 text-amber-400"></i> Icon
+              </span>
+            </label>
+            <div class="relative">
+              <select id="iconSelect" onchange="changeActiveIcon(this.value)" class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-2.5 py-1.5 text-xs font-medium focus:outline-none focus:border-indigo-500 cursor-pointer appearance-none h-[34px]">
+                <option value="none">🚫 Blank (No Icon)</option>
+                <optgroup label="Navigation & App">
+                  <option value="home">🏠 Home</option>
+                  <option value="fullscreen">⛶ Full Screen</option>
+                  <option value="book">📖 Book / Guide</option>
+                  <option value="resources">📚 Resources / Layers</option>
+                  <option value="lock">🔒 Lock / Security</option>
+                  <option value="pen">✏ Pen / Edit</option>
+                  <option value="close">✕ Close / Dismiss</option>
+                  <option value="settings">⚙ Settings</option>
+                  <option value="cursor">👆 Mouse Cursor (Pointer)</option>
+                  <option value="back">⬅ Back Arrow</option>
+                  <option value="next">➡ Forward Arrow</option>
+                </optgroup>
+                <optgroup label="Media Controls">
+                  <option value="play" selected>▶ Play</option>
+                  <option value="pause">⏸ Pause</option>
+                  <option value="stop">⏹ Stop</option>
+                  <option value="forward">⏩ Fast Forward</option>
+                  <option value="backward">⏪ Rewind</option>
+                  <option value="volume">🔊 Volume</option>
+                </optgroup>
+                <optgroup label="Actions & Utility">
+                  <option value="download">📥 Download</option>
+                  <option value="upload">📤 Upload</option>
+                  <option value="search">🔍 Search</option>
+                  <option value="email">✉ E-Mail (@)</option>
+                  <option value="globe">🌐 Globe</option>
+                  <option value="cart">🛍 Buy Now (Cart)</option>
+                  <option value="share">🔗 Share</option>
+                  <option value="add">➕ Add / Plus</option>
+                  <option value="delete">➖ Delete / Minus</option>
+                  <option value="heart">❤ Heart / Like</option>
+                  <option value="star">⭐ Star / Favorite</option>
+                </optgroup>
+              </select>
+              <i data-lucide="chevron-down" class="w-3 h-3 text-slate-400 absolute right-2.5 top-2.5 pointer-events-none"></i>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">
+              Glyphs
+            </label>
+            <button id="toggleIconsBtn" onclick="toggleIconsEnabled()" class="w-full py-1.5 rounded-xl text-xs font-semibold bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/30 transition flex items-center justify-center gap-1 h-[34px]">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i>
+              <span id="iconsEnabledText" class="hidden sm:inline">On</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4. Resizing Controls: Icon Size & Text Size Sliders -->
+        <div class="grid grid-cols-2 gap-3 bg-slate-900/90 border border-slate-800/90 rounded-xl p-2 h-[58px]">
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <label class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1">
+                <i data-lucide="scaling" class="w-3 h-3 text-indigo-400"></i> Icon
+              </label>
+              <span id="iconScaleBadge" class="text-[9px] font-mono font-bold text-indigo-400 bg-indigo-500/10 px-1 py-0.2 rounded border border-indigo-500/20">100%</span>
+            </div>
+            <input type="range" id="iconScaleSlider" min="0.4" max="2.0" step="0.05" value="1.0"
+              oninput="updateIconScale(this.value)"
+              class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500" />
+          </div>
+
+          <div id="textScaleWrapper">
+            <div class="flex items-center justify-between mb-1">
+              <label class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1">
+                <i data-lucide="type" class="w-3 h-3 text-amber-400"></i> Text
+              </label>
+              <span id="textScaleBadge" class="text-[9px] font-mono font-bold text-amber-400 bg-amber-500/10 px-1 py-0.2 rounded border border-amber-500/20">100%</span>
+            </div>
+            <input type="range" id="textScaleSlider" min="0.5" max="1.8" step="0.05" value="1.0"
+              oninput="updateTextScale(this.value)"
+              class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Filter Tabs (Inside the frozen panel for easy filtering while scrolling) -->
+      <div class="mt-3.5 pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2">
+        <div class="flex flex-wrap gap-1.5" id="filterTabs">
+          <button onclick="filterCategory('all', this)" class="category-filter active px-2.5 py-1 rounded-lg bg-slate-800 text-white font-medium text-xs transition-all border border-slate-700 shadow-sm">
+            All (<span id="countAll">0</span>)
+          </button>
+          <button onclick="filterCategory('game-gold', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
+            3D Game Gold (<span id="countGame">0</span>)
+          </button>
+          <button onclick="filterCategory('circle-btn', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
+            Circle Buttons (<span id="countCircle">0</span>)
+          </button>
+          <button onclick="filterCategory('square-tile', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
+            Square Buttons (<span id="countSquare">0</span>)
+          </button>
+          <button onclick="filterCategory('click-badge', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
+            Click Badges (<span id="countBadge">0</span>)
+          </button>
+          <button onclick="filterCategory('action-pill', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
+            Action Pills (<span id="countAction">0</span>)
+          </button>
+          <button onclick="filterCategory('blank-pill', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
+            Frosted Glass (<span id="countBlank">0</span>)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Container -->
     <div id="buttonsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      <!-- Dynamically filled with rendered buttons -->
+      <!-- Dynamically filled with high-dpi rendered buttons -->
     </div>
   </main>
-
+  <!-- Inspection Lightbox Modal -->
   <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex-col items-center justify-center p-4 transition-all">
     <div class="relative max-w-3xl w-full bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl flex flex-col items-center">
       <button onclick="closeLightbox()" class="absolute top-4 right-4 p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition">
@@ -262,11 +299,8 @@
         <div class="text-xs text-slate-400">
           Format: <span class="text-slate-200 font-mono">image/png</span> (Alpha Preserved)
         </div>
-        <div class="flex space-x-3">
-          <button onclick="copyPngDataUrl()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition">
-            <i data-lucide="copy" class="w-4 h-4"></i> Copy Data URL
-          </button>
-          <a id="modalDownloadBtn" href="#" download="button.png" class="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-lg shadow-indigo-600/30 transition">
+        <div>
+          <a id="modalDownloadBtn" href="#" download="button.png" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-rose-600 to-indigo-600 hover:from-amber-400 hover:to-indigo-500 text-white text-xs font-bold flex items-center gap-2 shadow-lg shadow-indigo-600/30 active:scale-95 transition-all">
             <i data-lucide="download" class="w-4 h-4"></i> Download PNG
           </a>
         </div>
@@ -274,6 +308,7 @@
     </div>
   </div>
 
+  <!-- Toast Alert -->
   <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 flex items-center space-x-3 px-4 py-3 bg-slate-900/95 border border-amber-500/40 rounded-2xl shadow-2xl backdrop-blur-lg">
     <div id="toastIcon" class="w-7 h-7 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center">
       <i data-lucide="check" class="w-4 h-4"></i>
@@ -283,43 +318,60 @@
       <p id="toastMessage" class="text-[11px] text-slate-400">Action completed successfully.</p>
     </div>
   </div>
-
   <script>
-    // Studio State
+    // State management
     let activeGridClass = 'bg-checker-dark';
     let currentCategory = 'all';
-    let isBlankOnly = false; // default show text & icons
+    let isBlankOnly = false;
     let customLabel = 'BUTTON';
     let currentIcon = 'play';
     let iconsEnabled = true;
+    let iconScale = 1.0;
+    let textScale = 1.0;
     let generatedButtons = [];
 
+    function setCanvasFont(ctx, weight, basePx, fontFam = '"Plus Jakarta Sans", sans-serif') {
+      const scaled = Math.max(7, Math.round(basePx * (textScale || 1.0)));
+      ctx.font = `${weight} ${scaled}px ${fontFam}`;
+    }
+
+    // Vector icon renderer using direct canvas paths
     function drawVectorIcon(ctx, iconType, cx, cy, size, color) {
+      if (!iconType || iconType === 'none') return;
+
+      const effectiveSize = size * (iconScale || 1.0);
       ctx.save();
       ctx.fillStyle = color;
       ctx.strokeStyle = color;
-      ctx.lineWidth = size * 0.12;
+      ctx.lineWidth = effectiveSize * 0.12;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
 
-      const s = size / 24; // scaled from 24x24 standard viewBox
+      const s = effectiveSize / 24; // standard 24x24 viewBox scale
       ctx.translate(cx - 12 * s, cy - 12 * s);
 
       switch (iconType) {
         case 'play':
           ctx.beginPath();
-          ctx.moveTo(7 * s, 4 * s);
+          ctx.moveTo(8 * s, 4 * s);
           ctx.lineTo(20 * s, 12 * s);
-          ctx.lineTo(7 * s, 20 * s);
+          ctx.lineTo(8 * s, 20 * s);
           ctx.closePath();
           ctx.fill();
           break;
 
         case 'pause':
-          ctx.fillRect(6 * s, 4 * s, 4 * s, 16 * s);
-          ctx.fillRect(14 * s, 4 * s, 4 * s, 16 * s);
+          ctx.beginPath();
+          ctx.roundRect(6 * s, 4 * s, 4 * s, 16 * s, 1.5 * s);
+          ctx.roundRect(14 * s, 4 * s, 4 * s, 16 * s, 1.5 * s);
+          ctx.fill();
           break;
 
+        case 'stop':
+          ctx.beginPath();
+          ctx.roundRect(5 * s, 5 * s, 14 * s, 14 * s, 2.5 * s);
+          ctx.fill();
+          break;
         case 'forward':
           ctx.beginPath();
           ctx.moveTo(4 * s, 5 * s);
@@ -350,12 +402,6 @@
           ctx.fill();
           break;
 
-        case 'stop':
-          ctx.beginPath();
-          ctx.roundRect(5 * s, 5 * s, 14 * s, 14 * s, 3 * s);
-          ctx.fill();
-          break;
-
         case 'volume':
           ctx.beginPath();
           ctx.moveTo(4 * s, 9 * s);
@@ -371,8 +417,124 @@
           ctx.stroke();
           break;
 
+        case 'home':
+          ctx.beginPath();
+          ctx.moveTo(3 * s, 10.5 * s);
+          ctx.lineTo(12 * s, 3.5 * s);
+          ctx.lineTo(21 * s, 10.5 * s);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.roundRect(6 * s, 10.5 * s, 12 * s, 10.5 * s, [0, 0, 2 * s, 2 * s]);
+          ctx.stroke();
+          break;
+        case 'fullscreen':
+          // 4-corner targeting brackets
+          ctx.beginPath();
+          // Top-left
+          ctx.moveTo(4 * s, 9 * s);
+          ctx.lineTo(4 * s, 4 * s);
+          ctx.lineTo(9 * s, 4 * s);
+          // Top-right
+          ctx.moveTo(15 * s, 4 * s);
+          ctx.lineTo(20 * s, 4 * s);
+          ctx.lineTo(20 * s, 9 * s);
+          // Bottom-left
+          ctx.moveTo(4 * s, 15 * s);
+          ctx.lineTo(4 * s, 20 * s);
+          ctx.lineTo(9 * s, 20 * s);
+          // Bottom-right
+          ctx.moveTo(15 * s, 20 * s);
+          ctx.lineTo(20 * s, 20 * s);
+          ctx.lineTo(20 * s, 15 * s);
+          ctx.stroke();
+          break;
+
+        case 'book':
+          ctx.beginPath();
+          ctx.moveTo(4 * s, 19.5 * s);
+          ctx.bezierCurveTo(7 * s, 18 * s, 10 * s, 18 * s, 12 * s, 20 * s);
+          ctx.bezierCurveTo(14 * s, 18 * s, 17 * s, 18 * s, 20 * s, 19.5 * s);
+          ctx.lineTo(20 * s, 6.5 * s);
+          ctx.bezierCurveTo(17 * s, 5 * s, 14 * s, 5 * s, 12 * s, 7 * s);
+          ctx.bezierCurveTo(10 * s, 5 * s, 7 * s, 5 * s, 4 * s, 6.5 * s);
+          ctx.closePath();
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(12 * s, 7 * s);
+          ctx.lineTo(12 * s, 20 * s);
+          ctx.stroke();
+          break;
+
+        case 'resources':
+          // Stacked 3D layers
+          ctx.beginPath();
+          ctx.moveTo(12 * s, 3 * s);
+          ctx.lineTo(21 * s, 7.5 * s);
+          ctx.lineTo(12 * s, 12 * s);
+          ctx.lineTo(3 * s, 7.5 * s);
+          ctx.closePath();
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(3 * s, 12 * s);
+          ctx.lineTo(12 * s, 16.5 * s);
+          ctx.lineTo(21 * s, 12 * s);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(3 * s, 16.5 * s);
+          ctx.lineTo(12 * s, 21 * s);
+          ctx.lineTo(21 * s, 16.5 * s);
+          ctx.stroke();
+          break;
+
+        case 'lock':
+          ctx.beginPath();
+          ctx.roundRect(5 * s, 10 * s, 14 * s, 11 * s, 2.5 * s);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(12 * s, 10 * s, 4.5 * s, Math.PI, 0, false);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(12 * s, 15 * s, 1.8 * s, 0, Math.PI * 2);
+          ctx.fill();
+          break;
+
+        case 'pen':
+          ctx.beginPath();
+          ctx.moveTo(18 * s, 3.5 * s);
+          ctx.lineTo(20.5 * s, 6 * s);
+          ctx.lineTo(8 * s, 18.5 * s);
+          ctx.lineTo(4 * s, 20 * s);
+          ctx.lineTo(5.5 * s, 16 * s);
+          ctx.closePath();
+          ctx.stroke();
+          break;
+        case 'close':
+          ctx.beginPath();
+          ctx.moveTo(6 * s, 6 * s);
+          ctx.lineTo(18 * s, 18 * s);
+          ctx.moveTo(18 * s, 6 * s);
+          ctx.lineTo(6 * s, 18 * s);
+          ctx.stroke();
+          break;
+
+        case 'settings':
+          ctx.beginPath();
+          ctx.arc(12 * s, 12 * s, 4 * s, 0, Math.PI * 2);
+          ctx.stroke();
+          for (let i = 0; i < 8; i++) {
+            const a = (i * Math.PI) / 4;
+            const x1 = 12 * s + Math.cos(a) * 6 * s;
+            const y1 = 12 * s + Math.sin(a) * 6 * s;
+            const x2 = 12 * s + Math.cos(a) * 9 * s;
+            const y2 = 12 * s + Math.sin(a) * 9 * s;
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+          }
+          break;
+
         case 'cursor':
-          // Mouse cursor arrow from screenshot 2
           ctx.beginPath();
           ctx.moveTo(6 * s, 4 * s);
           ctx.lineTo(18 * s, 12 * s);
@@ -383,17 +545,6 @@
           ctx.lineTo(6 * s, 17 * s);
           ctx.closePath();
           ctx.fill();
-          break;
-
-        case 'home':
-          ctx.beginPath();
-          ctx.moveTo(3 * s, 10 * s);
-          ctx.lineTo(12 * s, 3 * s);
-          ctx.lineTo(21 * s, 10 * s);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.roundRect(6 * s, 10 * s, 12 * s, 11 * s, [0, 0, 2 * s, 2 * s]);
-          ctx.stroke();
           break;
 
         case 'back':
@@ -531,10 +682,10 @@
         case 'star':
           ctx.beginPath();
           for (let i = 0; i < 5; i++) {
-            const angle = (i * 4 * Math.PI) / 5 - Math.PI / 2;
+            const a = (i * 4 * Math.PI) / 5 - Math.PI / 2;
             const r = 8 * s;
-            const px = 12 * s + Math.cos(angle) * r;
-            const py = 12 * s + Math.sin(angle) * r;
+            const px = 12 * s + Math.cos(a) * r;
+            const py = 12 * s + Math.sin(a) * r;
             if (i === 0) ctx.moveTo(px, py);
             else ctx.lineTo(px, py);
           }
@@ -549,7 +700,6 @@
       }
       ctx.restore();
     }
-
     function drawGameGoldPill(ctx, w, h, blank, text, icon, colors) {
       const pad = 12;
       const x = pad;
@@ -558,20 +708,18 @@
       const bh = h - pad * 2;
       const radius = bh / 2;
 
-      // Soft drop shadow
       ctx.save();
       ctx.shadowColor = 'rgba(0, 0, 0, 0.45)';
       ctx.shadowBlur = 14;
       ctx.shadowOffsetY = 6;
 
-      // 1. Dark outer gold bevel
       ctx.beginPath();
       ctx.roundRect(x, y, bw, bh, radius);
       ctx.fillStyle = '#684511';
       ctx.fill();
       ctx.restore();
 
-      // 2. Rich 3D Gold Metallic Outer Rim
+      // Gold metallic gradient rim
       ctx.save();
       const goldGrad = ctx.createLinearGradient(x, y, x, y + bh);
       goldGrad.addColorStop(0, '#fff4b8');
@@ -585,13 +733,13 @@
       ctx.fillStyle = goldGrad;
       ctx.fill();
 
-      // 3. Inner Dark Groove for gold rim depth
+      // Inner bevel dark groove
       ctx.beginPath();
       ctx.roundRect(x + 6, y + 6, bw - 12, bh - 12, radius - 6);
       ctx.fillStyle = '#523405';
       ctx.fill();
 
-      // 4. Main Colorful Pill Cushion
+      // Colorful pill cushion
       const innerX = x + 7.5;
       const innerY = y + 7.5;
       const innerW = bw - 15;
@@ -608,7 +756,7 @@
       ctx.fillStyle = bodyGrad;
       ctx.fill();
 
-      // 5. Specular Gloss Highlight (Top Half Bubble Glaze)
+      // Specular gloss top bubble
       ctx.beginPath();
       const glossH = innerH * 0.48;
       ctx.roundRect(innerX + 4, innerY + 2, innerW - 8, glossH, [innerR, innerR, 8, 8]);
@@ -619,47 +767,189 @@
       ctx.fillStyle = glossGrad;
       ctx.fill();
 
-      // Bottom reflection rim
-      ctx.beginPath();
-      ctx.roundRect(innerX + 8, innerY + innerH - 7, innerW - 16, 5, [2, 2, innerR, innerR]);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.22)';
-      ctx.fill();
-
-      // 6. Bold White Game Typography & Icon
+      // Typography & icon
+      const shouldDrawIcon = iconsEnabled && icon && icon !== 'none';
       if (!blank) {
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.font = '900 22px "Plus Jakarta Sans", sans-serif';
-
-        // Dark text stroke & drop shadow for readability
+        setCanvasFont(ctx, '900', 22);
         ctx.shadowColor = 'rgba(0, 0, 0, 0.75)';
         ctx.shadowBlur = 4;
         ctx.shadowOffsetY = 2;
 
-        const hasIcon = iconsEnabled && icon;
-        if (hasIcon) {
+        if (shouldDrawIcon) {
           const textW = ctx.measureText(text).width;
-          const iconSize = 22;
+          const iconSize = 22 * (iconScale || 1.0);
           const gap = 10;
           const totalW = textW + iconSize + gap;
           const startX = w / 2 - totalW / 2;
 
-          drawVectorIcon(ctx, icon, startX + iconSize / 2, h / 2 + 1, iconSize, '#ffffff');
-          
+          drawVectorIcon(ctx, icon, startX + iconSize / 2, h / 2 + 1, 22, '#ffffff');
           ctx.fillStyle = '#ffffff';
           ctx.fillText(text, startX + iconSize + gap + textW / 2, h / 2 + 1);
         } else {
           ctx.fillStyle = '#ffffff';
           ctx.fillText(text, w / 2, h / 2 + 1);
         }
-      } else if (iconsEnabled && icon) {
-        // Pure Blank with centered icon
+      } else if (shouldDrawIcon) {
         drawVectorIcon(ctx, icon, w / 2, h / 2, 28, '#ffffff');
       }
 
       ctx.restore();
     }
+    function drawGameGoldCircle(ctx, w, h, blank, text, icon, colors) {
+      const cx = w / 2;
+      const cy = h / 2;
+      const radius = (Math.min(w, h) - 24) / 2;
 
+      ctx.save();
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.45)';
+      ctx.shadowBlur = 14;
+      ctx.shadowOffsetY = 6;
+
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.fillStyle = '#684511';
+      ctx.fill();
+      ctx.restore();
+
+      // Outer metallic gold rim
+      ctx.save();
+      const goldGrad = ctx.createLinearGradient(cx - radius, cy - radius, cx + radius, cy + radius);
+      goldGrad.addColorStop(0, '#fff4b8');
+      goldGrad.addColorStop(0.2, '#eec550');
+      goldGrad.addColorStop(0.5, '#c88f1d');
+      goldGrad.addColorStop(0.8, '#eec550');
+      goldGrad.addColorStop(1, '#814c0a');
+
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius - 1.5, 0, Math.PI * 2);
+      ctx.fillStyle = goldGrad;
+      ctx.fill();
+
+      // Inner groove
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius - 6, 0, Math.PI * 2);
+      ctx.fillStyle = '#523405';
+      ctx.fill();
+
+      // Colorful inner orb
+      const innerR = radius - 8;
+      const bodyGrad = ctx.createRadialGradient(cx - innerR * 0.3, cy - innerR * 0.3, innerR * 0.1, cx, cy, innerR);
+      bodyGrad.addColorStop(0, colors.top);
+      bodyGrad.addColorStop(0.6, colors.mid);
+      bodyGrad.addColorStop(1, colors.bot);
+
+      ctx.beginPath();
+      ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
+      ctx.fillStyle = bodyGrad;
+      ctx.fill();
+
+      // Dome highlight
+      ctx.beginPath();
+      ctx.ellipse(cx, cy - innerR * 0.45, innerR * 0.65, innerR * 0.32, 0, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
+      ctx.fill();
+
+      const shouldDrawIcon = iconsEnabled && icon && icon !== 'none';
+      if (shouldDrawIcon) {
+        drawVectorIcon(ctx, icon, cx, cy - (blank ? 0 : 8), radius * 0.75, '#ffffff');
+      }
+
+      if (!blank && text && text.length <= 8) {
+        setCanvasFont(ctx, '900', 13);
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = '#ffffff';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+        ctx.shadowBlur = 4;
+        ctx.shadowOffsetY = 1;
+        ctx.fillText(text, cx, cy + innerR * 0.55);
+      }
+      ctx.restore();
+    }
+    function drawGameGoldSquare(ctx, w, h, blank, text, icon, colors) {
+      const pad = 14;
+      const x = pad;
+      const y = pad;
+      const bw = w - pad * 2;
+      const bh = h - pad * 2;
+      const radius = 24;
+
+      ctx.save();
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.45)';
+      ctx.shadowBlur = 14;
+      ctx.shadowOffsetY = 6;
+
+      ctx.beginPath();
+      ctx.roundRect(x, y, bw, bh, radius);
+      ctx.fillStyle = '#684511';
+      ctx.fill();
+      ctx.restore();
+
+      // Gold rim
+      ctx.save();
+      const goldGrad = ctx.createLinearGradient(x, y, x + bw, y + bh);
+      goldGrad.addColorStop(0, '#fff4b8');
+      goldGrad.addColorStop(0.2, '#eec550');
+      goldGrad.addColorStop(0.5, '#c88f1d');
+      goldGrad.addColorStop(0.8, '#eec550');
+      goldGrad.addColorStop(1, '#814c0a');
+
+      ctx.beginPath();
+      ctx.roundRect(x + 2, y + 2, bw - 4, bh - 4, radius - 2);
+      ctx.fillStyle = goldGrad;
+      ctx.fill();
+
+      // Inner groove
+      ctx.beginPath();
+      ctx.roundRect(x + 7, y + 7, bw - 14, bh - 14, radius - 7);
+      ctx.fillStyle = '#523405';
+      ctx.fill();
+
+      // Center tile cushion
+      const inX = x + 9;
+      const inY = y + 9;
+      const inW = bw - 18;
+      const inH = bh - 18;
+      const inR = radius - 9;
+
+      const bodyGrad = ctx.createLinearGradient(inX, inY, inX, inY + inH);
+      bodyGrad.addColorStop(0, colors.top);
+      bodyGrad.addColorStop(0.5, colors.mid);
+      bodyGrad.addColorStop(1, colors.bot);
+
+      ctx.beginPath();
+      ctx.roundRect(inX, inY, inW, inH, inR);
+      ctx.fillStyle = bodyGrad;
+      ctx.fill();
+
+      // Specular sheen
+      ctx.beginPath();
+      ctx.roundRect(inX + 3, inY + 3, inW - 6, inH * 0.42, [inR, inR, 6, 6]);
+      const gloss = ctx.createLinearGradient(inX, inY + 3, inX, inY + inH * 0.42);
+      gloss.addColorStop(0, 'rgba(255, 255, 255, 0.65)');
+      gloss.addColorStop(1, 'rgba(255, 255, 255, 0.05)');
+      ctx.fillStyle = gloss;
+      ctx.fill();
+
+      const shouldDrawIcon = iconsEnabled && icon && icon !== 'none';
+      if (shouldDrawIcon) {
+        drawVectorIcon(ctx, icon, w / 2, h / 2 - (blank ? 0 : 20), 44, '#ffffff');
+      }
+
+      if (!blank) {
+        setCanvasFont(ctx, '900', 18);
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = '#ffffff';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+        ctx.shadowBlur = 4;
+        ctx.shadowOffsetY = 1;
+        ctx.fillText(text, w / 2, h / 2 + 40);
+      }
+      ctx.restore();
+    }
     function drawModernBadgePill(ctx, w, h, blank, text, icon, colors) {
       const pad = 12;
       const x = pad;
@@ -669,12 +959,10 @@
       const radius = bh / 2;
 
       ctx.save();
-      // Drop shadow
       ctx.shadowColor = colors.shadow;
       ctx.shadowBlur = 18;
       ctx.shadowOffsetY = 7;
 
-      // Pill body
       ctx.beginPath();
       ctx.roundRect(x, y, bw, bh, radius);
       const bgGrad = ctx.createLinearGradient(x, y, x, y + bh);
@@ -684,7 +972,7 @@
       ctx.fill();
       ctx.restore();
 
-      // Inner subtle top sheen
+      // Top sheen
       ctx.save();
       ctx.beginPath();
       ctx.roundRect(x + 2, y + 2, bw - 4, bh / 2, [radius, radius, 4, 4]);
@@ -694,37 +982,34 @@
       ctx.fillStyle = sheen;
       ctx.fill();
 
-      // Circular Badge on Right side
+      // Circular badge on right side
       const badgeR = (bh - 14) / 2;
       const badgeX = x + bw - badgeR - 10;
       const badgeY = y + bh / 2;
 
-      // Badge shadow
       ctx.save();
       ctx.shadowColor = 'rgba(0, 0, 0, 0.2)';
       ctx.shadowBlur = 8;
       ctx.shadowOffsetY = 2;
-
       ctx.beginPath();
       ctx.arc(badgeX, badgeY, badgeR, 0, Math.PI * 2);
       ctx.fillStyle = '#ffffff';
       ctx.fill();
       ctx.restore();
 
-      // Badge Icon (e.g. cursor / arrow)
-      const iconToDraw = (iconsEnabled && icon) ? icon : 'cursor';
-      drawVectorIcon(ctx, iconToDraw, badgeX, badgeY, badgeR * 1.05, colors.iconColor || colors.top);
+      const iconToDraw = (iconsEnabled && icon && icon !== 'none') ? icon : 'cursor';
+      if (iconToDraw && iconToDraw !== 'none') {
+        drawVectorIcon(ctx, iconToDraw, badgeX, badgeY, badgeR * 1.05, colors.iconColor || colors.top);
+      }
 
-      // Label Text
       if (!blank) {
-        ctx.font = '800 21px "Plus Jakarta Sans", sans-serif';
+        setCanvasFont(ctx, '800', 21);
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillStyle = '#ffffff';
         ctx.shadowColor = 'rgba(0, 0, 0, 0.25)';
         ctx.shadowBlur = 4;
         ctx.shadowOffsetY = 1;
-        // Center text in remaining space to left of badge
         const textCenter = (x + (badgeX - badgeR)) / 2 + 5;
         ctx.fillText(text || 'CLICK HERE', textCenter, y + bh / 2 + 1);
       }
@@ -740,19 +1025,16 @@
       const radius = bh / 2;
 
       ctx.save();
-      // Drop shadow
       ctx.shadowColor = 'rgba(0, 0, 0, 0.25)';
       ctx.shadowBlur = 14;
       ctx.shadowOffsetY = 6;
 
-      // White outer border wrapper
       ctx.beginPath();
       ctx.roundRect(x, y, bw, bh, radius);
       ctx.fillStyle = '#ffffff';
       ctx.fill();
       ctx.restore();
 
-      // Colorful inner gradient
       const inX = x + 3.5;
       const inY = y + 3.5;
       const inW = bw - 7;
@@ -768,7 +1050,7 @@
       ctx.fillStyle = bgGrad;
       ctx.fill();
 
-      // Top subtle gloss
+      // Top sheen
       ctx.beginPath();
       ctx.roundRect(inX + 3, inY + 2, inW - 6, inH * 0.45, [inR, inR, 4, 4]);
       const gloss = ctx.createLinearGradient(inX, inY, inX, inY + inH * 0.45);
@@ -777,13 +1059,15 @@
       ctx.fillStyle = gloss;
       ctx.fill();
 
-      // Left icon
-      const iconToDraw = (iconsEnabled && icon) ? icon : 'globe';
+      // Left icon if enabled
+      const iconToDraw = (iconsEnabled && icon && icon !== 'none') ? icon : (colors.defaultIcon || 'globe');
       const iconCenterX = inX + inR + 8;
       const iconCenterY = inY + inH / 2;
-      drawVectorIcon(ctx, iconToDraw, iconCenterX, iconCenterY, 22, '#ffffff');
+      if (iconToDraw && iconToDraw !== 'none') {
+        drawVectorIcon(ctx, iconToDraw, iconCenterX, iconCenterY, 22, '#ffffff');
+      }
 
-      // Right Chevron `>`
+      // Right Chevron >
       const chevX = inX + inW - inR - 6;
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
       ctx.lineWidth = 3;
@@ -795,9 +1079,8 @@
       ctx.lineTo(chevX - 4, iconCenterY + 7);
       ctx.stroke();
 
-      // Centered or left-aligned text
       if (!blank) {
-        ctx.font = '800 18px "Plus Jakarta Sans", sans-serif';
+        setCanvasFont(ctx, '800', 18);
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillStyle = '#ffffff';
@@ -808,14 +1091,12 @@
       }
       ctx.restore();
     }
-
-    function drawMediaCircleButton(ctx, w, h, blank, text, icon, colors) {
+    function drawModernCircleButton(ctx, w, h, blank, text, icon, colors) {
       const cx = w / 2;
       const cy = h / 2;
       const radius = (Math.min(w, h) - 24) / 2;
 
       ctx.save();
-      // Glow drop shadow
       ctx.shadowColor = colors.glow || 'rgba(59, 130, 246, 0.45)';
       ctx.shadowBlur = 20;
       ctx.shadowOffsetY = 6;
@@ -829,7 +1110,7 @@
       ctx.fill();
       ctx.restore();
 
-      // Outer metallic or glass rim
+      // Metallic or glass border
       ctx.save();
       ctx.beginPath();
       ctx.arc(cx, cy, radius, 0, Math.PI * 2);
@@ -841,19 +1122,19 @@
       ctx.strokeStyle = rim;
       ctx.stroke();
 
-      // Top specular crescent highlight
+      // Specular highlight crescent
       ctx.beginPath();
       ctx.ellipse(cx, cy - radius * 0.45, radius * 0.65, radius * 0.3, 0, 0, Math.PI * 2);
       ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
       ctx.fill();
 
-      // Center Icon
-      const iconToDraw = (iconsEnabled && icon) ? icon : 'play';
-      drawVectorIcon(ctx, iconToDraw, cx, cy, radius * 0.85, '#ffffff');
+      const shouldDrawIcon = iconsEnabled && icon && icon !== 'none';
+      if (shouldDrawIcon) {
+        drawVectorIcon(ctx, icon, cx, cy - (blank ? 0 : 8), radius * 0.8, '#ffffff');
+      }
 
-      // If text requested on round button, label below icon or badge
       if (!blank && text && text.length <= 8) {
-        ctx.font = '800 12px "Plus Jakarta Sans", sans-serif';
+        setCanvasFont(ctx, '800', 13);
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillStyle = '#ffffff';
@@ -865,414 +1146,66 @@
       ctx.restore();
     }
 
-    const BUTTON_SPECS = [
-      // 1. Game Gold-Rim Style (Screenshot 1)
-      {
-        id: 'game-ruby-gold',
-        name: 'Game Ruby Gold-Rim Pill',
-        category: 'game-gold',
-        type: 'pill',
-        nativeWidth: 420,
-        nativeHeight: 110,
-        defaultIcon: 'cursor',
-        description: 'Vibrant ruby red arcade capsule with beveled 3D gold rim and gloss dome.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawGameGoldPill(ctx, w, h, blank, text || 'BUTTON', icon, {
-            top: '#ff3333',
-            mid: '#dd0000',
-            bot: '#880000'
-          });
-        }
-      },
-      {
-        id: 'game-sapphire-gold',
-        name: 'Game Sapphire Gold-Rim Pill',
-        category: 'game-gold',
-        type: 'pill',
-        nativeWidth: 420,
-        nativeHeight: 110,
-        defaultIcon: 'download',
-        description: 'Electric blue sapphire mobile RPG button framed with polished gold.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawGameGoldPill(ctx, w, h, blank, text || 'BUTTON', icon, {
-            top: '#00aaff',
-            mid: '#0077ee',
-            bot: '#0033aa'
-          });
-        }
-      },
-      {
-        id: 'game-emerald-gold',
-        name: 'Game Emerald Gold-Rim Pill',
-        category: 'game-gold',
-        type: 'pill',
-        nativeWidth: 420,
-        nativeHeight: 110,
-        defaultIcon: 'play',
-        description: 'Lush emerald green button with dual-bevel gilded border & mirror sheen.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawGameGoldPill(ctx, w, h, blank, text || 'BUTTON', icon, {
-            top: '#10e74e',
-            mid: '#02aa30',
-            bot: '#015f1b'
-          });
-        }
-      },
-      {
-        id: 'game-purple-gold',
-        name: 'Game Amethyst Gold-Rim Pill',
-        category: 'game-gold',
-        type: 'pill',
-        nativeWidth: 420,
-        nativeHeight: 110,
-        defaultIcon: 'star',
-        description: 'Royal amethyst purple casual game button with metallic luster.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawGameGoldPill(ctx, w, h, blank, text || 'BUTTON', icon, {
-            top: '#a855f7',
-            mid: '#7e22ce',
-            bot: '#4c1d95'
-          });
-        }
-      },
-      {
-        id: 'game-amber-gold',
-        name: 'Game Amber Sunset Gold Pill',
-        category: 'game-gold',
-        type: 'pill',
-        nativeWidth: 420,
-        nativeHeight: 110,
-        defaultIcon: 'cart',
-        description: 'Sunset warm orange-amber capsule with gleaming brass and gold edge.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawGameGoldPill(ctx, w, h, blank, text || 'BUTTON', icon, {
-            top: '#f97316',
-            mid: '#ea580c',
-            bot: '#9a3412'
-          });
-        }
-      },
-
-      // 2. Click Badge Pill (Screenshot 2)
-      {
-        id: 'badge-amber-click',
-        name: 'Amber Sun Badge Clicker',
-        category: 'click-badge',
-        type: 'pill',
-        nativeWidth: 420,
-        nativeHeight: 110,
-        defaultIcon: 'cursor',
-        description: 'Vibrant golden amber pill with inset circular white badge and action pointer.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawModernBadgePill(ctx, w, h, blank, text || 'CLICK HERE', icon, {
-            top: '#fbbf24',
-            bot: '#f59e0b',
-            shadow: 'rgba(245, 158, 11, 0.4)',
-            iconColor: '#f59e0b'
-          });
-        }
-      },
-      {
-        id: 'badge-crimson-click',
-        name: 'Crimson Pulse Badge Clicker',
-        category: 'click-badge',
-        type: 'pill',
-        nativeWidth: 420,
-        nativeHeight: 110,
-        defaultIcon: 'cursor',
-        description: 'Bold red pill with bright circular target badge and deep drop shadow.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawModernBadgePill(ctx, w, h, blank, text || 'CLICK HERE', icon, {
-            top: '#ef4444',
-            bot: '#b91c1c',
-            shadow: 'rgba(239, 68, 68, 0.45)',
-            iconColor: '#b91c1c'
-          });
-        }
-      },
-      {
-        id: 'badge-cyan-click',
-        name: 'Electric Cyan Badge Clicker',
-        category: 'click-badge',
-        type: 'pill',
-        nativeWidth: 420,
-        nativeHeight: 110,
-        defaultIcon: 'cursor',
-        description: 'Modern neo-cyan pill featuring a clean white focal badge for maximum CTR.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawModernBadgePill(ctx, w, h, blank, text || 'CLICK HERE', icon, {
-            top: '#06b6d4',
-            bot: '#0891b2',
-            shadow: 'rgba(6, 182, 212, 0.4)',
-            iconColor: '#0891b2'
-          });
-        }
-      },
-
-      // 3. Web Action Pills with White Border & Chevron (Screenshot 3)
-      {
-        id: 'action-pink-read',
-        name: 'Pink Read More Action Pill',
-        category: 'action-pill',
-        type: 'pill',
-        nativeWidth: 430,
-        nativeHeight: 100,
-        defaultIcon: 'globe',
-        description: 'Magenta capsule with white contour border, web icon and right chevron.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawActionChevronPill(ctx, w, h, blank, text || 'READ MORE', icon, {
-            top: '#ec4899',
-            bot: '#be185d'
-          });
-        }
-      },
-      {
-        id: 'action-teal-download',
-        name: 'Cyan Teal Download Pill',
-        category: 'action-pill',
-        type: 'pill',
-        nativeWidth: 430,
-        nativeHeight: 100,
-        defaultIcon: 'download',
-        description: 'Crisp aquatic gradient button with download arrow and navigation arrow.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawActionChevronPill(ctx, w, h, blank, text || 'DOWNLOAD', icon, {
-            top: '#38bdf8',
-            bot: '#0284c7'
-          });
-        }
-      },
-      {
-        id: 'action-green-share',
-        name: 'Emerald Green Share Pill',
-        category: 'action-pill',
-        type: 'pill',
-        nativeWidth: 430,
-        nativeHeight: 100,
-        defaultIcon: 'share',
-        description: 'Vibrant clean green button with white frame, share node and chevron.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawActionChevronPill(ctx, w, h, blank, text || 'SHARE', icon, {
-            top: '#22c55e',
-            bot: '#15803d'
-          });
-        }
-      },
-      {
-        id: 'action-orange-upload',
-        name: 'Sunset Orange Upload Pill',
-        category: 'action-pill',
-        type: 'pill',
-        nativeWidth: 430,
-        nativeHeight: 100,
-        defaultIcon: 'upload',
-        description: 'Warm citrus yellow-orange action bar with upload glyph and white border.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawActionChevronPill(ctx, w, h, blank, text || 'UPLOAD', icon, {
-            top: '#f59e0b',
-            bot: '#d97706'
-          });
-        }
-      },
-      {
-        id: 'action-crimson-buy',
-        name: 'Crimson Shopping Bag Pill',
-        category: 'action-pill',
-        type: 'pill',
-        nativeWidth: 430,
-        nativeHeight: 100,
-        defaultIcon: 'cart',
-        description: 'E-commerce conversion button with shopping bag vector and clean chevron.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawActionChevronPill(ctx, w, h, blank, text || 'BUY NOW', icon, {
-            top: '#f43f5e',
-            bot: '#be123c'
-          });
-        }
-      },
-
-      // 4. Media & Navigation Controls
-      {
-        id: 'media-play-circle',
-        name: 'Neon Cyan Media Play Circle',
-        category: 'media-nav',
-        type: 'circle',
-        nativeWidth: 260,
-        nativeHeight: 260,
-        defaultIcon: 'play',
-        description: 'Large circular glass orb media button for player UI and controls.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawMediaCircleButton(ctx, w, h, blank, text || 'PLAY', icon, {
-            top: '#38bdf8',
-            bot: '#0284c7',
-            glow: 'rgba(56, 189, 248, 0.5)'
-          });
-        }
-      },
-      {
-        id: 'nav-home-pill',
-        name: 'Indigo Navigation Pill',
-        category: 'media-nav',
-        type: 'pill',
-        nativeWidth: 420,
-        nativeHeight: 110,
-        defaultIcon: 'home',
-        description: 'Tactical navigation bar button with high-contrast icon and clean label.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawTactilePillWithIcon(ctx, w, h, blank, text || 'HOME', icon, '#6366f1', '#4338ca');
-        }
-      },
-      {
-        id: 'nav-back-circle',
-        name: 'Back Navigation Circle Orb',
-        category: 'media-nav',
-        type: 'circle',
-        nativeWidth: 260,
-        nativeHeight: 260,
-        defaultIcon: 'back',
-        description: 'High-contrast return/back arrow circular button with beveled depth.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawMediaCircleButton(ctx, w, h, blank, text || 'BACK', icon, {
-            top: '#a855f7',
-            bot: '#6b21a8',
-            glow: 'rgba(168, 85, 247, 0.5)'
-          });
-        }
-      },
-      {
-        id: 'nav-forward-circle',
-        name: 'Forward Navigation Circle Orb',
-        category: 'media-nav',
-        type: 'circle',
-        nativeWidth: 260,
-        nativeHeight: 260,
-        defaultIcon: 'next',
-        description: 'Forward / Next track glossy sphere button with outer specular highlight.',
-        render: (ctx, w, h, blank, text, icon) => {
-          drawMediaCircleButton(ctx, w, h, blank, text || 'NEXT', icon, {
-            top: '#10b981',
-            bot: '#047857',
-            glow: 'rgba(16, 185, 129, 0.5)'
-          });
-        }
-      },
-
-      // 5. Full Square & Cards
-      {
-        id: 'cyber-hud-square',
-        name: 'Cyberpunk HUD Square Card',
-        category: 'square-tile',
-        type: 'square',
-        nativeWidth: 400,
-        nativeHeight: 400,
-        defaultIcon: 'cursor',
-        description: 'Tactical chamfered cyber tile with targeting reticles, micro-grid and neon rim.',
-        render: drawCyberHudSquare
-      },
-      {
-        id: 'aurora-glass-square',
-        name: 'Aurora Nebula Square Card',
-        category: 'square-tile',
-        type: 'square',
-        nativeWidth: 400,
-        nativeHeight: 400,
-        defaultIcon: 'star',
-        description: 'Deep cosmic radial gradient with glossy border and ambient neon corners.',
-        render: drawAuroraSquare
-      },
-      {
-        id: 'obsidian-gold-square',
-        name: 'Obsidian & Gold Luxury Tile',
-        category: 'square-tile',
-        type: 'square',
-        nativeWidth: 400,
-        nativeHeight: 400,
-        defaultIcon: 'cart',
-        description: 'Matte dark obsidian square with dual gold filigree lines and corner rivets.',
-        render: drawObsidianGoldSquare
-      },
-
-      // 6. Frosted Glass & Blank Pills
-      {
-        id: 'frosted-glass-capsule',
-        name: 'Frosted Glass Minimal Capsule',
-        category: 'blank-pill',
-        type: 'pill',
-        nativeWidth: 420,
-        nativeHeight: 110,
-        defaultIcon: 'search',
-        description: 'Ultra-clean translucent frosted glass with specular reflection and neon glow.',
-        render: drawGlassCapsule
-      },
-      {
-        id: 'holographic-prism-pill',
-        name: 'Holographic Rainbow Pill',
-        category: 'blank-pill',
-        type: 'pill',
-        nativeWidth: 430,
-        nativeHeight: 110,
-        defaultIcon: 'heart',
-        description: 'Crystal refractive body with prismatic spectral border reflections.',
-        render: drawHolographicPill
-      }
-    ];
-
-    function drawTactilePillWithIcon(ctx, w, h, blank, text, icon, col1, col2) {
-      const pad = 12;
+    function drawModernSquareButton(ctx, w, h, blank, text, icon, colors) {
+      const pad = 14;
       const x = pad;
       const y = pad;
       const bw = w - pad * 2;
       const bh = h - pad * 2;
-      const radius = bh / 2;
+      const radius = 28;
 
       ctx.save();
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
-      ctx.shadowBlur = 16;
+      ctx.shadowColor = colors.glow || 'rgba(99, 102, 241, 0.4)';
+      ctx.shadowBlur = 20;
       ctx.shadowOffsetY = 6;
 
       ctx.beginPath();
       ctx.roundRect(x, y, bw, bh, radius);
-      const grad = ctx.createLinearGradient(x, y, x, y + bh);
-      grad.addColorStop(0, col1);
-      grad.addColorStop(1, col2);
-      ctx.fillStyle = grad;
+      const bgGrad = ctx.createLinearGradient(x, y, x + bw, y + bh);
+      bgGrad.addColorStop(0, colors.top);
+      bgGrad.addColorStop(1, colors.bot);
+      ctx.fillStyle = bgGrad;
       ctx.fill();
       ctx.restore();
 
-      // Upper pillow bevel
+      // Border bevel
       ctx.save();
       ctx.beginPath();
-      ctx.roundRect(x + 3, y + 2, bw - 6, bh / 2, [radius, radius, 4, 4]);
-      const hi = ctx.createLinearGradient(x, y, x, y + bh / 2);
-      hi.addColorStop(0, 'rgba(255, 255, 255, 0.4)');
-      hi.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
-      ctx.fillStyle = hi;
+      ctx.roundRect(x, y, bw, bh, radius);
+      ctx.lineWidth = 2.5;
+      const rim = ctx.createLinearGradient(x, y, x + bw, y + bh);
+      rim.addColorStop(0, 'rgba(255, 255, 255, 0.8)');
+      rim.addColorStop(0.5, 'rgba(255, 255, 255, 0.1)');
+      rim.addColorStop(1, 'rgba(255, 255, 255, 0.5)');
+      ctx.strokeStyle = rim;
+      ctx.stroke();
+
+      // Upper soft bevel
+      ctx.beginPath();
+      ctx.roundRect(x + 3, y + 3, bw - 6, bh * 0.42, [radius - 3, radius - 3, 6, 6]);
+      const gloss = ctx.createLinearGradient(x, y, x, y + bh * 0.42);
+      gloss.addColorStop(0, 'rgba(255, 255, 255, 0.45)');
+      gloss.addColorStop(1, 'rgba(255, 255, 255, 0.05)');
+      ctx.fillStyle = gloss;
       ctx.fill();
 
+      const shouldDrawIcon = iconsEnabled && icon && icon !== 'none';
+      if (shouldDrawIcon) {
+        drawVectorIcon(ctx, icon, w / 2, h / 2 - (blank ? 0 : 20), 48, '#ffffff');
+      }
+
       if (!blank) {
-        ctx.font = '800 20px "Plus Jakarta Sans", sans-serif';
+        setCanvasFont(ctx, '800', 18);
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        const hasIcon = iconsEnabled && icon;
-        if (hasIcon) {
-          const textW = ctx.measureText(text).width;
-          const iconSize = 22;
-          const gap = 10;
-          const totalW = textW + iconSize + gap;
-          const startX = w / 2 - totalW / 2;
-          drawVectorIcon(ctx, icon, startX + iconSize / 2, h / 2 + 1, iconSize, '#ffffff');
-          ctx.fillStyle = '#ffffff';
-          ctx.fillText(text, startX + iconSize + gap + textW / 2, h / 2 + 1);
-        } else {
-          ctx.fillStyle = '#ffffff';
-          ctx.fillText(text, w / 2, h / 2 + 1);
-        }
-      } else if (iconsEnabled && icon) {
-        drawVectorIcon(ctx, icon, w / 2, h / 2, 28, '#ffffff');
+        ctx.fillStyle = '#ffffff';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+        ctx.shadowBlur = 4;
+        ctx.shadowOffsetY = 1;
+        ctx.fillText(text, w / 2, h / 2 + 42);
       }
       ctx.restore();
     }
-
     function drawGlassCapsule(ctx, w, h, blank, text, icon) {
       const pad = 12;
       const x = pad;
@@ -1310,7 +1243,7 @@
       ctx.strokeStyle = strokeGrad;
       ctx.stroke();
 
-      // Sheen
+      // Specular sheen
       ctx.beginPath();
       ctx.roundRect(x + 12, y + 4, bw - 24, bh * 0.42, [radius - 4, radius - 4, 10, 10]);
       const sheenGrad = ctx.createLinearGradient(x, y + 4, x, y + bh * 0.42);
@@ -1319,18 +1252,18 @@
       ctx.fillStyle = sheenGrad;
       ctx.fill();
 
+      const shouldDrawIcon = iconsEnabled && icon && icon !== 'none';
       if (!blank) {
-        ctx.font = 'bold 21px "Plus Jakarta Sans", sans-serif';
+        setCanvasFont(ctx, 'bold', 21);
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        const hasIcon = iconsEnabled && icon;
-        if (hasIcon) {
+        if (shouldDrawIcon) {
           const textW = ctx.measureText(text).width;
-          const iconSize = 22;
+          const iconSize = 22 * (iconScale || 1.0);
           const gap = 10;
           const totalW = textW + iconSize + gap;
           const startX = w / 2 - totalW / 2;
-          drawVectorIcon(ctx, icon, startX + iconSize / 2, h / 2 + 1, iconSize, '#ffffff');
+          drawVectorIcon(ctx, icon, startX + iconSize / 2, h / 2 + 1, 22, '#ffffff');
           ctx.fillStyle = '#ffffff';
           ctx.shadowColor = 'rgba(99, 102, 241, 0.8)';
           ctx.shadowBlur = 10;
@@ -1341,7 +1274,7 @@
           ctx.shadowBlur = 10;
           ctx.fillText(text, w / 2, h / 2 + 1);
         }
-      } else if (iconsEnabled && icon) {
+      } else if (shouldDrawIcon) {
         drawVectorIcon(ctx, icon, w / 2, h / 2, 26, '#ffffff');
       }
       ctx.restore();
@@ -1385,7 +1318,6 @@
       ctx.stroke();
       ctx.restore();
 
-      // Crosshairs & Center target
       ctx.save();
       ctx.strokeStyle = 'rgba(56, 189, 248, 0.2)';
       ctx.lineWidth = 1;
@@ -1398,11 +1330,13 @@
       ctx.stroke();
       ctx.setLineDash([]);
 
-      const iconToDraw = (iconsEnabled && icon) ? icon : 'cursor';
-      drawVectorIcon(ctx, iconToDraw, w / 2, h / 2 - (blank ? 0 : 25), 44, '#38bdf8');
+      const shouldDrawIcon = iconsEnabled && icon && icon !== 'none';
+      if (shouldDrawIcon) {
+        drawVectorIcon(ctx, icon, w / 2, h / 2 - (blank ? 0 : 25), 44, '#38bdf8');
+      }
 
       if (!blank) {
-        ctx.font = 'bold 19px "JetBrains Mono", monospace';
+        setCanvasFont(ctx, 'bold', 19, '"JetBrains Mono", monospace');
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillStyle = '#38bdf8';
@@ -1457,11 +1391,13 @@
       ctx.strokeStyle = strokeGrad;
       ctx.stroke();
 
-      const iconToDraw = (iconsEnabled && icon) ? icon : 'star';
-      drawVectorIcon(ctx, iconToDraw, w / 2, h / 2 - (blank ? 0 : 25), 44, '#ffffff');
+      const shouldDrawIcon = iconsEnabled && icon && icon !== 'none';
+      if (shouldDrawIcon) {
+        drawVectorIcon(ctx, icon, w / 2, h / 2 - (blank ? 0 : 25), 44, '#ffffff');
+      }
 
       if (!blank) {
-        ctx.font = 'bold 22px "Plus Jakarta Sans", sans-serif';
+        setCanvasFont(ctx, 'bold', 22);
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillStyle = '#ffffff';
@@ -1530,11 +1466,13 @@
         ctx.fill();
       });
 
-      const iconToDraw = (iconsEnabled && icon) ? icon : 'cart';
-      drawVectorIcon(ctx, iconToDraw, w / 2, h / 2 - (blank ? 0 : 25), 40, '#fde68a');
+      const shouldDrawIcon = iconsEnabled && icon && icon !== 'none';
+      if (shouldDrawIcon) {
+        drawVectorIcon(ctx, icon, w / 2, h / 2 - (blank ? 0 : 25), 40, '#fde68a');
+      }
 
       if (!blank) {
-        ctx.font = '700 20px "Plus Jakarta Sans", sans-serif';
+        setCanvasFont(ctx, '700', 20);
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillStyle = '#fef08a';
@@ -1544,89 +1482,388 @@
       }
       ctx.restore();
     }
-
-    function drawHolographicPill(ctx, w, h, blank, text, icon) {
-      const pad = 12;
-      const x = pad;
-      const y = pad;
-      const bw = w - pad * 2;
-      const bh = h - pad * 2;
-      const radius = bh / 2;
-
-      ctx.save();
-      ctx.shadowColor = 'rgba(236, 72, 153, 0.35)';
-      ctx.shadowBlur = 20;
-
-      ctx.beginPath();
-      ctx.roundRect(x, y, bw, bh, radius);
-      const glass = ctx.createLinearGradient(x, y, x + bw, y);
-      glass.addColorStop(0, 'rgba(255, 255, 255, 0.14)');
-      glass.addColorStop(0.5, 'rgba(255, 255, 255, 0.05)');
-      glass.addColorStop(1, 'rgba(255, 255, 255, 0.16)');
-      ctx.fillStyle = glass;
-      ctx.fill();
-      ctx.restore();
-
-      ctx.save();
-      const prism = ctx.createLinearGradient(x, y, x + bw, y);
-      prism.addColorStop(0, '#f43f5e');
-      prism.addColorStop(0.2, '#fbbf24');
-      prism.addColorStop(0.4, '#34d399');
-      prism.addColorStop(0.6, '#38bdf8');
-      prism.addColorStop(0.8, '#a855f7');
-      prism.addColorStop(1, '#f43f5e');
-
-      ctx.beginPath();
-      ctx.roundRect(x, y, bw, bh, radius);
-      ctx.lineWidth = 3;
-      ctx.strokeStyle = prism;
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.ellipse(w / 2, y + 10, bw * 0.42, 6, 0, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.65)';
-      ctx.fill();
-
-      if (!blank) {
-        ctx.font = '800 20px "Plus Jakarta Sans", sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        const hasIcon = iconsEnabled && icon;
-        if (hasIcon) {
-          const textW = ctx.measureText(text).width;
-          const iconSize = 22;
-          const gap = 10;
-          const totalW = textW + iconSize + gap;
-          const startX = w / 2 - totalW / 2;
-          drawVectorIcon(ctx, icon, startX + iconSize / 2, h / 2 + 1, iconSize, '#ffffff');
-          ctx.fillStyle = '#ffffff';
-          ctx.fillText(text, startX + iconSize + gap + textW / 2, h / 2 + 1);
-        } else {
-          ctx.fillStyle = '#ffffff';
-          ctx.fillText(text, w / 2, h / 2 + 1);
+    const BUTTON_SPECS = [
+      // 1. 3D Game Gold-Rim (Screenshot 1 & Expanded)
+      {
+        id: 'game-ruby-gold',
+        name: 'Game Ruby Gold-Rim Pill',
+        category: 'game-gold',
+        type: 'pill',
+        nativeWidth: 420,
+        nativeHeight: 110,
+        defaultIcon: 'play',
+        description: 'Vibrant ruby red arcade capsule with beveled 3D gold rim and gloss dome.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawGameGoldPill(ctx, w, h, blank, text || 'BUTTON', icon, { top: '#ff3333', mid: '#dd0000', bot: '#880000' });
         }
-      } else if (iconsEnabled && icon) {
-        drawVectorIcon(ctx, icon, w / 2, h / 2, 26, '#ffffff');
-      }
-      ctx.restore();
-    }
+      },
+      {
+        id: 'game-sapphire-gold',
+        name: 'Game Sapphire Gold-Rim Pill',
+        category: 'game-gold',
+        type: 'pill',
+        nativeWidth: 420,
+        nativeHeight: 110,
+        defaultIcon: 'download',
+        description: 'Electric blue sapphire mobile RPG button framed with polished gold.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawGameGoldPill(ctx, w, h, blank, text || 'BUTTON', icon, { top: '#00aaff', mid: '#0077ee', bot: '#0033aa' });
+        }
+      },
+      {
+        id: 'game-emerald-gold',
+        name: 'Game Emerald Gold-Rim Pill',
+        category: 'game-gold',
+        type: 'pill',
+        nativeWidth: 420,
+        nativeHeight: 110,
+        defaultIcon: 'star',
+        description: 'Lush emerald green button with dual-bevel gilded border & mirror sheen.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawGameGoldPill(ctx, w, h, blank, text || 'BUTTON', icon, { top: '#10e74e', mid: '#02aa30', bot: '#015f1b' });
+        }
+      },
+      {
+        id: 'game-purple-gold',
+        name: 'Game Amethyst Gold-Rim Pill',
+        category: 'game-gold',
+        type: 'pill',
+        nativeWidth: 420,
+        nativeHeight: 110,
+        defaultIcon: 'lock',
+        description: 'Royal amethyst purple casual game button with metallic luster.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawGameGoldPill(ctx, w, h, blank, text || 'BUTTON', icon, { top: '#a855f7', mid: '#7e22ce', bot: '#4c1d95' });
+        }
+      },
+      {
+        id: 'game-amber-gold',
+        name: 'Game Amber Sunset Gold Pill',
+        category: 'game-gold',
+        type: 'pill',
+        nativeWidth: 420,
+        nativeHeight: 110,
+        defaultIcon: 'cart',
+        description: 'Sunset warm orange-amber capsule with gleaming brass and gold edge.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawGameGoldPill(ctx, w, h, blank, text || 'BUTTON', icon, { top: '#f97316', mid: '#ea580c', bot: '#9a3412' });
+        }
+      },
 
+      // 2. Circle Buttons (Media, Home, Fullscreen, Gold Medallions)
+      {
+        id: 'circle-home-indigo',
+        name: 'Indigo Home Circle Button',
+        category: 'circle-btn',
+        type: 'circle',
+        nativeWidth: 260,
+        nativeHeight: 260,
+        defaultIcon: 'home',
+        description: 'High-contrast floating circular home button with glossy perimeter rim.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawModernCircleButton(ctx, w, h, blank, text || 'HOME', icon, { top: '#6366f1', bot: '#4338ca', glow: 'rgba(99, 102, 241, 0.45)' });
+        }
+      },
+      {
+        id: 'circle-fullscreen-cyan',
+        name: 'Cyan Full Screen Circle Orb',
+        category: 'circle-btn',
+        type: 'circle',
+        nativeWidth: 260,
+        nativeHeight: 260,
+        defaultIcon: 'fullscreen',
+        description: 'Neon cyan circular button with corner targeting glyph for immersive display toggling.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawModernCircleButton(ctx, w, h, blank, text || 'EXPAND', icon, { top: '#06b6d4', bot: '#0e7490', glow: 'rgba(6, 182, 212, 0.5)' });
+        }
+      },
+      {
+        id: 'circle-media-play',
+        name: 'Electric Media Play Circle',
+        category: 'circle-btn',
+        type: 'circle',
+        nativeWidth: 260,
+        nativeHeight: 260,
+        defaultIcon: 'play',
+        description: 'Spherical glass play button with outer specular highlight and neon aura.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawModernCircleButton(ctx, w, h, blank, text || 'PLAY', icon, { top: '#38bdf8', bot: '#0284c7', glow: 'rgba(56, 189, 248, 0.5)' });
+        }
+      },
+      {
+        id: 'circle-media-pause',
+        name: 'Amber Media Pause Circle',
+        category: 'circle-btn',
+        type: 'circle',
+        nativeWidth: 260,
+        nativeHeight: 260,
+        defaultIcon: 'pause',
+        description: 'Glowing golden pause circle orb with dual vertical bars.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawModernCircleButton(ctx, w, h, blank, text || 'PAUSE', icon, { top: '#fbbf24', bot: '#d97706', glow: 'rgba(251, 191, 36, 0.45)' });
+        }
+      },
+      {
+        id: 'circle-media-stop',
+        name: 'Crimson Media Stop Circle',
+        category: 'circle-btn',
+        type: 'circle',
+        nativeWidth: 260,
+        nativeHeight: 260,
+        defaultIcon: 'stop',
+        description: 'Bold red media stop circle with beveled boundary and rounded stop block.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawModernCircleButton(ctx, w, h, blank, text || 'STOP', icon, { top: '#f43f5e', bot: '#be123c', glow: 'rgba(244, 63, 94, 0.45)' });
+        }
+      },
+      {
+        id: 'circle-gold-home',
+        name: 'Game 3D Gold-Rim Home Medallion',
+        category: 'circle-btn',
+        type: 'circle',
+        nativeWidth: 260,
+        nativeHeight: 260,
+        defaultIcon: 'home',
+        description: 'Precious metallic coin medallion with 3D carved gold edge and home glyph.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawGameGoldCircle(ctx, w, h, blank, text || 'HOME', icon, { top: '#f59e0b', mid: '#b45309', bot: '#78350f' });
+        }
+      },
+      {
+        id: 'circle-gold-fullscreen',
+        name: 'Game 3D Gold Fullscreen Orb',
+        category: 'circle-btn',
+        type: 'circle',
+        nativeWidth: 260,
+        nativeHeight: 260,
+        defaultIcon: 'fullscreen',
+        description: 'Game UI gold-rimmed circular button with full screen reticle.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawGameGoldCircle(ctx, w, h, blank, text || 'MAX', icon, { top: '#06b6d4', mid: '#0284c7', bot: '#0369a1' });
+        }
+      },
+      // 3. Square Buttons & Tiles (Screenshot style, Media, HUD)
+      {
+        id: 'square-home-violet',
+        name: 'Modern Home Square App Tile',
+        category: 'square-tile',
+        type: 'square',
+        nativeWidth: 360,
+        nativeHeight: 360,
+        defaultIcon: 'home',
+        description: 'Sleek rounded square app icon tile with beveled specular gloss.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawModernSquareButton(ctx, w, h, blank, text || 'HOME', icon, { top: '#8b5cf6', bot: '#5b21b6', glow: 'rgba(139, 92, 246, 0.45)' });
+        }
+      },
+      {
+        id: 'square-fullscreen-cyan',
+        name: 'Cyan Full Screen Square Tile',
+        category: 'square-tile',
+        type: 'square',
+        nativeWidth: 360,
+        nativeHeight: 360,
+        defaultIcon: 'fullscreen',
+        description: 'High-visibility square full-screen button with deep neon cyan aura.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawModernSquareButton(ctx, w, h, blank, text || 'FULLSCREEN', icon, { top: '#06b6d4', bot: '#0891b2', glow: 'rgba(6, 182, 212, 0.45)' });
+        }
+      },
+      {
+        id: 'square-play-emerald',
+        name: 'Emerald Media Play Square',
+        category: 'square-tile',
+        type: 'square',
+        nativeWidth: 360,
+        nativeHeight: 360,
+        defaultIcon: 'play',
+        description: 'Punchy green tactile square button for media playback and action triggers.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawModernSquareButton(ctx, w, h, blank, text || 'PLAY', icon, { top: '#10b981', bot: '#047857', glow: 'rgba(16, 185, 129, 0.45)' });
+        }
+      },
+      {
+        id: 'square-gold-inventory',
+        name: 'Game 3D Gold Inventory Square',
+        category: 'square-tile',
+        type: 'square',
+        nativeWidth: 360,
+        nativeHeight: 360,
+        defaultIcon: 'resources',
+        description: 'Isometric RPG square inventory slot tile with rich gold beveled filigree.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawGameGoldSquare(ctx, w, h, blank, text || 'ITEMS', icon, { top: '#f43f5e', mid: '#be123c', bot: '#881337' });
+        }
+      },
+      {
+        id: 'square-gold-books',
+        name: 'Game 3D Gold Spells Book Tile',
+        category: 'square-tile',
+        type: 'square',
+        nativeWidth: 360,
+        nativeHeight: 360,
+        defaultIcon: 'book',
+        description: 'Sapphire spellbook and resource square tile framed with gleaming brass.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawGameGoldSquare(ctx, w, h, blank, text || 'SPELLS', icon, { top: '#3b82f6', mid: '#1d4ed8', bot: '#1e3a8a' });
+        }
+      },
+      {
+        id: 'cyber-hud-square',
+        name: 'Cyberpunk HUD Square Card',
+        category: 'square-tile',
+        type: 'square',
+        nativeWidth: 400,
+        nativeHeight: 400,
+        defaultIcon: 'fullscreen',
+        description: 'Tactical chamfered cyber tile with targeting reticles, micro-grid and neon rim.',
+        render: drawCyberHudSquare
+      },
+      {
+        id: 'aurora-glass-square',
+        name: 'Aurora Nebula Square Card',
+        category: 'square-tile',
+        type: 'square',
+        nativeWidth: 400,
+        nativeHeight: 400,
+        defaultIcon: 'star',
+        description: 'Deep cosmic radial gradient with glossy border and ambient neon corners.',
+        render: drawAuroraSquare
+      },
+      {
+        id: 'obsidian-gold-square',
+        name: 'Obsidian & Gold Luxury Tile',
+        category: 'square-tile',
+        type: 'square',
+        nativeWidth: 400,
+        nativeHeight: 400,
+        defaultIcon: 'cart',
+        description: 'Matte dark obsidian square with dual gold filigree lines and corner rivets.',
+        render: drawObsidianGoldSquare
+      },
+
+      // 4. Click Badge Pills (Screenshot 2)
+      {
+        id: 'badge-amber-click',
+        name: 'Amber Sun Badge Clicker',
+        category: 'click-badge',
+        type: 'pill',
+        nativeWidth: 420,
+        nativeHeight: 110,
+        defaultIcon: 'cursor',
+        description: 'Vibrant golden amber pill with inset circular white badge and action pointer.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawModernBadgePill(ctx, w, h, blank, text || 'CLICK HERE', icon, { top: '#fbbf24', bot: '#f59e0b', shadow: 'rgba(245, 158, 11, 0.4)', iconColor: '#f59e0b' });
+        }
+      },
+      {
+        id: 'badge-crimson-click',
+        name: 'Crimson Pulse Badge Clicker',
+        category: 'click-badge',
+        type: 'pill',
+        nativeWidth: 420,
+        nativeHeight: 110,
+        defaultIcon: 'cursor',
+        description: 'Bold red pill with bright circular target badge and deep drop shadow.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawModernBadgePill(ctx, w, h, blank, text || 'CLICK HERE', icon, { top: '#ef4444', bot: '#b91c1c', shadow: 'rgba(239, 68, 68, 0.45)', iconColor: '#b91c1c' });
+        }
+      },
+
+      // 5. Web Action Pills with White Border & Chevron (Screenshot 3)
+      {
+        id: 'action-pink-read',
+        name: 'Pink Read More Action Pill',
+        category: 'action-pill',
+        type: 'pill',
+        nativeWidth: 430,
+        nativeHeight: 100,
+        defaultIcon: 'globe',
+        description: 'Magenta capsule with white contour border, web icon and right chevron.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawActionChevronPill(ctx, w, h, blank, text || 'READ MORE', icon, { top: '#ec4899', bot: '#be185d', defaultIcon: 'globe' });
+        }
+      },
+      {
+        id: 'action-teal-download',
+        name: 'Cyan Teal Download Pill',
+        category: 'action-pill',
+        type: 'pill',
+        nativeWidth: 430,
+        nativeHeight: 100,
+        defaultIcon: 'download',
+        description: 'Crisp aquatic gradient button with download arrow and navigation arrow.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawActionChevronPill(ctx, w, h, blank, text || 'DOWNLOAD', icon, { top: '#38bdf8', bot: '#0284c7', defaultIcon: 'download' });
+        }
+      },
+      {
+        id: 'action-green-share',
+        name: 'Emerald Green Share Pill',
+        category: 'action-pill',
+        type: 'pill',
+        nativeWidth: 430,
+        nativeHeight: 100,
+        defaultIcon: 'share',
+        description: 'Vibrant clean green button with white frame, share node and chevron.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawActionChevronPill(ctx, w, h, blank, text || 'SHARE', icon, { top: '#22c55e', bot: '#15803d', defaultIcon: 'share' });
+        }
+      },
+      {
+        id: 'action-orange-upload',
+        name: 'Sunset Orange Upload Pill',
+        category: 'action-pill',
+        type: 'pill',
+        nativeWidth: 430,
+        nativeHeight: 100,
+        defaultIcon: 'upload',
+        description: 'Warm citrus yellow-orange action bar with upload glyph and white border.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawActionChevronPill(ctx, w, h, blank, text || 'UPLOAD', icon, { top: '#f59e0b', bot: '#d97706', defaultIcon: 'upload' });
+        }
+      },
+      {
+        id: 'action-crimson-buy',
+        name: 'Crimson Shopping Bag Pill',
+        category: 'action-pill',
+        type: 'pill',
+        nativeWidth: 430,
+        nativeHeight: 100,
+        defaultIcon: 'cart',
+        description: 'E-commerce conversion button with shopping bag vector and clean chevron.',
+        render: (ctx, w, h, blank, text, icon) => {
+          drawActionChevronPill(ctx, w, h, blank, text || 'BUY NOW', icon, { top: '#f43f5e', bot: '#be123c', defaultIcon: 'cart' });
+        }
+      },
+
+      // 6. Frosted Glass Capsule
+      {
+        id: 'frosted-glass-capsule',
+        name: 'Frosted Glass Minimal Capsule',
+        category: 'blank-pill',
+        type: 'pill',
+        nativeWidth: 420,
+        nativeHeight: 110,
+        defaultIcon: 'search',
+        description: 'Ultra-clean translucent frosted glass with specular reflection and neon glow.',
+        render: drawGlassCapsule
+      }
+    ];
     function generateSingleButtonPng(spec) {
-      const scale = 2; // High-DPI 2x Retina
+      const scale = 2; // 2x High-DPI Retina resolution
       const canvas = document.createElement('canvas');
       canvas.width = spec.nativeWidth * scale;
       canvas.height = spec.nativeHeight * scale;
       const ctx = canvas.getContext('2d');
 
-      // True alpha clear
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.scale(scale, scale);
 
-      // Pick icon: use globally selected icon or button default
-      const iconToUse = currentIcon || spec.defaultIcon;
+      // Icon priority: global selector unless it's default, or spec default
+      const iconToUse = (currentIcon !== undefined && currentIcon !== null) ? currentIcon : spec.defaultIcon;
       const textToUse = isBlankOnly ? '' : (customLabel || 'BUTTON');
 
-      // Render button
       spec.render(ctx, spec.nativeWidth, spec.nativeHeight, isBlankOnly, textToUse, iconToUse);
 
       const dataUrl = canvas.toDataURL('image/png');
@@ -1635,7 +1872,7 @@
         dataUrl,
         scaleWidth: canvas.width,
         scaleHeight: canvas.height,
-        fileName: `${spec.id}-${isBlankOnly ? 'blank' : 'labeled'}-${iconToUse}.png`
+        fileName: `${spec.id}-${isBlankOnly ? 'blank' : 'labeled'}-${iconToUse || 'no-icon'}.png`
       };
     }
 
@@ -1643,11 +1880,11 @@
       const counts = {
         all: BUTTON_SPECS.length,
         'game-gold': 0,
-        'click-badge': 0,
-        'action-pill': 0,
-        'media-nav': 0,
         'circle-btn': 0,
         'square-tile': 0,
+        'media-nav': 0,
+        'click-badge': 0,
+        'action-pill': 0,
         'blank-pill': 0
       };
 
@@ -1666,9 +1903,9 @@
       setEl('countGame', counts['game-gold']);
       setEl('countCircle', counts['circle-btn']);
       setEl('countSquare', counts['square-tile']);
+      setEl('countMedia', counts['media-nav']);
       setEl('countBadge', counts['click-badge']);
       setEl('countAction', counts['action-pill']);
-      setEl('countMedia', counts['media-nav']);
       setEl('countBlank', counts['blank-pill']);
     }
 
@@ -1701,7 +1938,6 @@
             </span>
           </div>
 
-          <!-- Preview Stage with active transparency pattern -->
           <div class="preview-stage w-full ${stageHeight} rounded-2xl ${activeGridClass} border border-slate-800/80 flex items-center justify-center p-4 cursor-pointer relative overflow-hidden group/stage" onclick="openLightbox('${btn.id}')">
             <img src="${btn.dataUrl}" alt="${btn.name}" class="max-w-full max-h-full object-contain filter drop-shadow-md group-hover/stage:scale-105 transition-transform duration-200 select-none" />
             <div class="absolute inset-0 bg-amber-900/10 opacity-0 group-hover/stage:opacity-100 transition-opacity flex items-center justify-center">
@@ -1711,7 +1947,6 @@
             </div>
           </div>
 
-          <!-- Actions -->
           <div class="mt-4 flex flex-col flex-grow justify-between">
             <div>
               <h3 class="text-sm font-bold text-white group-hover:text-amber-300 transition-colors">
@@ -1722,13 +1957,9 @@
               </p>
             </div>
 
-            <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2">
-              <button onclick="copySingleDataUrl('${btn.id}')" title="Copy base64 PNG data URL" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition">
-                <i data-lucide="copy" class="w-4 h-4"></i>
-              </button>
-
-              <a href="${btn.dataUrl}" download="${btn.fileName}" class="flex-grow flex items-center justify-center space-x-2 py-2 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-400 hover:to-rose-500 active:scale-98 text-white text-xs font-bold shadow-md shadow-rose-600/20 transition">
-                <i data-lucide="download" class="w-3.5 h-3.5"></i>
+            <div class="mt-4 pt-3 border-t border-slate-800/80">
+              <a href="${btn.dataUrl}" download="${btn.fileName}" class="w-full flex items-center justify-center space-x-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 via-rose-600 to-indigo-600 hover:from-amber-400 hover:to-indigo-500 active:scale-98 text-white text-xs font-bold shadow-md shadow-rose-600/20 transition-all">
+                <i data-lucide="download" class="w-4 h-4"></i>
                 <span>Download PNG</span>
               </a>
             </div>
@@ -1739,7 +1970,6 @@
 
       lucide.createIcons();
     }
-
     function setGridMode(gridClass, buttonEl) {
       activeGridClass = gridClass;
       document.querySelectorAll('.preview-stage').forEach(el => {
@@ -1772,6 +2002,7 @@
       const btnBlank = document.getElementById('btnModeBlank');
       const label = document.getElementById('modeStatusLabel');
       const textWrapper = document.getElementById('textInputWrapper');
+      const textScaleWrapper = document.getElementById('textScaleWrapper');
 
       if (showText) {
         btnText.className = 'flex-1 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white transition-all flex items-center justify-center gap-1';
@@ -1780,6 +2011,10 @@
         label.className = 'text-amber-400 font-bold lowercase text-[10px] bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20';
         textWrapper.style.opacity = '1';
         textWrapper.style.pointerEvents = 'auto';
+        if (textScaleWrapper) {
+          textScaleWrapper.style.opacity = '1';
+          textScaleWrapper.style.pointerEvents = 'auto';
+        }
       } else {
         btnBlank.className = 'flex-1 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white transition-all flex items-center justify-center gap-1';
         btnText.className = 'flex-1 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all flex items-center justify-center gap-1';
@@ -1787,16 +2022,35 @@
         label.className = 'text-indigo-400 font-bold lowercase text-[10px] bg-indigo-500/10 px-2 py-0.5 rounded-full border border-indigo-500/20';
         textWrapper.style.opacity = '0.4';
         textWrapper.style.pointerEvents = 'none';
+        if (textScaleWrapper) {
+          textScaleWrapper.style.opacity = '0.4';
+          textScaleWrapper.style.pointerEvents = 'none';
+        }
       }
 
       renderButtonCards();
-      showToast('Mode Switched', isBlankOnly ? 'Generating pure blank buttons without text.' : 'Showing text labels & icons.');
+      showToast('Mode Updated', isBlankOnly ? 'Now generating clean blank buttons.' : 'Showing text labels.');
+    }
+
+    function updateIconScale(val) {
+      iconScale = parseFloat(val);
+      const badge = document.getElementById('iconScaleBadge');
+      if (badge) badge.textContent = `${Math.round(iconScale * 100)}%`;
+      debouncedRegenerate();
+    }
+
+    function updateTextScale(val) {
+      textScale = parseFloat(val);
+      const badge = document.getElementById('textScaleBadge');
+      if (badge) badge.textContent = `${Math.round(textScale * 100)}%`;
+      debouncedRegenerate();
     }
 
     function changeActiveIcon(newIcon) {
       currentIcon = newIcon;
       renderButtonCards();
-      showToast('Icon Changed', `Updated icon to "${newIcon.toUpperCase()}".`);
+      const label = newIcon === 'none' ? 'BLANK (NO ICON)' : newIcon.toUpperCase();
+      showToast('Icon Updated', `Active icon set to: ${label}`);
     }
 
     function toggleIconsEnabled() {
@@ -1807,11 +2061,11 @@
       if (iconsEnabled) {
         btn.className = 'w-full py-2 rounded-xl text-xs font-semibold bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/30 transition flex items-center justify-center gap-1.5';
         text.textContent = 'Enabled';
-        showToast('Icons Enabled', 'Icons are now rendered on all compatible buttons.');
+        showToast('Icons Enabled', 'Icons will be rendered on buttons.');
       } else {
         btn.className = 'w-full py-2 rounded-xl text-xs font-semibold bg-slate-800 border border-slate-700 text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1.5';
         text.textContent = 'Disabled';
-        showToast('Icons Disabled', 'Icons hidden from button face.');
+        showToast('Icons Disabled', 'All button icons hidden.');
       }
       renderButtonCards();
     }
@@ -1869,38 +2123,9 @@
       }
     });
 
-    function copySingleDataUrl(btnId) {
-      const btn = generatedButtons.find(b => b.id === btnId);
-      if (!btn) return;
-      copyToClipboard(btn.dataUrl);
-      showToast('Data URL Copied', 'Base64 PNG string copied to clipboard.');
-    }
-
-    function copyPngDataUrl() {
-      if (activeLightboxButton) {
-        copyToClipboard(activeLightboxButton.dataUrl);
-        showToast('Data URL Copied', 'Base64 PNG string copied to clipboard.');
-      }
-    }
-
-    function copyToClipboard(text) {
-      const textarea = document.createElement('textarea');
-      textarea.value = text;
-      textarea.style.position = 'fixed';
-      textarea.style.opacity = '0';
-      document.body.appendChild(textarea);
-      textarea.select();
-      try {
-        document.execCommand('copy');
-      } catch (err) {
-        console.error('Fallback copy error', err);
-      }
-      document.body.removeChild(textarea);
-    }
-
     function downloadAllButtons() {
       if (!generatedButtons || generatedButtons.length === 0) return;
-      showToast('Batch Download Started', `Downloading ${generatedButtons.length} transparent PNG files...`);
+      showToast('Batch Download Started', `Exporting ${generatedButtons.length} transparent PNG files...`);
 
       generatedButtons.forEach((btn, index) => {
         setTimeout(() => {
@@ -1910,7 +2135,7 @@
           document.body.appendChild(a);
           a.click();
           document.body.removeChild(a);
-        }, index * 200);
+        }, index * 180);
       });
     }
 
