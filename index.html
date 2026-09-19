@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Poppins:wght@400;500;600;700;800;900&family=Montserrat:wght@400;600;700;800;900&family=Bebas+Neue&family=Anton&family=Pacifico&family=Playfair+Display:wght@700;800;900&display=swap');
     
     * {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -95,7 +95,7 @@
           <button id="bgSolidBtn" class="px-2.5 py-1 rounded-lg hover:text-white font-medium transition-all" onclick="setGridMode('bg-slate-950', this)">Solid</button>
         </div>
 
-        <button onclick="downloadAllButtons()" class="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-amber-500 via-rose-600 to-indigo-600 hover:from-amber-400 hover:to-indigo-500 text-white rounded-xl text-xs sm:text-sm font-bold shadow-lg shadow-rose-600/25 active:scale-95 transition-all">
+        <button onclick="downloadAllCurrent()" class="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-amber-500 via-rose-600 to-indigo-600 hover:from-amber-400 hover:to-indigo-500 text-white rounded-xl text-xs sm:text-sm font-bold shadow-lg shadow-rose-600/25 active:scale-95 transition-all">
           <i data-lucide="archive" class="w-4 h-4"></i>
           <span class="hidden sm:inline">Download All PNGs</span>
           <span class="sm:hidden">All</span>
@@ -128,7 +128,19 @@
       </div>
     </div>
 
-    <div class="sticky top-20 z-40 mb-8 p-4 sm:p-5 rounded-2xl bg-slate-950/95 backdrop-blur-xl border border-slate-800/90 shadow-2xl shadow-black/60">
+    <!-- Studio Mode Switcher -->
+    <div class="mb-5 flex justify-center">
+      <div class="inline-flex items-center bg-slate-900 border border-slate-800 rounded-2xl p-1.5 shadow-lg">
+        <button id="modeTabButtons" onclick="setStudioMode('buttons')" class="flex items-center gap-2 px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 text-white transition-all">
+          <i data-lucide="square-dashed-bottom" class="w-4 h-4"></i> Buttons
+        </button>
+        <button id="modeTabText" onclick="setStudioMode('text')" class="flex items-center gap-2 px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-400 hover:text-white transition-all">
+          <i data-lucide="type" class="w-4 h-4"></i> Text Designs (3D Headings)
+        </button>
+      </div>
+    </div>
+
+    <div id="buttonsControlPanel" class="sticky top-20 z-40 mb-8 p-4 sm:p-5 rounded-2xl bg-slate-950/95 backdrop-blur-xl border border-slate-800/90 shadow-2xl shadow-black/60">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5 items-end">
         <!-- 1. Text Mode Toggle -->
         <div>
@@ -148,10 +160,11 @@
 
         <!-- 2. Custom Label Input -->
         <div id="textInputWrapper">
-          <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">
-            Custom Label:
+          <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+            <span>Custom Label:</span>
+            <span id="labelCharCount" class="text-slate-500 font-mono normal-case tracking-normal text-[10px]">6/40</span>
           </label>
-          <input type="text" id="customLabelInput" value="BUTTON" maxlength="16" placeholder="Custom text..."
+          <input type="text" id="customLabelInput" value="BUTTON" maxlength="40" placeholder="Custom text..."
             class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono font-bold text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 uppercase tracking-wider transition-all h-[34px]"
             oninput="debouncedRegenerate()" />
         </div>
@@ -295,8 +308,137 @@
       </div>
     </div>
 
+    <div id="textControlPanel" class="sticky top-20 z-40 mb-8 p-4 sm:p-5 rounded-2xl bg-slate-950/95 backdrop-blur-xl border border-slate-800/90 shadow-2xl shadow-black/60" style="display:none">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5 items-end">
+        <!-- Heading Text -->
+        <div class="lg:col-span-2">
+          <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+            <span>Heading Text:</span>
+            <span id="headingCharCount" class="text-slate-500 font-mono normal-case tracking-normal text-[10px]">7/60</span>
+          </label>
+          <input type="text" id="headingTextInput" value="AWESOME" maxlength="60" placeholder="Type a heading..."
+            class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-mono font-bold text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 tracking-wider transition-all h-[34px]"
+            oninput="debouncedRegenerateText()" />
+        </div>
+
+        <!-- Font Family -->
+        <div>
+          <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Font Family</label>
+          <select id="fontFamilySelect" onchange="updateHeadingFontFamily(this.value)" class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-2.5 py-1.5 text-xs font-medium focus:outline-none focus:border-indigo-500 cursor-pointer h-[34px]">
+            <option value="'Plus Jakarta Sans', sans-serif">Plus Jakarta Sans</option>
+            <option value="'Poppins', sans-serif">Poppins</option>
+            <option value="'Montserrat', sans-serif">Montserrat</option>
+            <option value="'Bebas Neue', sans-serif">Bebas Neue</option>
+            <option value="'Anton', sans-serif" selected>Anton</option>
+            <option value="'Pacifico', cursive">Pacifico (Script)</option>
+            <option value="'Playfair Display', serif">Playfair Display</option>
+          </select>
+        </div>
+
+        <!-- Font Weight -->
+        <div>
+          <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Weight</label>
+          <select id="fontWeightSelect" onchange="updateHeadingWeight(this.value)" class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-2.5 py-1.5 text-xs font-medium focus:outline-none focus:border-indigo-500 cursor-pointer h-[34px]">
+            <option value="400">400 Regular</option>
+            <option value="500">500 Medium</option>
+            <option value="600">600 Semibold</option>
+            <option value="700">700 Bold</option>
+            <option value="800" selected>800 Extrabold</option>
+            <option value="900">900 Black</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5 items-end mt-3.5">
+        <!-- Italic + Letter spacing -->
+        <div class="grid grid-cols-2 gap-3 bg-slate-900/90 border border-slate-800/90 rounded-xl p-2 h-[58px]">
+          <div>
+            <label class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1 block">Style</label>
+            <button id="italicToggleBtn" onclick="toggleHeadingItalic()" class="w-full py-1.5 rounded-lg text-xs font-semibold bg-slate-800 border border-slate-700 text-slate-400 hover:text-white transition flex items-center justify-center gap-1">
+              <i data-lucide="italic" class="w-3.5 h-3.5"></i> Italic
+            </button>
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <label class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Spacing</label>
+              <span id="letterSpacingBadge" class="text-[9px] font-mono font-bold text-amber-400 bg-amber-500/10 px-1 py-0.2 rounded border border-amber-500/20">0px</span>
+            </div>
+            <input type="range" id="letterSpacingSlider" min="-4" max="30" step="1" value="0"
+              oninput="updateHeadingLetterSpacing(this.value)"
+              class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500" />
+          </div>
+        </div>
+
+        <!-- Heading Size -->
+        <div class="bg-slate-900/90 border border-slate-800/90 rounded-xl p-2 h-[58px]">
+          <div class="flex items-center justify-between mb-1">
+            <label class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1">
+              <i data-lucide="scaling" class="w-3 h-3 text-indigo-400"></i> Size
+            </label>
+            <span id="headingScaleBadge" class="text-[9px] font-mono font-bold text-indigo-400 bg-indigo-500/10 px-1 py-0.2 rounded border border-indigo-500/20">100%</span>
+          </div>
+          <input type="range" id="headingScaleSlider" min="0.5" max="2.0" step="0.05" value="1.0"
+            oninput="updateHeadingScale(this.value)"
+            class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500" />
+        </div>
+
+        <!-- Primary Color -->
+        <div>
+          <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Primary Color</label>
+          <div class="flex items-center gap-2 bg-slate-900 border border-slate-700 rounded-xl px-2 h-[34px]">
+            <input type="color" id="textPrimaryColorInput" value="#f59e0b" onchange="updateTextPrimaryColor(this.value)" class="w-7 h-7 rounded-lg cursor-pointer bg-transparent border-0" />
+            <span class="text-[10px] font-mono text-slate-400">Front / Fill</span>
+          </div>
+        </div>
+
+        <!-- Secondary Color + Reset -->
+        <div>
+          <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+            <span>Accent / Shadow</span>
+            <button onclick="resetTextColors()" class="text-[10px] text-indigo-400 hover:text-indigo-300 font-semibold">Reset</button>
+          </label>
+          <div class="flex items-center gap-2 bg-slate-900 border border-slate-700 rounded-xl px-2 h-[34px]">
+            <input type="color" id="textSecondaryColorInput" value="#78350f" onchange="updateTextSecondaryColor(this.value)" class="w-7 h-7 rounded-lg cursor-pointer bg-transparent border-0" />
+            <span class="text-[10px] font-mono text-slate-400">Depth / Glow</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-3.5 pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2">
+        <div class="flex flex-wrap gap-1.5" id="textFilterTabs">
+          <button onclick="filterTextCategory('all', this)" class="category-filter active px-2.5 py-1 rounded-lg bg-slate-800 text-white font-medium text-xs transition-all border border-slate-700 shadow-sm">
+            All (<span id="countTextAll">0</span>)
+          </button>
+          <button onclick="filterTextCategory('3d-extrude', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
+            3D Extrude (<span id="countExtrude">0</span>)
+          </button>
+          <button onclick="filterTextCategory('neon-text', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
+            Neon Glow (<span id="countNeonText">0</span>)
+          </button>
+          <button onclick="filterTextCategory('metal-text', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
+            Metallic (<span id="countMetal">0</span>)
+          </button>
+          <button onclick="filterTextCategory('comic-text', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
+            Comic Pop (<span id="countComic">0</span>)
+          </button>
+          <button onclick="filterTextCategory('retro-text', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
+            Retro Shadow (<span id="countRetro">0</span>)
+          </button>
+          <button onclick="filterTextCategory('glass-text', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
+            Glass Emboss (<span id="countGlass">0</span>)
+          </button>
+          <button onclick="filterTextCategory('gradient-text', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
+            Gradient (<span id="countGradient">0</span>)
+          </button>
+        </div>
+      </div>
+    </div>
+
     <div id="buttonsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       <!-- Dynamically filled with high-dpi rendered buttons -->
+    </div>
+    <div id="textGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6" style="display:none">
+      <!-- Dynamically filled with high-dpi rendered 3D text headings -->
     </div>
   </main>
 
@@ -349,12 +491,88 @@
     let textScale = 1.0;
     let generatedButtons = [];
 
+    // --- Text Designs (3D Headings) state ---
+    let studioMode = 'buttons';
+    let currentTextCategory = 'all';
+    let headingText = 'AWESOME';
+    let headingFontFamily = "'Anton', sans-serif";
+    let headingWeight = '800';
+    let headingItalic = false;
+    let headingLetterSpacing = 0;
+    let headingScale = 1.0;
+    let textPrimaryOverride = null;
+    let textSecondaryOverride = null;
+    let generatedTextDesigns = [];
+
     function setCanvasFont(ctx, weight, basePx, fontFam = '"Plus Jakarta Sans", sans-serif') {
       const scaled = Math.max(7, Math.round(basePx * (textScale || 1.0)));
       ctx.font = `${weight} ${scaled}px ${fontFam}`;
     }
 
-    // Helper: draw rounded rectangles
+    // Sets the canvas font at the user's requested (textScale-adjusted) size,
+    // then auto-shrinks it (down to a sensible floor) until `text` fits within
+    // maxWidth. This lets longer custom labels stay on one line without
+    // spilling off the edge of the button. Returns the final px size used.
+    function setFittedFont(ctx, weight, basePx, text, maxWidth, fontFam = '"Plus Jakarta Sans", sans-serif') {
+      let px = Math.max(7, Math.round(basePx * (textScale || 1.0)));
+      ctx.font = `${weight} ${px}px ${fontFam}`;
+      if (maxWidth && maxWidth > 0) {
+        const minPx = Math.max(11, Math.round(basePx * 0.3));
+        let width = ctx.measureText(text).width;
+        while (width > maxWidth && px > minPx) {
+          px -= 1;
+          ctx.font = `${weight} ${px}px ${fontFam}`;
+          width = ctx.measureText(text).width;
+        }
+      }
+      return px;
+    }
+
+    // Lightens (positive percent) or darkens (negative percent) a hex color.
+    // Used to derive gradient stops / extrusion shades from a single user-picked color.
+    function shadeHexColor(hex, percent) {
+      hex = (hex || '#888888').replace('#', '');
+      if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+      const num = parseInt(hex, 16);
+      const amt = Math.round(2.55 * percent);
+      let r = (num >> 16) + amt;
+      let g = ((num >> 8) & 0x00ff) + amt;
+      let b = (num & 0x0000ff) + amt;
+      r = Math.max(0, Math.min(255, r));
+      g = Math.max(0, Math.min(255, g));
+      b = Math.max(0, Math.min(255, b));
+      return '#' + (0x1000000 + r * 0x10000 + g * 0x100 + b).toString(16).slice(1);
+    }
+
+    // Measures the total rendered width of `text` when each character is
+    // drawn individually with `spacing` px of extra gap between glyphs.
+    function measureSpacedWidth(ctx, text, spacing) {
+      let width = 0;
+      for (const ch of text) {
+        width += ctx.measureText(ch).width;
+      }
+      width += spacing * Math.max(0, text.length - 1);
+      return width;
+    }
+
+    // Draws `text` centered on (cx, cy) with manual letter-spacing (since
+    // canvas fillText/strokeText have no native tracking control that works
+    // reliably across browsers). mode: 'fill' | 'stroke' | 'both'.
+    function drawSpacedText(ctx, text, cx, cy, spacing, mode) {
+      const totalW = measureSpacedWidth(ctx, text, spacing);
+      let x = cx - totalW / 2;
+      const prevAlign = ctx.textAlign;
+      ctx.textAlign = 'left';
+      for (const ch of text) {
+        const cw = ctx.measureText(ch).width;
+        if (mode === 'fill' || mode === 'both') ctx.fillText(ch, x, cy);
+        if (mode === 'stroke' || mode === 'both') ctx.strokeText(ch, x, cy);
+        x += cw + spacing;
+      }
+      ctx.textAlign = prevAlign;
+    }
+
+
     function roundRect(ctx, x, y, width, height, radius) {
       if (typeof radius === 'number') {
         radius = { tl: radius, tr: radius, br: radius, bl: radius };
@@ -1260,7 +1478,6 @@
         const showIcon = iconsEnabled && iconType !== 'none';
         
         ctx.save();
-        setCanvasFont(ctx, '900', 36);
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
 
@@ -1269,10 +1486,12 @@
         ctx.shadowBlur = 4;
         ctx.shadowOffsetY = 3;
 
+        const availableW = coreW - 40;
         if (showIcon) {
-          const textMetrics = ctx.measureText(text);
           const iconSize = 34;
           const spacing = 18;
+          setFittedFont(ctx, '900', 36, text, availableW - iconSize - spacing);
+          const textMetrics = ctx.measureText(text);
           const totalW = textMetrics.width + iconSize + spacing;
           const startX = w / 2 - totalW / 2;
           const iconCX = startX + iconSize / 2;
@@ -1283,6 +1502,7 @@
           ctx.fillStyle = '#FFFFFF';
           ctx.fillText(text, textCX, cy + 1);
         } else {
+          setFittedFont(ctx, '900', 36, text, availableW);
           ctx.fillStyle = '#FFFFFF';
           ctx.fillText(text, w / 2, cy + 1);
         }
@@ -1357,7 +1577,6 @@
       if (!isBlankOnly) {
         const text = customLabel || spec.defaultLabel;
         ctx.save();
-        setCanvasFont(ctx, '800', 36);
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.shadowColor = 'rgba(0, 0, 0, 0.25)';
@@ -1365,7 +1584,9 @@
         ctx.shadowOffsetY = 2;
         ctx.fillStyle = '#FFFFFF';
         // Center text in available left space
-        const leftAreaCenter = (padX + (badgeCX - badgeR)) / 2;
+        const leftAreaW = badgeCX - badgeR - padX;
+        const leftAreaCenter = padX + leftAreaW / 2;
+        setFittedFont(ctx, '800', 36, text, leftAreaW - 24);
         ctx.fillText(text, leftAreaCenter, h / 2 + 1);
         ctx.restore();
       }
@@ -1447,13 +1668,15 @@
       if (!isBlankOnly) {
         const text = customLabel || spec.defaultLabel;
         ctx.save();
-        setCanvasFont(ctx, '800', 32);
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
         ctx.shadowBlur = 3;
         ctx.shadowOffsetY = 2;
         ctx.fillStyle = '#FFFFFF';
+        // Available width sits between the left icon and the right chevron
+        const availableW = (chevronX - 20) - (leftIconCX + 20);
+        setFittedFont(ctx, '800', 32, text, availableW);
         ctx.fillText(text, w / 2, cy + 1);
         ctx.restore();
       }
@@ -1539,21 +1762,21 @@
         if (iconsEnabled && iconType !== 'none') {
           drawAppVectorIcon(ctx, iconType, cx, cy - 24, size * 0.38, '#FFFFFF');
           ctx.save();
-          setCanvasFont(ctx, '800', 22);
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
           ctx.shadowBlur = 4;
           ctx.shadowOffsetY = 2;
           ctx.fillStyle = '#FFFFFF';
+          setFittedFont(ctx, '800', 22, text, size - 24);
           ctx.fillText(text, cx, cy + size * 0.32);
           ctx.restore();
         } else {
           ctx.save();
-          setCanvasFont(ctx, '900', 28);
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           ctx.fillStyle = '#FFFFFF';
+          setFittedFont(ctx, '900', 28, text, size - 30);
           ctx.fillText(text, cx, cy);
           ctx.restore();
         }
@@ -1876,6 +2099,231 @@
       }
     }
 
+    // ============================================================
+    // TEXT DESIGNS — 3D Heading Renderers
+    // Each renderer draws `text` centered in a transparent canvas
+    // using the shared font/spacing options in `o`.
+    // ============================================================
+
+    function applyHeadingFont(ctx, o) {
+      const style = o.italic === 'italic' ? 'italic' : 'normal';
+      ctx.font = `${style} ${o.weight} ${o.size}px ${o.fontFamily}`;
+      ctx.textBaseline = 'middle';
+    }
+
+    // 1. Classic 3D Extrude — chunky block-letter extrusion
+    function renderExtrude3DText(ctx, w, h, text, o) {
+      const cx = w / 2, cy = h / 2;
+      applyHeadingFont(ctx, o);
+      const depth = Math.max(6, Math.round(o.size * 0.14));
+      const darkShade = shadeHexColor(o.primary, -55);
+      const midShade = shadeHexColor(o.primary, -25);
+
+      ctx.save();
+      for (let i = depth; i >= 1; i--) {
+        ctx.fillStyle = i === depth ? darkShade : midShade;
+        drawSpacedText(ctx, text, cx + i * 0.6, cy + i * 0.9, o.letterSpacing, 'fill');
+      }
+      ctx.restore();
+
+      const grad = ctx.createLinearGradient(0, cy - o.size * 0.55, 0, cy + o.size * 0.55);
+      grad.addColorStop(0, shadeHexColor(o.primary, 25));
+      grad.addColorStop(0.5, o.primary);
+      grad.addColorStop(1, shadeHexColor(o.primary, -10));
+      ctx.fillStyle = grad;
+      ctx.strokeStyle = darkShade;
+      ctx.lineWidth = Math.max(2, o.size * 0.03);
+      ctx.lineJoin = 'round';
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'both');
+    }
+
+    // 2. Neon Glow — layered glow strokes with a bright core
+    function renderNeonGlowText(ctx, w, h, text, o) {
+      const cx = w / 2, cy = h / 2;
+      applyHeadingFont(ctx, o);
+      ctx.lineJoin = 'round';
+
+      ctx.save();
+      ctx.strokeStyle = o.primary;
+      ctx.lineWidth = Math.max(3, o.size * 0.05);
+      ctx.shadowColor = o.primary;
+      ctx.shadowBlur = o.size * 0.5;
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'stroke');
+      ctx.shadowBlur = o.size * 0.25;
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'stroke');
+      ctx.restore();
+
+      ctx.save();
+      ctx.fillStyle = '#ffffff';
+      ctx.shadowColor = o.primary;
+      ctx.shadowBlur = o.size * 0.15;
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'fill');
+      ctx.restore();
+
+      ctx.strokeStyle = o.secondary;
+      ctx.lineWidth = Math.max(1, o.size * 0.015);
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'stroke');
+    }
+
+    // 3. Chrome Metallic — brushed silver gradient with dark outline
+    function renderChromeText(ctx, w, h, text, o) {
+      const cx = w / 2, cy = h / 2;
+      applyHeadingFont(ctx, o);
+
+      const grad = ctx.createLinearGradient(0, cy - o.size * 0.6, 0, cy + o.size * 0.6);
+      grad.addColorStop(0, '#f8fafc');
+      grad.addColorStop(0.25, '#cbd5e1');
+      grad.addColorStop(0.5, '#64748b');
+      grad.addColorStop(0.55, '#94a3b8');
+      grad.addColorStop(0.75, '#e2e8f0');
+      grad.addColorStop(1, '#475569');
+
+      ctx.save();
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+      ctx.shadowBlur = o.size * 0.08;
+      ctx.shadowOffsetY = o.size * 0.05;
+      ctx.fillStyle = grad;
+      ctx.strokeStyle = o.secondary;
+      ctx.lineWidth = Math.max(2, o.size * 0.025);
+      ctx.lineJoin = 'round';
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'both');
+      ctx.restore();
+
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
+      ctx.lineWidth = 1;
+      drawSpacedText(ctx, text, cx, cy - 1, o.letterSpacing, 'stroke');
+    }
+
+    // 4. Gold Luxury 3D — gold gradient front face with bronze extrusion
+    function renderGoldText(ctx, w, h, text, o) {
+      const cx = w / 2, cy = h / 2;
+      applyHeadingFont(ctx, o);
+      const depth = Math.max(5, Math.round(o.size * 0.1));
+
+      ctx.save();
+      for (let i = depth; i >= 1; i--) {
+        ctx.fillStyle = shadeHexColor(o.secondary, -6 * (depth - i));
+        drawSpacedText(ctx, text, cx + i * 0.5, cy + i * 0.8, o.letterSpacing, 'fill');
+      }
+      ctx.restore();
+
+      const grad = ctx.createLinearGradient(0, cy - o.size * 0.55, 0, cy + o.size * 0.55);
+      grad.addColorStop(0, shadeHexColor(o.primary, 40));
+      grad.addColorStop(0.35, o.primary);
+      grad.addColorStop(0.55, shadeHexColor(o.primary, 20));
+      grad.addColorStop(1, shadeHexColor(o.primary, -30));
+      ctx.fillStyle = grad;
+      ctx.strokeStyle = shadeHexColor(o.secondary, -30);
+      ctx.lineWidth = Math.max(2, o.size * 0.02);
+      ctx.lineJoin = 'round';
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'both');
+    }
+
+    // 5. Comic Pop Outline — thick outline, flat fill, hard drop shadow
+    function renderComicPopText(ctx, w, h, text, o) {
+      const cx = w / 2, cy = h / 2;
+      applyHeadingFont(ctx, o);
+      ctx.lineJoin = 'round';
+      ctx.miterLimit = 2;
+      const outlineW = Math.max(6, o.size * 0.11);
+
+      ctx.save();
+      ctx.fillStyle = shadeHexColor(o.secondary, -25);
+      drawSpacedText(ctx, text, cx + o.size * 0.05, cy + o.size * 0.07, o.letterSpacing, 'fill');
+      ctx.restore();
+
+      ctx.strokeStyle = o.secondary;
+      ctx.lineWidth = outlineW;
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'stroke');
+
+      ctx.fillStyle = o.primary;
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'fill');
+
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.lineWidth = Math.max(1, o.size * 0.015);
+      drawSpacedText(ctx, text, cx, cy - o.size * 0.02, o.letterSpacing, 'stroke');
+    }
+
+    // 6. Retro Long Shadow — flat color with a long 45° trailing shadow
+    function renderLongShadowText(ctx, w, h, text, o) {
+      const cx = w / 2, cy = h / 2 - o.size * 0.05;
+      applyHeadingFont(ctx, o);
+      const steps = Math.max(18, Math.round(o.size * 0.3));
+
+      ctx.save();
+      ctx.fillStyle = o.secondary;
+      for (let i = steps; i >= 1; i--) {
+        drawSpacedText(ctx, text, cx + i * 0.55, cy + i * 0.55, o.letterSpacing, 'fill');
+      }
+      ctx.restore();
+
+      ctx.fillStyle = o.primary;
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'fill');
+    }
+
+    // 7. Glass Emboss — translucent gradient with bevel highlight/shadow
+    function renderGlassEmbossText(ctx, w, h, text, o) {
+      const cx = w / 2, cy = h / 2;
+      applyHeadingFont(ctx, o);
+
+      ctx.save();
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.35)';
+      drawSpacedText(ctx, text, cx + 2, cy + 3, o.letterSpacing, 'fill');
+      ctx.restore();
+
+      ctx.save();
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.55)';
+      drawSpacedText(ctx, text, cx - 2, cy - 3, o.letterSpacing, 'fill');
+      ctx.restore();
+
+      const grad = ctx.createLinearGradient(0, cy - o.size * 0.55, 0, cy + o.size * 0.55);
+      grad.addColorStop(0, shadeHexColor(o.primary, 35));
+      grad.addColorStop(0.5, o.primary);
+      grad.addColorStop(1, shadeHexColor(o.primary, -20));
+
+      ctx.save();
+      ctx.globalAlpha = 0.92;
+      ctx.fillStyle = grad;
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'fill');
+      ctx.restore();
+
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.lineWidth = 1;
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'stroke');
+    }
+
+    // 8. Sunset Gradient — vivid horizontal gradient fill with soft glow
+    function renderGradientOutlineText(ctx, w, h, text, o) {
+      const cx = w / 2, cy = h / 2;
+      applyHeadingFont(ctx, o);
+
+      const grad = ctx.createLinearGradient(cx - w * 0.35, 0, cx + w * 0.35, 0);
+      grad.addColorStop(0, o.primary);
+      grad.addColorStop(1, o.secondary);
+
+      ctx.save();
+      ctx.shadowColor = o.secondary;
+      ctx.shadowBlur = o.size * 0.18;
+      ctx.fillStyle = grad;
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'fill');
+      ctx.restore();
+
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.lineWidth = Math.max(1, o.size * 0.012);
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'stroke');
+    }
+
+    const TEXT_SPECS = [
+      { id: 'extrude-3d', title: 'Classic 3D Extrude', category: '3d-extrude', width: 1000, height: 300, baseSize: 100, defaultText: 'AWESOME', primaryColor: '#f59e0b', secondaryColor: '#78350f', renderer: renderExtrude3DText },
+      { id: 'neon-glow-text', title: 'Neon Glow', category: 'neon-text', width: 1000, height: 300, baseSize: 95, defaultText: 'OPEN 24/7', primaryColor: '#22d3ee', secondaryColor: '#a855f7', renderer: renderNeonGlowText },
+      { id: 'chrome-metal', title: 'Chrome Metallic', category: 'metal-text', width: 1000, height: 300, baseSize: 95, defaultText: 'METALLIC', primaryColor: '#94a3b8', secondaryColor: '#0f172a', renderer: renderChromeText },
+      { id: 'gold-luxury', title: 'Gold Luxury 3D', category: 'metal-text', width: 1000, height: 300, baseSize: 95, defaultText: 'PREMIUM', primaryColor: '#f5cf6b', secondaryColor: '#7c4a03', renderer: renderGoldText },
+      { id: 'comic-pop', title: 'Comic Pop Outline', category: 'comic-text', width: 1000, height: 300, baseSize: 100, defaultText: 'BOOM!', primaryColor: '#fb7185', secondaryColor: '#1e1b4b', renderer: renderComicPopText },
+      { id: 'long-shadow', title: 'Retro Long Shadow', category: 'retro-text', width: 1000, height: 300, baseSize: 95, defaultText: 'RETRO', primaryColor: '#fbbf24', secondaryColor: '#78350f', renderer: renderLongShadowText },
+      { id: 'glass-emboss', title: 'Glass Emboss', category: 'glass-text', width: 1000, height: 300, baseSize: 95, defaultText: 'ELEGANT', primaryColor: '#60a5fa', secondaryColor: '#1e3a8a', renderer: renderGlassEmbossText },
+      { id: 'sunset-gradient', title: 'Sunset Gradient', category: 'gradient-text', width: 1000, height: 300, baseSize: 90, defaultText: 'SUNSET VIBES', primaryColor: '#fb923c', secondaryColor: '#ec4899', renderer: renderGradientOutlineText }
+    ];
+
     const BUTTON_SPECS = [
       // 3D Game Gold Pills (Image 1)
       { id: 'game-ruby', title: 'Ruby Gold Bevel', category: 'game-gold', shape: 'pill', width: 800, height: 240, topColor: '#ff4d4d', midColor: '#e60000', bottomColor: '#990000', darkRimColor: '#4d0000', defaultLabel: 'BUTTON', icon: 'home', renderer: render3DGamePill },
@@ -2000,11 +2448,89 @@
       lucide.createIcons();
     }
 
+    function generateAllTextDesigns() {
+      const grid = document.getElementById('textGrid');
+      grid.innerHTML = '';
+      generatedTextDesigns = [];
+
+      TEXT_SPECS.forEach(spec => {
+        const canvas = document.createElement('canvas');
+        canvas.width = spec.width;
+        canvas.height = spec.height;
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const primary = textPrimaryOverride || spec.primaryColor;
+        const secondary = textSecondaryOverride || spec.secondaryColor;
+        const text = headingText || spec.defaultText;
+        const opts = {
+          fontFamily: headingFontFamily,
+          weight: headingWeight,
+          italic: headingItalic ? 'italic' : 'normal',
+          letterSpacing: headingLetterSpacing,
+          size: Math.round((spec.baseSize || 90) * headingScale),
+          primary,
+          secondary
+        };
+
+        spec.renderer(ctx, canvas.width, canvas.height, text, opts);
+
+        const dataUrl = canvas.toDataURL('image/png');
+        generatedTextDesigns.push({
+          id: spec.id,
+          title: spec.title,
+          category: spec.category,
+          dataUrl: dataUrl,
+          width: spec.width,
+          height: spec.height
+        });
+
+        const card = document.createElement('div');
+        card.className = `text-card group bg-slate-900/90 border border-slate-800/90 rounded-3xl p-5 hover:border-slate-700 transition-all shadow-xl flex flex-col justify-between ${currentTextCategory !== 'all' && spec.category !== currentTextCategory ? 'hidden' : ''}`;
+        card.setAttribute('data-category', spec.category);
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-3 text-xs">
+              <span class="font-bold text-slate-300 group-hover:text-amber-400 transition-colors">${spec.title}</span>
+              <span class="font-mono text-[10px] text-slate-500 bg-slate-800/80 px-2 py-0.5 rounded-md border border-slate-700/50">${spec.width}×${spec.height}</span>
+            </div>
+
+            <div class="relative w-full h-40 rounded-2xl ${activeGridClass} border border-slate-800/80 flex items-center justify-center p-4 overflow-hidden cursor-pointer group-hover:border-slate-700 transition-all"
+                 onclick="openLightbox('${spec.id}')">
+              <img src="${dataUrl}" alt="${spec.title}" class="max-w-full max-h-full object-contain filter drop-shadow-lg transform group-hover:scale-105 transition-transform duration-200" />
+              <div class="absolute inset-0 bg-indigo-500/0 group-hover:bg-indigo-500/5 transition-colors pointer-events-none rounded-2xl flex items-center justify-center">
+                <span class="opacity-0 group-hover:opacity-100 bg-slate-950/80 text-slate-200 text-[10px] font-semibold px-2.5 py-1 rounded-lg backdrop-blur border border-slate-700 transition-opacity flex items-center gap-1 shadow-lg">
+                  <i data-lucide="maximize-2" class="w-3 h-3"></i> Inspect
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-800/80">
+            <a href="${dataUrl}" download="${spec.id}-transparent.png"
+               class="w-full py-2.5 px-3 rounded-xl bg-slate-800/90 hover:bg-gradient-to-r hover:from-amber-500 hover:to-rose-600 text-slate-200 hover:text-white text-xs font-bold transition-all flex items-center justify-center gap-2 border border-slate-700/80 shadow-md active:scale-95">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i>
+              <span>Download PNG</span>
+            </a>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+
+      updateTextCategoryCounters();
+      lucide.createIcons();
+    }
+
     let debounceTimer;
     function debouncedRegenerate() {
+      const inputEl = document.getElementById('customLabelInput');
+      const counter = document.getElementById('labelCharCount');
+      if (counter) counter.textContent = `${inputEl.value.length}/40`;
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(() => {
-        customLabel = document.getElementById('customLabelInput').value.trim() || 'BUTTON';
+        customLabel = inputEl.value.trim() || 'BUTTON';
         generateAllButtons();
       }, 150);
     }
@@ -2086,7 +2612,7 @@
       btnElement.className = 'px-2.5 py-1 rounded-lg bg-indigo-600 text-white font-medium transition-all';
 
       // Update all stage backgrounds
-      document.querySelectorAll('.button-card .relative').forEach(stage => {
+      document.querySelectorAll('.button-card .relative, .text-card .relative').forEach(stage => {
         stage.className = stage.className.replace(/bg-checker-dark|bg-checker-light|bg-checker-amber|bg-slate-950/g, bgClass);
       });
 
@@ -2126,7 +2652,7 @@
     }
 
     function openLightbox(buttonId) {
-      const item = generatedButtons.find(b => b.id === buttonId);
+      const item = generatedButtons.find(b => b.id === buttonId) || generatedTextDesigns.find(b => b.id === buttonId);
       if (!item) return;
 
       document.getElementById('modalTitle').textContent = item.title;
@@ -2178,10 +2704,159 @@
       showToast('Batch Export Started', `Downloading all ${generatedButtons.length} buttons as PNGs`);
     }
 
+    function downloadAllTextDesigns() {
+      let delay = 0;
+      generatedTextDesigns.forEach((item) => {
+        setTimeout(() => {
+          const a = document.createElement('a');
+          a.href = item.dataUrl;
+          a.download = `${item.id}-transparent.png`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }, delay);
+        delay += 200;
+      });
+      showToast('Batch Export Started', `Downloading all ${generatedTextDesigns.length} text designs as PNGs`);
+    }
+
+    function downloadAllCurrent() {
+      if (studioMode === 'text') {
+        downloadAllTextDesigns();
+      } else {
+        downloadAllButtons();
+      }
+    }
+
+    // --- Text Designs control handlers ---
+
+    let textDebounceTimer;
+    function debouncedRegenerateText() {
+      const inputEl = document.getElementById('headingTextInput');
+      const counter = document.getElementById('headingCharCount');
+      if (counter) counter.textContent = `${inputEl.value.length}/60`;
+      clearTimeout(textDebounceTimer);
+      textDebounceTimer = setTimeout(() => {
+        headingText = inputEl.value.trim() || 'AWESOME';
+        generateAllTextDesigns();
+      }, 150);
+    }
+
+    function updateHeadingFontFamily(val) {
+      headingFontFamily = val;
+      generateAllTextDesigns();
+    }
+
+    function updateHeadingWeight(val) {
+      headingWeight = val;
+      generateAllTextDesigns();
+    }
+
+    function toggleHeadingItalic() {
+      headingItalic = !headingItalic;
+      const btn = document.getElementById('italicToggleBtn');
+      if (headingItalic) {
+        btn.className = 'w-full py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 border border-indigo-500 text-white transition flex items-center justify-center gap-1';
+      } else {
+        btn.className = 'w-full py-1.5 rounded-lg text-xs font-semibold bg-slate-800 border border-slate-700 text-slate-400 hover:text-white transition flex items-center justify-center gap-1';
+      }
+      generateAllTextDesigns();
+    }
+
+    function updateHeadingLetterSpacing(val) {
+      headingLetterSpacing = parseFloat(val);
+      document.getElementById('letterSpacingBadge').textContent = `${headingLetterSpacing}px`;
+      generateAllTextDesigns();
+    }
+
+    function updateHeadingScale(val) {
+      headingScale = parseFloat(val);
+      document.getElementById('headingScaleBadge').textContent = `${Math.round(headingScale * 100)}%`;
+      generateAllTextDesigns();
+    }
+
+    function updateTextPrimaryColor(val) {
+      textPrimaryOverride = val;
+      generateAllTextDesigns();
+    }
+
+    function updateTextSecondaryColor(val) {
+      textSecondaryOverride = val;
+      generateAllTextDesigns();
+    }
+
+    function resetTextColors() {
+      textPrimaryOverride = null;
+      textSecondaryOverride = null;
+      document.getElementById('textPrimaryColorInput').value = '#f59e0b';
+      document.getElementById('textSecondaryColorInput').value = '#78350f';
+      generateAllTextDesigns();
+      showToast('Colors Reset', 'Each heading style is back to its own default palette.');
+    }
+
+    function filterTextCategory(cat, tabElement) {
+      currentTextCategory = cat;
+      document.querySelectorAll('#textFilterTabs .category-filter').forEach(t => {
+        t.className = 'category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800';
+      });
+      tabElement.className = 'category-filter active px-2.5 py-1 rounded-lg bg-slate-800 text-white font-medium text-xs transition-all border border-slate-700 shadow-sm';
+
+      document.querySelectorAll('.text-card').forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (cat === 'all' || cardCat === cat) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    function updateTextCategoryCounters() {
+      document.getElementById('countTextAll').textContent = TEXT_SPECS.length;
+      document.getElementById('countExtrude').textContent = TEXT_SPECS.filter(s => s.category === '3d-extrude').length;
+      document.getElementById('countNeonText').textContent = TEXT_SPECS.filter(s => s.category === 'neon-text').length;
+      document.getElementById('countMetal').textContent = TEXT_SPECS.filter(s => s.category === 'metal-text').length;
+      document.getElementById('countComic').textContent = TEXT_SPECS.filter(s => s.category === 'comic-text').length;
+      document.getElementById('countRetro').textContent = TEXT_SPECS.filter(s => s.category === 'retro-text').length;
+      document.getElementById('countGlass').textContent = TEXT_SPECS.filter(s => s.category === 'glass-text').length;
+      document.getElementById('countGradient').textContent = TEXT_SPECS.filter(s => s.category === 'gradient-text').length;
+    }
+
+    function setStudioMode(mode) {
+      studioMode = mode;
+      const tabButtons = document.getElementById('modeTabButtons');
+      const tabText = document.getElementById('modeTabText');
+      const buttonsPanel = document.getElementById('buttonsControlPanel');
+      const textPanel = document.getElementById('textControlPanel');
+      const buttonsGrid = document.getElementById('buttonsGrid');
+      const textGrid = document.getElementById('textGrid');
+
+      const activeCls = 'flex items-center gap-2 px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 text-white transition-all';
+      const inactiveCls = 'flex items-center gap-2 px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-400 hover:text-white transition-all';
+
+      if (mode === 'text') {
+        tabButtons.className = inactiveCls;
+        tabText.className = activeCls;
+        buttonsPanel.style.display = 'none';
+        textPanel.style.display = 'block';
+        buttonsGrid.style.display = 'none';
+        textGrid.style.display = 'grid';
+      } else {
+        tabButtons.className = activeCls;
+        tabText.className = inactiveCls;
+        buttonsPanel.style.display = 'block';
+        textPanel.style.display = 'none';
+        buttonsGrid.style.display = 'grid';
+        textGrid.style.display = 'none';
+      }
+      lucide.createIcons();
+    }
+
     // Initialize application on load
     window.onload = function() {
       lucide.createIcons();
       generateAllButtons();
+      generateAllTextDesigns();
     };
   </script>
 </body>
