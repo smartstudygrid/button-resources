@@ -430,6 +430,15 @@
           <button onclick="filterTextCategory('gradient-text', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
             Gradient (<span id="countGradient">0</span>)
           </button>
+          <button onclick="filterTextCategory('holo-text', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
+            Holographic Foil (<span id="countHolo">0</span>)
+          </button>
+          <button onclick="filterTextCategory('outline-text', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
+            Outline Ghost (<span id="countOutline">0</span>)
+          </button>
+          <button onclick="filterTextCategory('ice-text', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
+            Ice Frost (<span id="countIce">0</span>)
+          </button>
         </div>
       </div>
     </div>
@@ -544,31 +553,45 @@
       return '#' + (0x1000000 + r * 0x10000 + g * 0x100 + b).toString(16).slice(1);
     }
 
+    // Extra gap (as a multiple of the space glyph's own width) added on top
+    // of the normal letter-spacing whenever we hit a literal space, so words
+    // read as distinct groups rather than a single spaced-out block.
+    const WORD_GAP_MULTIPLIER = 0.6;
+
     // Measures the total rendered width of `text` when each character is
-    // drawn individually with `spacing` px of extra gap between glyphs.
+    // drawn individually with `spacing` px of extra gap between glyphs, and
+    // extra breathing room between words.
     function measureSpacedWidth(ctx, text, spacing) {
+      const chars = Array.from(text);
       let width = 0;
-      for (const ch of text) {
-        width += ctx.measureText(ch).width;
-      }
-      width += spacing * Math.max(0, text.length - 1);
+      chars.forEach((ch, i) => {
+        const cw = ctx.measureText(ch).width;
+        width += cw;
+        if (ch === ' ') width += cw * WORD_GAP_MULTIPLIER;
+        if (i < chars.length - 1) width += spacing;
+      });
       return width;
     }
 
     // Draws `text` centered on (cx, cy) with manual letter-spacing (since
     // canvas fillText/strokeText have no native tracking control that works
-    // reliably across browsers). mode: 'fill' | 'stroke' | 'both'.
+    // reliably across browsers), plus extra room between words.
+    // mode: 'fill' | 'stroke' | 'both'.
     function drawSpacedText(ctx, text, cx, cy, spacing, mode) {
       const totalW = measureSpacedWidth(ctx, text, spacing);
       let x = cx - totalW / 2;
       const prevAlign = ctx.textAlign;
       ctx.textAlign = 'left';
-      for (const ch of text) {
+      const chars = Array.from(text);
+      chars.forEach((ch, i) => {
         const cw = ctx.measureText(ch).width;
         if (mode === 'fill' || mode === 'both') ctx.fillText(ch, x, cy);
         if (mode === 'stroke' || mode === 'both') ctx.strokeText(ch, x, cy);
-        x += cw + spacing;
-      }
+        let advance = cw;
+        if (ch === ' ') advance += cw * WORD_GAP_MULTIPLIER;
+        if (i < chars.length - 1) advance += spacing;
+        x += advance;
+      });
       ctx.textAlign = prevAlign;
     }
 
@@ -2313,6 +2336,75 @@
       drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'stroke');
     }
 
+    // 9. Holographic Foil — shifting iridescent gradient with a soft glow
+    function renderHoloFoilText(ctx, w, h, text, o) {
+      const cx = w / 2, cy = h / 2;
+      applyHeadingFont(ctx, o);
+
+      const grad = ctx.createLinearGradient(cx - w * 0.4, cy - h * 0.3, cx + w * 0.4, cy + h * 0.3);
+      grad.addColorStop(0, o.primary);
+      grad.addColorStop(0.25, shadeHexColor(o.secondary, 25));
+      grad.addColorStop(0.5, o.secondary);
+      grad.addColorStop(0.75, shadeHexColor(o.primary, 30));
+      grad.addColorStop(1, o.primary);
+
+      ctx.save();
+      ctx.shadowColor = o.secondary;
+      ctx.shadowBlur = o.size * 0.14;
+      ctx.fillStyle = grad;
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'fill');
+      ctx.restore();
+
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.65)';
+      ctx.lineWidth = Math.max(1, o.size * 0.012);
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'stroke');
+    }
+
+    // 10. Outline Ghost — clean transparent fill, colored outline only
+    function renderOutlineGhostText(ctx, w, h, text, o) {
+      const cx = w / 2, cy = h / 2;
+      applyHeadingFont(ctx, o);
+      ctx.lineJoin = 'round';
+
+      ctx.save();
+      ctx.globalAlpha = 0.12;
+      ctx.fillStyle = o.primary;
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'fill');
+      ctx.restore();
+
+      ctx.strokeStyle = o.primary;
+      ctx.lineWidth = Math.max(3, o.size * 0.045);
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'stroke');
+    }
+
+    // 11. Ice Frost — icy gradient fill with a cool glow and frosty highlight
+    function renderIceFrostText(ctx, w, h, text, o) {
+      const cx = w / 2, cy = h / 2;
+      applyHeadingFont(ctx, o);
+
+      const grad = ctx.createLinearGradient(0, cy - o.size * 0.55, 0, cy + o.size * 0.55);
+      grad.addColorStop(0, '#ffffff');
+      grad.addColorStop(0.4, shadeHexColor(o.primary, 25));
+      grad.addColorStop(1, o.primary);
+
+      ctx.save();
+      ctx.shadowColor = o.secondary;
+      ctx.shadowBlur = o.size * 0.3;
+      ctx.fillStyle = grad;
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'fill');
+      ctx.restore();
+
+      ctx.strokeStyle = shadeHexColor(o.secondary, -10);
+      ctx.lineWidth = Math.max(1, o.size * 0.02);
+      drawSpacedText(ctx, text, cx, cy, o.letterSpacing, 'stroke');
+
+      ctx.save();
+      ctx.globalAlpha = 0.5;
+      ctx.fillStyle = '#ffffff';
+      drawSpacedText(ctx, text, cx - 1, cy - 2, o.letterSpacing, 'fill');
+      ctx.restore();
+    }
+
     const TEXT_SPECS = [
       { id: 'extrude-3d', title: 'Classic 3D Extrude', category: '3d-extrude', width: 1000, height: 300, baseSize: 100, defaultText: 'AWESOME', primaryColor: '#f59e0b', secondaryColor: '#78350f', renderer: renderExtrude3DText },
       { id: 'neon-glow-text', title: 'Neon Glow', category: 'neon-text', width: 1000, height: 300, baseSize: 95, defaultText: 'OPEN 24/7', primaryColor: '#22d3ee', secondaryColor: '#a855f7', renderer: renderNeonGlowText },
@@ -2321,8 +2413,13 @@
       { id: 'comic-pop', title: 'Comic Pop Outline', category: 'comic-text', width: 1000, height: 300, baseSize: 100, defaultText: 'BOOM!', primaryColor: '#fb7185', secondaryColor: '#1e1b4b', renderer: renderComicPopText },
       { id: 'long-shadow', title: 'Retro Long Shadow', category: 'retro-text', width: 1000, height: 300, baseSize: 95, defaultText: 'RETRO', primaryColor: '#fbbf24', secondaryColor: '#78350f', renderer: renderLongShadowText },
       { id: 'glass-emboss', title: 'Glass Emboss', category: 'glass-text', width: 1000, height: 300, baseSize: 95, defaultText: 'ELEGANT', primaryColor: '#60a5fa', secondaryColor: '#1e3a8a', renderer: renderGlassEmbossText },
-      { id: 'sunset-gradient', title: 'Sunset Gradient', category: 'gradient-text', width: 1000, height: 300, baseSize: 90, defaultText: 'SUNSET VIBES', primaryColor: '#fb923c', secondaryColor: '#ec4899', renderer: renderGradientOutlineText }
+      { id: 'sunset-gradient', title: 'Sunset Gradient', category: 'gradient-text', width: 1000, height: 300, baseSize: 90, defaultText: 'SUNSET VIBES', primaryColor: '#fb923c', secondaryColor: '#ec4899', renderer: renderGradientOutlineText },
+      { id: 'holo-foil', title: 'Holographic Foil', category: 'holo-text', width: 1000, height: 300, baseSize: 95, defaultText: 'FUTURE', primaryColor: '#a78bfa', secondaryColor: '#f472b6', renderer: renderHoloFoilText },
+      { id: 'outline-ghost', title: 'Outline Ghost', category: 'outline-text', width: 1000, height: 300, baseSize: 100, defaultText: 'MINIMAL', primaryColor: '#34d399', secondaryColor: '#065f46', renderer: renderOutlineGhostText },
+      { id: 'ice-frost', title: 'Ice Frost', category: 'ice-text', width: 1000, height: 300, baseSize: 95, defaultText: 'FROSTY', primaryColor: '#7dd3fc', secondaryColor: '#0369a1', renderer: renderIceFrostText }
     ];
+
+
 
     const BUTTON_SPECS = [
       // 3D Game Gold Pills (Image 1)
@@ -2820,6 +2917,9 @@
       document.getElementById('countRetro').textContent = TEXT_SPECS.filter(s => s.category === 'retro-text').length;
       document.getElementById('countGlass').textContent = TEXT_SPECS.filter(s => s.category === 'glass-text').length;
       document.getElementById('countGradient').textContent = TEXT_SPECS.filter(s => s.category === 'gradient-text').length;
+      document.getElementById('countHolo').textContent = TEXT_SPECS.filter(s => s.category === 'holo-text').length;
+      document.getElementById('countOutline').textContent = TEXT_SPECS.filter(s => s.category === 'outline-text').length;
+      document.getElementById('countIce').textContent = TEXT_SPECS.filter(s => s.category === 'ice-text').length;
     }
 
     function setStudioMode(mode) {
