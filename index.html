@@ -201,6 +201,23 @@
                   <option value="heart">❤ Heart / Like</option>
                   <option value="star">⭐ Star / Favorite</option>
                 </optgroup>
+                <optgroup label="More Icons">
+                  <option value="bell">🔔 Notification Bell</option>
+                  <option value="chat">💬 Chat / Message</option>
+                  <option value="user">👤 User / Profile</option>
+                  <option value="calendar">📅 Calendar</option>
+                  <option value="camera">📷 Camera</option>
+                  <option value="trash">🗑 Trash / Bin</option>
+                  <option value="refresh">🔄 Refresh / Reload</option>
+                  <option value="link">🔗 Link / Chain</option>
+                  <option value="location">📍 Location / Pin</option>
+                  <option value="clock">🕐 Clock / Time</option>
+                  <option value="info">ℹ Info</option>
+                  <option value="warning">⚠ Warning / Alert</option>
+                  <option value="menu">☰ Menu</option>
+                  <option value="thumbsup">👍 Thumbs Up</option>
+                  <option value="phone">📞 Phone</option>
+                </optgroup>
               </select>
               <i data-lucide="chevron-down" class="w-3 h-3 text-slate-400 absolute right-2.5 top-2.5 pointer-events-none"></i>
             </div>
@@ -267,6 +284,12 @@
           </button>
           <button onclick="filterCategory('blank-pill', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
             Frosted Glass (<span id="countBlank">0</span>)
+          </button>
+          <button onclick="filterCategory('neon-pill', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
+            Neon Glow (<span id="countNeon">0</span>)
+          </button>
+          <button onclick="filterCategory('ribbon-banner', this)" class="category-filter px-2.5 py-1 rounded-lg bg-slate-900/80 text-slate-400 hover:text-slate-200 font-medium text-xs transition-all border border-slate-800">
+            Ribbon Banners (<span id="countRibbon">0</span>)
           </button>
         </div>
       </div>
@@ -893,6 +916,264 @@
           break;
         }
 
+        case 'bell': {
+          // Notification bell with clapper and base bar
+          const bw = half * 0.7;
+          ctx.beginPath();
+          ctx.moveTo(cx - bw, cy + half * 0.25);
+          ctx.quadraticCurveTo(cx - bw, cy - half * 0.75, cx, cy - half * 0.85);
+          ctx.quadraticCurveTo(cx + bw, cy - half * 0.75, cx + bw, cy + half * 0.25);
+          ctx.lineTo(cx + bw * 1.15, cy + half * 0.42);
+          ctx.lineTo(cx - bw * 1.15, cy + half * 0.42);
+          ctx.closePath();
+          ctx.fill();
+          roundRect(ctx, cx - bw * 0.55, cy + half * 0.5, bw * 1.1, s * 0.09, s * 0.04);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(cx, cy + half * 0.72, s * 0.09, 0, Math.PI * 2);
+          ctx.fill();
+          break;
+        }
+
+        case 'chat': {
+          // Speech bubble with tail and dots
+          roundRect(ctx, cx - half * 0.85, cy - half * 0.7, half * 1.7, half * 1.15, s * 0.16);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.moveTo(cx - half * 0.35, cy + half * 0.45);
+          ctx.lineTo(cx - half * 0.55, cy + half * 0.85);
+          ctx.lineTo(cx - half * 0.05, cy + half * 0.45);
+          ctx.closePath();
+          ctx.fill();
+          ctx.save();
+          ctx.fillStyle = '#000000';
+          [-0.4, 0, 0.4].forEach(dx => {
+            ctx.beginPath();
+            ctx.arc(cx + dx * half, cy - half * 0.12, s * 0.06, 0, Math.PI * 2);
+            ctx.fill();
+          });
+          ctx.restore();
+          break;
+        }
+
+        case 'user': {
+          // Head-and-shoulders silhouette
+          ctx.beginPath();
+          ctx.arc(cx, cy - half * 0.35, half * 0.38, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.moveTo(cx - half * 0.75, cy + half * 0.8);
+          ctx.quadraticCurveTo(cx - half * 0.7, cy + half * 0.05, cx, cy + half * 0.05);
+          ctx.quadraticCurveTo(cx + half * 0.7, cy + half * 0.05, cx + half * 0.75, cy + half * 0.8);
+          ctx.closePath();
+          ctx.fill();
+          break;
+        }
+
+        case 'calendar': {
+          // Calendar page with binder rings and header bar
+          const cw = half * 0.9;
+          const ch = half * 0.8;
+          roundRect(ctx, cx - cw, cy - ch * 0.7, cw * 2, ch * 1.6, s * 0.1);
+          ctx.fill();
+          ctx.save();
+          ctx.fillStyle = '#000000';
+          ctx.fillRect(cx - cw, cy - ch * 0.35, cw * 2, s * 0.08);
+          ctx.restore();
+          const ringW = s * 0.07, ringH = s * 0.22;
+          roundRect(ctx, cx - cw * 0.55 - ringW / 2, cy - ch * 1.05, ringW, ringH, ringW / 2);
+          roundRect(ctx, cx + cw * 0.55 - ringW / 2, cy - ch * 1.05, ringW, ringH, ringW / 2);
+          ctx.fill();
+          break;
+        }
+
+        case 'camera': {
+          // Camera body with lens and top flash bump
+          const cw = half * 0.9, ch = half * 0.65;
+          roundRect(ctx, cx - cw, cy - ch * 0.5, cw * 2, ch * 1.5, s * 0.1);
+          ctx.fill();
+          roundRect(ctx, cx - cw * 0.35, cy - ch * 1.15, cw * 0.7, ch * 0.6, s * 0.06);
+          ctx.fill();
+          ctx.save();
+          ctx.fillStyle = '#000000';
+          ctx.beginPath();
+          ctx.arc(cx, cy + ch * 0.15, half * 0.36, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+          ctx.beginPath();
+          ctx.arc(cx, cy + ch * 0.15, half * 0.24, 0, Math.PI * 2);
+          ctx.fill();
+          break;
+        }
+
+        case 'trash': {
+          // Trash can with lid, handle, and rib lines
+          const tw = half * 0.7;
+          roundRect(ctx, cx - tw * 0.75, cy - half * 0.65, tw * 1.5, s * 0.1, s * 0.03);
+          ctx.fill();
+          roundRect(ctx, cx - tw * 0.28, cy - half * 0.85, tw * 0.56, s * 0.14, s * 0.03);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.moveTo(cx - tw * 0.65, cy - half * 0.5);
+          ctx.lineTo(cx - tw * 0.5, cy + half * 0.85);
+          ctx.lineTo(cx + tw * 0.5, cy + half * 0.85);
+          ctx.lineTo(cx + tw * 0.65, cy - half * 0.5);
+          ctx.closePath();
+          ctx.fill();
+          ctx.save();
+          ctx.strokeStyle = '#000000';
+          ctx.lineWidth = Math.max(2, s * 0.06);
+          [-0.28, 0, 0.28].forEach(dx => {
+            ctx.beginPath();
+            ctx.moveTo(cx + dx * tw * 2, cy - half * 0.3);
+            ctx.lineTo(cx + dx * tw * 2 * 0.9, cy + half * 0.65);
+            ctx.stroke();
+          });
+          ctx.restore();
+          break;
+        }
+
+        case 'refresh': {
+          // Circular refresh arrow
+          ctx.beginPath();
+          ctx.arc(cx, cy, half * 0.75, -Math.PI * 0.15, Math.PI * 1.15, false);
+          ctx.stroke();
+          const ang = Math.PI * 1.15;
+          const ax = cx + Math.cos(ang) * half * 0.75;
+          const ay = cy + Math.sin(ang) * half * 0.75;
+          ctx.beginPath();
+          ctx.moveTo(ax, ay);
+          ctx.lineTo(ax - s * 0.22, ay - s * 0.02);
+          ctx.lineTo(ax - s * 0.05, ay + s * 0.2);
+          ctx.closePath();
+          ctx.fill();
+          break;
+        }
+
+        case 'link': {
+          // Two interlocking rounded chain links
+          ctx.save();
+          ctx.translate(cx, cy);
+          ctx.rotate(-Math.PI / 4);
+          ctx.lineWidth = Math.max(3, s * 0.16);
+          roundRect(ctx, -half * 0.75, -half * 0.3, half * 0.75, half * 0.6, half * 0.3);
+          ctx.stroke();
+          roundRect(ctx, 0, -half * 0.3, half * 0.75, half * 0.6, half * 0.3);
+          ctx.stroke();
+          ctx.restore();
+          break;
+        }
+
+        case 'location': {
+          // Map pin teardrop with center dot cutout
+          ctx.beginPath();
+          ctx.moveTo(cx, cy + half * 0.85);
+          ctx.bezierCurveTo(cx - half * 0.85, cy + half * 0.05, cx - half * 0.75, cy - half * 0.85, cx, cy - half * 0.85);
+          ctx.bezierCurveTo(cx + half * 0.75, cy - half * 0.85, cx + half * 0.85, cy + half * 0.05, cx, cy + half * 0.85);
+          ctx.closePath();
+          ctx.fill();
+          ctx.save();
+          ctx.fillStyle = '#000000';
+          ctx.beginPath();
+          ctx.arc(cx, cy - half * 0.28, half * 0.3, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+          break;
+        }
+
+        case 'clock': {
+          // Clock face ring with hour/minute hands
+          ctx.beginPath();
+          ctx.arc(cx, cy, half * 0.85, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(cx, cy - half * 0.5);
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(cx + half * 0.35, cy + half * 0.12);
+          ctx.stroke();
+          break;
+        }
+
+        case 'info': {
+          // Filled info circle with dot + bar
+          ctx.beginPath();
+          ctx.arc(cx, cy, half * 0.85, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.save();
+          ctx.fillStyle = '#000000';
+          ctx.beginPath();
+          ctx.arc(cx, cy - half * 0.42, s * 0.09, 0, Math.PI * 2);
+          ctx.fill();
+          roundRect(ctx, cx - s * 0.09, cy - half * 0.15, s * 0.18, half * 0.62, s * 0.05);
+          ctx.fill();
+          ctx.restore();
+          break;
+        }
+
+        case 'warning': {
+          // Filled warning triangle with exclamation cutout
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - half * 0.9);
+          ctx.lineTo(cx + half * 0.85, cy + half * 0.75);
+          ctx.lineTo(cx - half * 0.85, cy + half * 0.75);
+          ctx.closePath();
+          ctx.fill();
+          ctx.save();
+          ctx.fillStyle = '#000000';
+          roundRect(ctx, cx - s * 0.07, cy - half * 0.45, s * 0.14, half * 0.55, s * 0.04);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(cx, cy + half * 0.5, s * 0.08, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+          break;
+        }
+
+        case 'menu': {
+          // 3-bar hamburger menu
+          const bw = half * 1.5, bh = s * 0.16, gap = s * 0.28;
+          [-gap, 0, gap].forEach(dy => {
+            roundRect(ctx, cx - bw / 2, cy + dy - bh / 2, bw, bh, bh / 2);
+            ctx.fill();
+          });
+          break;
+        }
+
+        case 'thumbsup': {
+          // Simplified thumbs-up: fist block + folded thumb
+          roundRect(ctx, cx - half * 0.85, cy - half * 0.05, half * 0.42, half * 0.95, s * 0.08);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.moveTo(cx - half * 0.35, cy - half * 0.05);
+          ctx.lineTo(cx - half * 0.1, cy - half * 0.85);
+          ctx.quadraticCurveTo(cx + half * 0.15, cy - half * 0.95, cx + half * 0.2, cy - half * 0.6);
+          ctx.lineTo(cx + half * 0.1, cy - half * 0.1);
+          ctx.lineTo(cx + half * 0.75, cy - half * 0.1);
+          ctx.quadraticCurveTo(cx + half * 0.9, cy - half * 0.1, cx + half * 0.82, cy + half * 0.15);
+          ctx.lineTo(cx + half * 0.65, cy + half * 0.75);
+          ctx.quadraticCurveTo(cx + half * 0.58, cy + half * 0.9, cx + half * 0.4, cy + half * 0.9);
+          ctx.lineTo(cx - half * 0.35, cy + half * 0.9);
+          ctx.closePath();
+          ctx.fill();
+          break;
+        }
+
+        case 'phone': {
+          // Rotated dumbbell-style handset silhouette
+          ctx.save();
+          ctx.translate(cx, cy);
+          ctx.rotate(-Math.PI / 4);
+          roundRect(ctx, -half * 0.85, -half * 0.28, half * 0.56, half * 0.56, half * 0.22);
+          ctx.fill();
+          roundRect(ctx, half * 0.28, -half * 0.28, half * 0.56, half * 0.56, half * 0.22);
+          ctx.fill();
+          roundRect(ctx, -half * 0.35, -half * 0.14, half * 0.7, half * 0.28, half * 0.12);
+          ctx.fill();
+          ctx.restore();
+          break;
+        }
+
         default:
           break;
       }
@@ -1432,6 +1713,169 @@
       }
     }
 
+    // 7. Neon Glow Pill — dark glass fill with a glowing neon outline
+    function renderNeonGlowPill(canvas, spec) {
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const padX = 30;
+      const padY = 26;
+      const btnW = w - padX * 2;
+      const btnH = h - padY * 2;
+      const r = btnH / 2;
+
+      // Dark glass fill
+      roundRect(ctx, padX, padY, btnW, btnH, r);
+      ctx.fillStyle = 'rgba(8, 10, 20, 0.92)';
+      ctx.fill();
+
+      // Layered outer glow
+      ctx.save();
+      ctx.shadowColor = spec.glowColor;
+      ctx.shadowBlur = 30;
+      roundRect(ctx, padX, padY, btnW, btnH, r);
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = spec.glowColor;
+      ctx.stroke();
+      ctx.shadowBlur = 14;
+      ctx.stroke();
+      ctx.restore();
+
+      // Crisp inner rim
+      roundRect(ctx, padX, padY, btnW, btnH, r);
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.85)';
+      ctx.stroke();
+
+      // Faint inner sheen
+      ctx.save();
+      roundRect(ctx, padX + 8, padY + 6, btnW - 16, btnH * 0.4, btnH * 0.2);
+      const gloss = ctx.createLinearGradient(padX, padY, padX, padY + btnH * 0.4);
+      gloss.addColorStop(0, 'rgba(255, 255, 255, 0.14)');
+      gloss.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
+      ctx.fillStyle = gloss;
+      ctx.fill();
+      ctx.restore();
+
+      const cy = h / 2;
+      const iconType = currentIcon || spec.icon;
+      const showIcon = iconsEnabled && iconType !== 'none';
+
+      if (!isBlankOnly) {
+        const text = customLabel || spec.defaultLabel;
+        ctx.save();
+        setCanvasFont(ctx, '800', 34);
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.shadowColor = spec.glowColor;
+        ctx.shadowBlur = 18;
+        ctx.fillStyle = spec.glowColor;
+
+        if (showIcon) {
+          const tm = ctx.measureText(text);
+          const iconSize = 32;
+          const sp = 16;
+          const total = tm.width + iconSize + sp;
+          const startX = w / 2 - total / 2;
+          drawAppVectorIcon(ctx, iconType, startX + iconSize / 2, cy, iconSize, spec.glowColor);
+          ctx.fillText(text, startX + iconSize + sp + tm.width / 2, cy);
+        } else {
+          ctx.fillText(text, w / 2, cy);
+        }
+        ctx.restore();
+      } else if (showIcon) {
+        ctx.save();
+        ctx.shadowColor = spec.glowColor;
+        ctx.shadowBlur = 18;
+        drawAppVectorIcon(ctx, iconType, w / 2, cy, 40, spec.glowColor);
+        ctx.restore();
+      }
+    }
+
+    // 8. Ribbon Banner — flag-notched banner tag with gradient fill
+    function renderRibbonBanner(canvas, spec) {
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const padX = 34;
+      const padY = 30;
+      const btnW = w - padX * 2;
+      const btnH = h - padY * 2;
+      const notch = btnH * 0.45;
+
+      ctx.save();
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+      ctx.shadowBlur = 16;
+      ctx.shadowOffsetY = 10;
+      ctx.beginPath();
+      ctx.moveTo(padX, padY);
+      ctx.lineTo(padX + btnW - notch, padY);
+      ctx.lineTo(padX + btnW, padY + btnH / 2);
+      ctx.lineTo(padX + btnW - notch, padY + btnH);
+      ctx.lineTo(padX, padY + btnH);
+      ctx.closePath();
+      const grad = ctx.createLinearGradient(padX, padY, padX, padY + btnH);
+      grad.addColorStop(0, spec.topColor);
+      grad.addColorStop(1, spec.bottomColor);
+      ctx.fillStyle = grad;
+      ctx.fill();
+      ctx.restore();
+
+      // Notched left tail accent
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.beginPath();
+      ctx.moveTo(padX, padY);
+      ctx.lineTo(padX + notch * 0.5, padY + btnH / 2);
+      ctx.lineTo(padX, padY + btnH);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+
+      // Specular sheen
+      roundRect(ctx, padX + 10, padY + 6, btnW - notch - 20, btnH * 0.4, btnH * 0.2);
+      const gloss = ctx.createLinearGradient(padX, padY, padX, padY + btnH * 0.4);
+      gloss.addColorStop(0, 'rgba(255, 255, 255, 0.4)');
+      gloss.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
+      ctx.fillStyle = gloss;
+      ctx.fill();
+
+      const cy = h / 2;
+      const iconType = currentIcon || spec.icon;
+      const centerX = padX + (btnW - notch) / 2;
+
+      if (!isBlankOnly) {
+        const text = customLabel || spec.defaultLabel;
+        ctx.save();
+        setCanvasFont(ctx, '800', 32);
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+        ctx.shadowBlur = 4;
+        ctx.shadowOffsetY = 2;
+        ctx.fillStyle = '#FFFFFF';
+
+        if (iconsEnabled && iconType !== 'none') {
+          const tm = ctx.measureText(text);
+          const iconSize = 28;
+          const sp = 14;
+          const total = tm.width + iconSize + sp;
+          const startX = centerX - total / 2;
+          drawAppVectorIcon(ctx, iconType, startX + iconSize / 2, cy, iconSize, '#FFFFFF');
+          ctx.fillText(text, startX + iconSize + sp + tm.width / 2, cy);
+        } else {
+          ctx.fillText(text, centerX, cy);
+        }
+        ctx.restore();
+      } else if (iconsEnabled && iconType !== 'none') {
+        drawAppVectorIcon(ctx, iconType, centerX, cy, 36, '#FFFFFF');
+      }
+    }
+
     const BUTTON_SPECS = [
       // 3D Game Gold Pills (Image 1)
       { id: 'game-ruby', title: 'Ruby Gold Bevel', category: 'game-gold', shape: 'pill', width: 800, height: 240, topColor: '#ff4d4d', midColor: '#e60000', bottomColor: '#990000', darkRimColor: '#4d0000', defaultLabel: 'BUTTON', icon: 'home', renderer: render3DGamePill },
@@ -1475,7 +1919,17 @@
       { id: 'square-book-tile', title: 'Sapphire Guidebook Tile', category: 'square-tile', shape: 'square', width: 440, height: 440, style: 'game-gold', topColor: '#0284c7', bottomColor: '#082f49', icon: 'book', defaultLabel: 'GUIDE', renderer: renderSquareButton },
 
       // Frosted Glass Pills
-      { id: 'frosted-glass', title: 'Minimalist Frosted Glass', category: 'blank-pill', shape: 'pill', width: 800, height: 240, defaultLabel: 'EXPLORE', icon: 'globe', renderer: renderFrostedPill }
+      { id: 'frosted-glass', title: 'Minimalist Frosted Glass', category: 'blank-pill', shape: 'pill', width: 800, height: 240, defaultLabel: 'EXPLORE', icon: 'globe', renderer: renderFrostedPill },
+
+      { id: 'neon-cyan', title: 'Cyan Neon Glow', category: 'neon-pill', shape: 'pill', width: 800, height: 240, glowColor: '#22d3ee', defaultLabel: 'CONNECT', icon: 'globe', renderer: renderNeonGlowPill },
+      { id: 'neon-magenta', title: 'Magenta Neon Glow', category: 'neon-pill', shape: 'pill', width: 800, height: 240, glowColor: '#e879f9', defaultLabel: 'FOLLOW US', icon: 'heart', renderer: renderNeonGlowPill },
+      { id: 'neon-lime', title: 'Lime Neon Glow', category: 'neon-pill', shape: 'pill', width: 800, height: 240, glowColor: '#a3e635', defaultLabel: 'START GAME', icon: 'star', renderer: renderNeonGlowPill },
+      { id: 'neon-orange', title: 'Orange Neon Glow', category: 'neon-pill', shape: 'pill', width: 800, height: 240, glowColor: '#fb923c', defaultLabel: 'NOTIFY ME', icon: 'bell', renderer: renderNeonGlowPill },
+
+      { id: 'ribbon-teal', title: 'Teal "New" Ribbon', category: 'ribbon-banner', shape: 'pill', width: 800, height: 240, topColor: '#2dd4bf', bottomColor: '#0f766e', defaultLabel: 'NEW', icon: 'star', renderer: renderRibbonBanner },
+      { id: 'ribbon-crimson', title: 'Crimson "Sale" Ribbon', category: 'ribbon-banner', shape: 'pill', width: 800, height: 240, topColor: '#f87171', bottomColor: '#b91c1c', defaultLabel: 'SALE', icon: 'cart', renderer: renderRibbonBanner },
+      { id: 'ribbon-indigo', title: 'Indigo "Featured" Ribbon', category: 'ribbon-banner', shape: 'pill', width: 800, height: 240, topColor: '#818cf8', bottomColor: '#4338ca', defaultLabel: 'FEATURED', icon: 'star', renderer: renderRibbonBanner },
+      { id: 'ribbon-amber', title: 'Amber "Hot" Ribbon', category: 'ribbon-banner', shape: 'pill', width: 800, height: 240, topColor: '#fbbf24', bottomColor: '#b45309', defaultLabel: 'HOT', icon: 'bell', renderer: renderRibbonBanner }
     ];
 
     function generateAllButtons() {
@@ -1667,6 +2121,8 @@
       document.getElementById('countBadge').textContent = BUTTON_SPECS.filter(s => s.category === 'click-badge').length;
       document.getElementById('countAction').textContent = BUTTON_SPECS.filter(s => s.category === 'action-pill').length;
       document.getElementById('countBlank').textContent = BUTTON_SPECS.filter(s => s.category === 'blank-pill').length;
+      document.getElementById('countNeon').textContent = BUTTON_SPECS.filter(s => s.category === 'neon-pill').length;
+      document.getElementById('countRibbon').textContent = BUTTON_SPECS.filter(s => s.category === 'ribbon-banner').length;
     }
 
     function openLightbox(buttonId) {
